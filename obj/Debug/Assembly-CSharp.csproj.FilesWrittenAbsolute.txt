@@ -1,0 +1,15 @@
+/Users/liuyang/Documents/workspace/LiveDemo/Temp/bin/Debug/UnityEngine.dll
+/Users/liuyang/Documents/workspace/LiveDemo/Temp/bin/Debug/UnityEditor.dll
+/Users/liuyang/Documents/workspace/LiveDemo/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/liuyang/Documents/workspace/LiveDemo/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/liuyang/Documents/workspace/LiveDemo/Temp/bin/Debug/Newtonsoft.Json.dll
+/Users/liuyang/Documents/workspace/LiveDemo/Temp/bin/Debug/ICSharpCode.SharpZipLib.dll
+/Users/liuyang/Documents/workspace/LiveDemo/Temp/bin/Debug/Mono.Cecil.dll
+/Users/liuyang/Documents/workspace/LiveDemo/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/liuyang/Documents/workspace/LiveDemo/Temp/bin/Debug/Unity.DataContract.dll
+/Users/liuyang/Documents/workspace/LiveDemo/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/liuyang/Documents/workspace/LiveDemo/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/liuyang/Documents/workspace/LiveDemo/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/liuyang/Documents/workspace/LiveDemo/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/liuyang/Documents/workspace/LiveDemo/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/liuyang/Documents/workspace/LiveDemo/Temp/bin/Debug/Mono.Cecil.Mdb.dll

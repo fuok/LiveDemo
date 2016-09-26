@@ -46,7 +46,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Libraries\SimpleJSON\SimpleJSON.cs" />
+     <Compile Include="Assets\_scripts\DbAccess.cs" />
      <Compile Include="Assets\_scripts\GameController.cs" />
+     <Compile Include="Assets\_scripts\ParaManager.cs" />
      <Compile Include="Assets\_scripts\ParagraphData.cs" />
      <None Include="Assets\Resources\Paragraph\para_1.txt" />
  <Reference Include="UnityEngine.UI">
@@ -60,6 +62,12 @@
  </Reference>
  <Reference Include="ICSharpCode.SharpZipLib">
  <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Libraries/SimpleJSON/ICSharpCode.SharpZipLib.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Data">
+ <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Plugins/System.Data.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.Data.Sqlite">
+ <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -14,20 +14,20 @@ namespace MyNamespace
 
 		void Start ()
 		{
-			InitPara ();
+//			InitPara ();
 		}
 
 		void Update ()
 		{
 			
-			if (Input.GetMouseButtonDown (0)) {
-				if (ie.MoveNext ()) {
-					Paragraph para = ie.Current as Paragraph;
-					print (para.content);
-				} else {
-					print ("End!");
-				}
-			}
+//			if (Input.GetMouseButtonDown (0)) {
+//				if (ie.MoveNext ()) {
+//					Paragraph para = ie.Current as Paragraph;
+//					print (para.content);
+//				} else {
+//					print ("End!");
+//				}
+//			}
 			
 		}
 

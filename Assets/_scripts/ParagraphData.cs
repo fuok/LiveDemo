@@ -10,7 +10,7 @@ namespace GameData
 
 	public class Paragraph
 	{
-		public int id;
+		public string id;
 		public string content;
 	}
 }
