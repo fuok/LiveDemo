@@ -12,6 +12,24 @@ namespace GameData
 	{
 		public string id;
 		public string content;
+		public string next;
+
+		public Paragraph ()
+		{
+			
+		}
+
+		public Paragraph (string id, string content, string next)
+		{
+			this.id = id;
+			this.content = content;
+			this.next = next;
+		}
+
+		public override string ToString ()
+		{
+			return "id=" + id + ",content=" + content + ",next=" + next;
+		}
 	}
 }
 
