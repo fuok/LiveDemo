@@ -63,11 +63,11 @@
  <Reference Include="ICSharpCode.SharpZipLib">
  <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Libraries/SimpleJSON/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
- <Reference Include="System.Data">
- <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Plugins/System.Data.dll</HintPath>
- </Reference>
  <Reference Include="Mono.Data.Sqlite">
  <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Data">
+ <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Plugins/System.Data.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
