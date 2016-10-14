@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using GameData;
-using UnityEngine.UI;
+
+//using UnityEngine.UI;
 
 namespace MyNamespace
 {
 	
 	public class GameController : MonoBehaviour
 	{
-		public Text mMainText;
+		public UILabel mMainLabel;
 
 
 		void Start ()
@@ -24,7 +25,7 @@ namespace MyNamespace
 			if (Input.GetMouseButtonDown (0)) {
 				Paragraph para = ParaManager.GetNextPara ();
 				print (para.ToString ());
-				mMainText.text = para.content;
+				mMainLabel.text = para.content;
 			}
 			if (Input.GetKeyDown (KeyCode.P)) {
 				PlayerPrefs.DeleteKey ("dataBaseVersion");
