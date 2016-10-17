@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
      <Compile Include="Assets\Libraries\SimpleJSON\SimpleJSON.cs" />
      <Compile Include="Assets\_scripts\Benchmark.cs" />
      <Compile Include="Assets\_scripts\Constants.cs" />
@@ -54,24 +55,49 @@
      <Compile Include="Assets\_scripts\ParaManager.cs" />
      <Compile Include="Assets\_scripts\ParagraphData.cs" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-MultCullMasked.shader" />
+     <None Include="Assets\Demigiant\DOTweenPro\readme.txt" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-Normal.shader" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-AddMasked.shader" />
+     <None Include="Assets\Demigiant\DOTween\DOTween50.xml" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-MultCull.shader" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-NormalCull.shader" />
+     <None Include="Assets\Demigiant\DOTween\DOTween46.xml" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-Mult.shader" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-AddCull.shader" />
+     <None Include="Assets\Demigiant\DemiLib\DemiLib.xml" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-NormalCullMasked.shader" />
+     <None Include="Assets\Demigiant\DOTween\readme.txt" />
+     <None Include="Assets\Demigiant\DOTween\DOTween43.xml" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-AddCullMasked.shader" />
      <None Include="Assets\Resources\Paragraph\para_1.txt" />
      <None Include="Assets\Live2D\Resources\shader\Live2D-SetupMask.shader" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-NormalMasked.shader" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-MultMasked.shader" />
+     <None Include="Assets\Demigiant\readme_DOTweenPro.txt" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-Add.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="DemiLib">
+ <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Demigiant/DemiLib/DemiLib.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween43">
+ <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween46">
+ <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween50">
+ <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenPro">
+ <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
  <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Libraries/Newtonsoft.Json/Newtonsoft.Json.dll</HintPath>
