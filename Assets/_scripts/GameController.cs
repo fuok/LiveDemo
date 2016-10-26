@@ -12,11 +12,13 @@ namespace MyNamespace
 	public class GameController : MonoBehaviour
 	{
 		public Text mMainText;
+		private Tweener tweener;
 		public GameObject mCube;
 
 		void Start ()
 		{
 //			InitPara ();
+			InitTweener ();
 		}
 
 		void Update ()
@@ -27,29 +29,43 @@ namespace MyNamespace
 				print (para.ToString ());
 //				mMainText.text = para.content;
 
-				//设置dotween文字
-				mMainText.text = "";
-				Tweener tweener = mMainText.DOText (para.content, para.content.Length / 5, true, ScrambleMode.None, null);
-				tweener.SetDelay (0.1f);
-				tweener.SetLoops (1);
-				tweener.SetEase (Ease.Linear);
-				tweener.SetAutoKill (false);
-				tweener.OnComplete (() => {
-//					tweener.Kill (true);
-				});
+				//设置dotween文字,TODO
 
-//				DOTweenAnimation dota=mMainText.GetComponent<DOTweenAnimation>();
-//				dota.
-//				dota.DOPlay();
+//				GameObject mMainTextClone = GameObject.Instantiate (mMainTextPrefab);
+//				mMainTextClone.transform.SetParent (mCanvasTrans, false);//加false后uGUI位置就对了
 
-//				Tweener tt2=mCube.
-
+//				tweener.ChangeEndValue (para.content, 5f, true);//这里就不需要ChangeEndValue了
+				tweener.ChangeValues ("", para.content, para.content.Length / 5);//直接使用ChangeValues
+				tweener.Restart ();
 
 			}
+
 			if (Input.GetKeyDown (KeyCode.P)) {
 				PlayerPrefs.DeleteKey ("dataBaseVersion");
 			}
 			
+			if (Input.GetKeyDown (KeyCode.A)) {
+//				mMainText.text = "";
+				tweener.ChangeValues ("", "12345hfejhfjdhsf", 5f);
+//				tweener.Restart ();
+				tweener.Rewind ();//Rewind是动画回初始状态，这里会回到5f的状态，按照说明，ChangeValues相当于修改初始值+Rewind
+			}
+		}
+
+		/// <summary>
+		/// 初始化文字tweener
+		/// </summary>
+		private void InitTweener ()
+		{
+			tweener = mMainText.DOText ("", 0f, true, ScrambleMode.None, null);
+			tweener.SetAutoKill (false);
+			tweener.SetLoops (1);
+			tweener.SetEase (Ease.Linear);
+			tweener.OnComplete (() => {
+				//					tweener.Kill (true);
+				print ("text done");
+			});
+			tweener.Pause ();//这里必须先暂停，否则后面restart重设duration也没用,而是会继续使用这里的0f
 		}
 
 		
