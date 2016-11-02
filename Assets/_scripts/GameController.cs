@@ -11,34 +11,20 @@ namespace MyNamespace
 	
 	public class GameController : MonoBehaviour
 	{
+		[Header ("文字显示区域")]
 		public Text mMainText;
+		public Button mShowText;
 		private Tweener tweener;
 		public GameObject mCube;
 
 		void Start ()
 		{
-//			InitPara ();
+			mShowText.onClick.AddListener (ShowNextText);
 			InitTweener ();
 		}
 
 		void Update ()
 		{
-			
-			if (Input.GetMouseButtonDown (0)) {
-				Paragraph para = ParaManager.GetNextPara ();
-				print (para.ToString ());
-//				mMainText.text = para.content;
-
-				//设置dotween文字,TODO
-
-//				GameObject mMainTextClone = GameObject.Instantiate (mMainTextPrefab);
-//				mMainTextClone.transform.SetParent (mCanvasTrans, false);//加false后uGUI位置就对了
-
-//				tweener.ChangeEndValue (para.content, 5f, true);//这里就不需要ChangeEndValue了
-				tweener.ChangeValues ("", para.content, para.content.Length / 5);//直接使用ChangeValues
-				tweener.Restart ();
-
-			}
 
 			if (Input.GetKeyDown (KeyCode.P)) {
 				PlayerPrefs.DeleteKey ("dataBaseVersion");
@@ -68,7 +54,22 @@ namespace MyNamespace
 			tweener.Pause ();//这里必须先暂停，否则后面restart重设duration也没用,而是会继续使用这里的0f
 		}
 
-		
+		private void ShowNextText ()
+		{
+			Paragraph para = ParaManager.GetNextPara ();
+			print (para.ToString ());
+//			mMainText.text = para.content;
+
+			//设置dotween文字
+
+//			GameObject mMainTextClone = GameObject.Instantiate (mMainTextPrefab);
+//			mMainTextClone.transform.SetParent (mCanvasTrans, false);//加false后uGUI位置就对了
+//
+//			tweener.ChangeEndValue (para.content, 5f, true);//这里就不需要ChangeEndValue了
+			tweener.ChangeValues ("", para.content, para.content.Length / 5);//直接使用ChangeValues
+			tweener.Restart ();
+		}
+
 		//		private void InitPara ()
 		//		{
 		//			TextAsset paraAsset = Resources.Load<TextAsset> ("paragraph/para_1");
