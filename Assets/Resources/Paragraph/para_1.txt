@@ -3,17 +3,26 @@
         {
             "id": "1",
             "content": "这是第一段",
+            "model_0":"Live2DModel 1",
+             "model_1":"",
+              "model_2":"",
             "next":"2"
         },
         {
             "id": "2",
             "content": "是第二段",
+              "model_0":"Live2DModel 2",
+             "model_1":"",
+              "model_2":"",
             "next":"3"
         },
         {
             "id": "3",
             "content": "是第三段",
-            "next":""
+             "model_0":"",
+             "model_1":"Live2DModel 1",
+              "model_2":"Live2DModel 2",
+            "next":"end"
         }
     ]
 }

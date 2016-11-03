@@ -16,10 +16,15 @@ namespace MyNamespace
 		public Button mShowText;
 		private Tweener tweener;
 		public GameObject mCube;
+		[Header ("人物显示")]
+		public GameObject mLive2DHolder;
+		public GameObject[] mLiveCharacters=new GameObject[3]{null,null,null};
 
 		void Start ()
 		{
-			mShowText.onClick.AddListener (ShowNextText);
+			//初始化控件
+			mShowText.onClick.AddListener (ShowNextParagraph);
+			//初始化文字DoTween
 			InitTweener ();
 		}
 
@@ -48,39 +53,57 @@ namespace MyNamespace
 			tweener.SetLoops (1);
 			tweener.SetEase (Ease.Linear);
 			tweener.OnComplete (() => {
-				//					tweener.Kill (true);
+//				tweener.Kill (true);
 				print ("text done");
 			});
 			tweener.Pause ();//这里必须先暂停，否则后面restart重设duration也没用,而是会继续使用这里的0f
 		}
 
-		private void ShowNextText ()
+		private void ShowNextParagraph ()
 		{
+			//获取新的Paragraph
 			Paragraph para = ParaManager.GetNextPara ();
 			print (para.ToString ());
+
+			//文字显示
 //			mMainText.text = para.content;
-
-			//设置dotween文字
-
+			//设置dotween
 //			GameObject mMainTextClone = GameObject.Instantiate (mMainTextPrefab);
 //			mMainTextClone.transform.SetParent (mCanvasTrans, false);//加false后uGUI位置就对了
-//
 //			tweener.ChangeEndValue (para.content, 5f, true);//这里就不需要ChangeEndValue了
 			tweener.ChangeValues ("", para.content, para.content.Length / 5);//直接使用ChangeValues
 			tweener.Restart ();
+
+			//人物显示
+			//获取人物并判断和已有人物是否相同
+			string[] models=new string[3]{para.model_0,para.model_1,para.model_2};
+			for (int i = 0; i < models.Length; i++) {
+				print ("输出："+i+"="+models[i]);
+				if (models[i]=="") {//还需优化,TODO
+					GameObject.Destroy (mLiveCharacters [i]);
+					continue;
+				}
+				if (!mLiveCharacters [i]||!mLiveCharacters [i].name.Contains(models[i])) {
+					GameObject.Destroy (mLiveCharacters [i]);
+					//print ("haha:"+"prefabs/"+models[i]);
+					GameObject tempPrefab=Resources.Load<GameObject>("prefabs/"+models[i]);
+					switch (i) {
+					case 0:
+						tempPrefab.GetComponent<Benchmark> ().mPosX = 0f;//根据model设置位置
+						break;
+					case 1:
+						tempPrefab.GetComponent<Benchmark> ().mPosX = -1f;
+						break;
+					case 2:
+						tempPrefab.GetComponent<Benchmark> ().mPosX = 1f;
+						break;
+					}
+					GameObject character =GameObject.Instantiate(tempPrefab);
+					mLiveCharacters [i] = character;
+				}
+			}
 		}
 
-		//		private void InitPara ()
-		//		{
-		//			TextAsset paraAsset = Resources.Load<TextAsset> ("paragraph/para_1");
-		//			ParagraphData mData = JsonConvert.DeserializeObject<ParagraphData> (paraAsset.text);
-		//			Resources.UnloadUnusedAssets ();
-		//
-		//			if (true) {
-		//				print (mData.paragraphList.Count);
-		//				ie = mData.paragraphList.GetEnumerator ();
-		//			}
-		//		}
 	}
 }
 
