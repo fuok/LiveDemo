@@ -75,34 +75,38 @@ namespace MyNamespace
 			tweener.Restart ();
 
 			//人物显示
-			//获取人物并判断和已有人物是否相同
-			string[] models=new string[3]{para.model_0,para.model_1,para.model_2};
+			string[] models=new string[3]{para.model_0,para.model_1,para.model_2};//3个位置上的模型名
 			for (int i = 0; i < models.Length; i++) {
 				print ("输出："+i+"="+models[i]);
-				if (models[i]=="") {//还需优化,TODO
-					GameObject.Destroy (mLiveCharacters [i]);
+				//获取人物并判断和已有人物是否相同
+				if (mLiveCharacters [i] &&!string.IsNullOrEmpty(models[i]) && mLiveCharacters [i].name.Contains (models [i])) {//已存在同名模型，什么也不做
 					continue;
-				}
-				if (!mLiveCharacters [i]||!mLiveCharacters [i].name.Contains(models[i])) {
+				} else {//表中读取的模型不存在，需要加载模型
 					GameObject.Destroy (mLiveCharacters [i]);
-					//print ("haha:"+"prefabs/"+models[i]);
-					GameObject tempPrefab=Resources.Load<GameObject>("prefabs/"+models[i]);
-					switch (i) {
-					case 0:
-						tempPrefab.GetComponent<Benchmark> ().mPosX = 0f;//根据model设置位置
-						break;
-					case 1:
-						tempPrefab.GetComponent<Benchmark> ().mPosX = -1f;
-						break;
-					case 2:
-						tempPrefab.GetComponent<Benchmark> ().mPosX = 1f;
-						break;
+					if (!string.IsNullOrEmpty(models[i])) {//如果是空位，销毁后不需要加载
+						GameObject tempPrefab=Resources.Load<GameObject>("prefabs/"+models[i]);
+						switch (i) {
+						case 0:
+							tempPrefab.GetComponent<Benchmark> ().mPosX = 0f;//根据model设置位置
+							break;
+						case 1:
+							tempPrefab.GetComponent<Benchmark> ().mPosX = -1f;
+							break;
+						case 2:
+							tempPrefab.GetComponent<Benchmark> ().mPosX = 1f;
+							break;
+						}
+						GameObject character =GameObject.Instantiate(tempPrefab);
+						mLiveCharacters [i] = character;
 					}
-					GameObject character =GameObject.Instantiate(tempPrefab);
-					mLiveCharacters [i] = character;
 				}
 			}
+
+
 		}
+
+
+
 
 	}
 }
