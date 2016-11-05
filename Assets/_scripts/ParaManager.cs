@@ -19,8 +19,8 @@ public class ParaManager : MonoBehaviour
 		//读取数据库
 		db = new DbAccess ("data source=" + Constants.dbName);//数据库名//("Server=127.0.0.1;UserId=root;Password=;Database=li")
 		//创建数据库表，与字段
-		db.CreateTable (Constants.tableName, new string[]{ "id", "content","model_0","model_1","model_2", "next" }, new string[] {
-			"text","text","text","text",
+		db.CreateTable (Constants.tableName, new string[]{ "id", "content", "model_0", "model_1", "model_2", "next" }, new string[] {
+			"text", "text", "text", "text",
 			"text", "text"
 		}, false);
 		//初始化Para表
@@ -82,7 +82,7 @@ public class ParaManager : MonoBehaviour
 		//通过next字段查找下一个Para
 		sqReader = db.SelectWhere (Constants.tableName, new string[] {
 			"id",
-			"content","model_0","model_1","model_2", "next"
+			"content", "model_0", "model_1", "model_2", "next"
 		}, new string[]{ "id" }, new string[]{ "=" }, new string[]{ currentPara.next });
 
 		//声明Paragraph对象

@@ -15,16 +15,15 @@ namespace MyNamespace
 		public Text mMainText;
 		public Button mShowText;
 		private Tweener tweener;
-		public GameObject mCube;
 		[Header ("人物显示")]
 		public GameObject mLive2DHolder;
-		public GameObject[] mLiveCharacters=new GameObject[3]{null,null,null};
+		public GameObject[] mLiveCharacters = new GameObject[3]{ null, null, null };
 
 		void Start ()
 		{
-			//初始化控件
+//			初始化控件
 			mShowText.onClick.AddListener (ShowNextParagraph);
-			//初始化文字DoTween
+//			初始化文字DoTween
 			InitTweener ();
 		}
 
@@ -75,16 +74,16 @@ namespace MyNamespace
 			tweener.Restart ();
 
 			//人物显示
-			string[] models=new string[3]{para.model_0,para.model_1,para.model_2};//3个位置上的模型名
+			string[] models = new string[3]{ para.model_0, para.model_1, para.model_2 };//3个位置上的模型名
 			for (int i = 0; i < models.Length; i++) {
-				print ("输出："+i+"="+models[i]);
+				print ("输出：" + i + "=" + models [i]);
 				//获取人物并判断和已有人物是否相同
-				if (mLiveCharacters [i] &&!string.IsNullOrEmpty(models[i]) && mLiveCharacters [i].name.Contains (models [i])) {//已存在同名模型，什么也不做
+				if (mLiveCharacters [i] && !string.IsNullOrEmpty (models [i]) && mLiveCharacters [i].name.Contains (models [i])) {//已存在同名模型，什么也不做
 					continue;
 				} else {//表中读取的模型不存在，需要加载模型
 					GameObject.Destroy (mLiveCharacters [i]);
-					if (!string.IsNullOrEmpty(models[i])) {//如果是空位，销毁后不需要加载
-						GameObject tempPrefab=Resources.Load<GameObject>("prefabs/"+models[i]);
+					if (!string.IsNullOrEmpty (models [i])) {//如果是空位，销毁后不需要加载
+						GameObject tempPrefab = Resources.Load<GameObject> ("prefabs/" + models [i]);
 						switch (i) {
 						case 0:
 							tempPrefab.GetComponent<Benchmark> ().mPosX = 0f;//根据model设置位置
@@ -96,7 +95,7 @@ namespace MyNamespace
 							tempPrefab.GetComponent<Benchmark> ().mPosX = 1f;
 							break;
 						}
-						GameObject character =GameObject.Instantiate(tempPrefab);
+						GameObject character = GameObject.Instantiate (tempPrefab);
 						mLiveCharacters [i] = character;
 					}
 				}
