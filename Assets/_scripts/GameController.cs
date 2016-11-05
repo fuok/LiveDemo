@@ -11,6 +11,8 @@ namespace MyNamespace
 	
 	public class GameController : MonoBehaviour
 	{
+		[Header ("背景显示区域")]
+		public RawImage mBgImage;
 		[Header ("文字显示区域")]
 		public Text mMainText;
 		public Button mShowText;
@@ -58,11 +60,22 @@ namespace MyNamespace
 			tweener.Pause ();//这里必须先暂停，否则后面restart重设duration也没用,而是会继续使用这里的0f
 		}
 
+		/// <summary>
+		/// Shows the next paragraph.
+		/// </summary>
 		private void ShowNextParagraph ()
 		{
 			//获取新的Paragraph
 			Paragraph para = ParaManager.GetNextPara ();
 			print (para.ToString ());
+
+			//背景显示
+//			print(mBgImage.texture.name);
+			if (mBgImage.texture && mBgImage.texture.name.Equals (para.background)) {
+				print ("背景已存在");
+			} else {
+				mBgImage.texture = Resources.Load<Texture> ("background/" + para.background);
+			}
 
 			//文字显示
 //			mMainText.text = para.content;
@@ -76,7 +89,7 @@ namespace MyNamespace
 			//人物显示
 			string[] models = new string[3]{ para.model_0, para.model_1, para.model_2 };//3个位置上的模型名
 			for (int i = 0; i < models.Length; i++) {
-				print ("输出：" + i + "=" + models [i]);
+//				print ("输出：" + i + "=" + models [i]);
 				//获取人物并判断和已有人物是否相同
 				if (mLiveCharacters [i] && !string.IsNullOrEmpty (models [i]) && mLiveCharacters [i].name.Contains (models [i])) {//已存在同名模型，什么也不做
 					continue;

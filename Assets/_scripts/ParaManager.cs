@@ -19,8 +19,16 @@ public class ParaManager : MonoBehaviour
 		//读取数据库
 		db = new DbAccess ("data source=" + Constants.dbName);//数据库名//("Server=127.0.0.1;UserId=root;Password=;Database=li")
 		//创建数据库表，与字段
-		db.CreateTable (Constants.tableName, new string[]{ "id", "content", "model_0", "model_1", "model_2", "next" }, new string[] {
-			"text", "text", "text", "text",
+		db.CreateTable (Constants.tableName, new string[] {
+			"id",
+			"background",
+			"content",
+			"model_0",
+			"model_1",
+			"model_2",
+			"next"
+		}, new string[] {
+			"text", "text", "text", "text", "text",
 			"text", "text"
 		}, false);
 		//初始化Para表
@@ -37,6 +45,10 @@ public class ParaManager : MonoBehaviour
 	//
 	//	}
 
+	/// <summary>
+	/// 写入
+	/// </summary>
+	/// <returns>The para.</returns>
 	private IEnumerator InitPara ()
 	{
 		IEnumerator ie;
@@ -51,6 +63,7 @@ public class ParaManager : MonoBehaviour
 			print (para.content);
 			db.InsertInto (Constants.tableName, new string[] {
 				"'" + para.id + "'",
+				"'" + para.background + "'",
 				"'" + para.content + "'",
 				"'" + para.model_0 + "'",
 				"'" + para.model_1 + "'",
@@ -76,24 +89,30 @@ public class ParaManager : MonoBehaviour
 		
 	}
 
+	/// <summary>
+	/// 分段读取
+	/// </summary>
+	/// <returns>The next para.</returns>
 	public static Paragraph GetNextPara ()
 	{
 //		paraIndex++;
 		//通过next字段查找下一个Para
 		sqReader = db.SelectWhere (Constants.tableName, new string[] {
-			"id",
+			"id", "background",
 			"content", "model_0", "model_1", "model_2", "next"
 		}, new string[]{ "id" }, new string[]{ "=" }, new string[]{ currentPara.next });
 
 		//声明Paragraph对象
 		while (sqReader.Read ()) {//如果上边的查找没有结果，就不会进这里，我觉得最好给end一个特殊标记
 //			print ("找到了");
-			currentPara = new Paragraph (sqReader.GetString (sqReader.GetOrdinal ("id")), sqReader.GetString (sqReader.GetOrdinal ("content")), sqReader.GetString (sqReader.GetOrdinal ("model_0")), sqReader.GetString (sqReader.GetOrdinal ("model_1")), sqReader.GetString (sqReader.GetOrdinal ("model_2")), sqReader.GetString (sqReader.GetOrdinal ("next")));
+			currentPara = new Paragraph (sqReader.GetString (sqReader.GetOrdinal ("id")), sqReader.GetString (sqReader.GetOrdinal ("background")), sqReader.GetString (sqReader.GetOrdinal ("content")), sqReader.GetString (sqReader.GetOrdinal ("model_0")), sqReader.GetString (sqReader.GetOrdinal ("model_1")), sqReader.GetString (sqReader.GetOrdinal ("model_2")), sqReader.GetString (sqReader.GetOrdinal ("next")));
 		}
 		return currentPara;
 	}
 
-
+	/// <summary>
+	/// Raises the destroy event.
+	/// </summary>
 	void OnDestroy ()//认为游戏结束
 	{
 		print ("OnDesrtoy");

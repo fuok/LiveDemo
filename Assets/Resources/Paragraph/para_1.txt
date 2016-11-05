@@ -2,6 +2,7 @@
     "paragraphList": [
         {
             "id": "1",
+            "background": "nc016a",
             "content": "这是第一段",
             "model_0":"Live2DModel 1",
             "model_1":"",
@@ -10,6 +11,7 @@
         },
         {
             "id": "2",
+            "background": "nc016a",
             "content": "是第二段",
             "model_0":"Live2DModel 2",
             "model_1":"",
@@ -18,7 +20,8 @@
         },
         {
             "id": "3",
-            "content": "是第三段",
+            "background": "nc019a",
+            "content": "按摩牛君，不可以把这个世界拱手让给我们所鄙视的人。",
             "model_0":"",
             "model_1":"Live2DModel 1",
             "model_2":"Live2DModel 2",
