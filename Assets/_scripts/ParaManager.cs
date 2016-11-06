@@ -18,32 +18,43 @@ public class ParaManager : MonoBehaviour
 	{
 		//读取数据库
 		db = new DbAccess ("data source=" + Constants.dbName);//数据库名//("Server=127.0.0.1;UserId=root;Password=;Database=li")
-		//创建数据库表，与字段
-		db.CreateTable (Constants.tableName, new string[] {
-			"id",
-			"background",
-			"content",
-			"model_0",
-			"model_1",
-			"model_2",
-			"next"
-		}, new string[] {
-			"text", "text", "text", "text", "text",
-			"text", "text"
-		}, false);
-		//初始化Para表
+		//检查数据库版本
 		int version = PlayerPrefs.GetInt ("dataBaseVersion", 0);//检查版本号
 		print ("version=" + version);
 		if (Constants.dataBaseVersion > version) {
+			//升级数据库
+			try {
+				db.DeleteTable (Constants.tableName);
+			} catch (System.Exception ex) {
+					
+			}
 			PlayerPrefs.SetInt ("dataBaseVersion", Constants.dataBaseVersion);
+			//创建数据库表，与字段
+			db.CreateTable (Constants.tableName, new string[] {
+				"id",
+				"background",
+				"content",
+				"model_0",
+				"model_1",
+				"model_2",
+				"next"
+			}, new string[] {
+				"text", "text", "text", "text", "text",
+				"text", "text"
+			}, false);
+			//初始化Para表
 			StartCoroutine (InitPara ());
 		}
 	}
 
-	//	void Update ()
-	//	{
-	//
-	//	}
+	void Update ()
+	{
+		//test
+		if (Input.GetKeyDown (KeyCode.P)) {
+			PlayerPrefs.DeleteKey ("dataBaseVersion");
+			db.DeleteTable (Constants.tableName);
+		}
+	}
 
 	/// <summary>
 	/// 写入

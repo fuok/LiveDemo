@@ -31,10 +31,6 @@ namespace MyNamespace
 
 		void Update ()
 		{
-
-			if (Input.GetKeyDown (KeyCode.P)) {
-				PlayerPrefs.DeleteKey ("dataBaseVersion");
-			}
 			
 			if (Input.GetKeyDown (KeyCode.A)) {
 //				mMainText.text = "";

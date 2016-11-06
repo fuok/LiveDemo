@@ -161,13 +161,25 @@ public class DbAccess
 	}
 
 	/// <summary>
-	/// 清空表
+	/// 清空表,并不删除表
 	/// </summary>
 	/// <returns>The contents.</returns>
 	/// <param name="tableName">Table name.</param>
 	public SqliteDataReader DeleteContents (string tableName)
 	{
 		string query = "DELETE FROM " + tableName;
+
+		return ExecuteQuery (query);
+	}
+
+	/// <summary>
+	/// 删除表
+	/// </summary>
+	/// <returns>The table.</returns>
+	/// <param name="tableName">Table name.</param>
+	public SqliteDataReader DeleteTable (string tableName)
+	{
+		string query = "DROP TABLE " + tableName;
 
 		return ExecuteQuery (query);
 	}
