@@ -16,6 +16,10 @@ namespace GameData
 		public string model_0;
 		public string model_1;
 		public string model_2;
+		public string option_1;
+		public string goto_1;
+		public string option_2;
+		public string goto_2;
 		public string next;
 
 		public Paragraph ()
@@ -28,7 +32,7 @@ namespace GameData
 			this.next = next;
 		}
 
-		public Paragraph (string id, string background, string content, string model_0, string model_1, string model_2, string next)
+		public Paragraph (string id, string background, string content, string model_0, string model_1, string model_2, string option_1, string goto_1, string option_2, string goto_2, string next)
 		{
 			this.id = id;
 			this.background = background;
@@ -36,12 +40,16 @@ namespace GameData
 			this.model_0 = model_0;
 			this.model_1 = model_1;
 			this.model_2 = model_2;
+			this.option_1 = option_1;
+			this.goto_1 = goto_1;
+			this.option_2 = option_2;
+			this.goto_2 = goto_2;
 			this.next = next;
 		}
 
 		public override string ToString ()
 		{
-			return "id=" + id + ",background=" + background + ",content=" + content + ",model_0=" + model_0 + ",model_1=" + model_1 + ",model_2=" + model_2 + ",next=" + next;
+			return "id=" + id + ",background=" + background + ",content=" + content + ",model_0=" + model_0 + ",model_1=" + model_1 + ",model_2=" + model_2 + ",option_1=" + option_1 + ",goto_1=" + goto_1 + ",option_2=" + option_2 + ",goto_2=" + goto_2 + ",next=" + next;
 		}
 	}
 }

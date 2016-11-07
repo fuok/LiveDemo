@@ -34,13 +34,11 @@ public class ParaManager : MonoBehaviour
 				"id",
 				"background",
 				"content",
-				"model_0",
-				"model_1",
-				"model_2",
+				"model_0", "model_1", "model_2",
+				"option_1", "goto_1", "option_2", "goto_2",
 				"next"
 			}, new string[] {
-				"text", "text", "text", "text", "text",
-				"text", "text"
+				"text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text"
 			}, false);
 			//初始化Para表
 			StartCoroutine (InitPara ());
@@ -79,6 +77,10 @@ public class ParaManager : MonoBehaviour
 				"'" + para.model_0 + "'",
 				"'" + para.model_1 + "'",
 				"'" + para.model_2 + "'",
+				"'" + para.option_1 + "'",
+				"'" + para.goto_1 + "'",
+				"'" + para.option_2 + "'",
+				"'" + para.goto_2 + "'",
 				"'" + para.next + "'"
 			});
 		}
@@ -110,13 +112,13 @@ public class ParaManager : MonoBehaviour
 		//通过next字段查找下一个Para
 		sqReader = db.SelectWhere (Constants.tableName, new string[] {
 			"id", "background",
-			"content", "model_0", "model_1", "model_2", "next"
+			"content", "model_0", "model_1", "model_2", "option_1", "goto_1", "option_2", "goto_2", "next"
 		}, new string[]{ "id" }, new string[]{ "=" }, new string[]{ currentPara.next });
 
 		//声明Paragraph对象
 		while (sqReader.Read ()) {//如果上边的查找没有结果，就不会进这里，我觉得最好给end一个特殊标记
 //			print ("找到了");
-			currentPara = new Paragraph (sqReader.GetString (sqReader.GetOrdinal ("id")), sqReader.GetString (sqReader.GetOrdinal ("background")), sqReader.GetString (sqReader.GetOrdinal ("content")), sqReader.GetString (sqReader.GetOrdinal ("model_0")), sqReader.GetString (sqReader.GetOrdinal ("model_1")), sqReader.GetString (sqReader.GetOrdinal ("model_2")), sqReader.GetString (sqReader.GetOrdinal ("next")));
+			currentPara = new Paragraph (sqReader.GetString (sqReader.GetOrdinal ("id")), sqReader.GetString (sqReader.GetOrdinal ("background")), sqReader.GetString (sqReader.GetOrdinal ("content")), sqReader.GetString (sqReader.GetOrdinal ("model_0")), sqReader.GetString (sqReader.GetOrdinal ("model_1")), sqReader.GetString (sqReader.GetOrdinal ("model_2")), sqReader.GetString (sqReader.GetOrdinal ("option_1")), sqReader.GetString (sqReader.GetOrdinal ("goto_1")), sqReader.GetString (sqReader.GetOrdinal ("option_2")), sqReader.GetString (sqReader.GetOrdinal ("goto_2")), sqReader.GetString (sqReader.GetOrdinal ("next")));
 		}
 		return currentPara;
 	}

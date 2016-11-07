@@ -85,7 +85,7 @@ namespace MyNamespace
 				//			GameObject mMainTextClone = GameObject.Instantiate (mMainTextPrefab);
 				//			mMainTextClone.transform.SetParent (mCanvasTrans, false);//加false后uGUI位置就对了
 				//			tweener.ChangeEndValue (para.content, 5f, true);//这里就不需要ChangeEndValue了
-				tweener.ChangeValues ("", para.content, para.content.Length / 10);//直接使用ChangeValues//使用富文本后出字速度明显慢了
+				tweener.ChangeValues ("", para.content, para.content.Length / 20);//直接使用ChangeValues//使用富文本后出字速度明显慢了
 				tweener.Restart ();
 				
 				//人物显示
