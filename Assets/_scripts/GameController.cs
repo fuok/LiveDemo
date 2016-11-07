@@ -21,7 +21,8 @@ namespace MyNamespace
 		public GameObject mLive2DHolder;
 		public GameObject[] mLiveCharacters = new GameObject[3]{ null, null, null };
 
-		private Paragraph currentPara = new Paragraph ("1");
+		//临时保存当前para
+		private Paragraph currentPara;
 
 		void Start ()
 		{
@@ -65,8 +66,10 @@ namespace MyNamespace
 		{
 			//获取新的Paragraph
 			Paragraph para = ParaManager.GetNextPara ();
-
 			print (para.ToString ());
+			if (currentPara == null) {//针对第一次进来的时候
+				currentPara = para;
+			}
 			if (!string.IsNullOrEmpty (currentPara.next)) {
 				//背景显示
 				//			print(mBgImage.texture.name);
