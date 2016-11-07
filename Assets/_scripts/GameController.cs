@@ -21,6 +21,8 @@ namespace MyNamespace
 		public GameObject mLive2DHolder;
 		public GameObject[] mLiveCharacters = new GameObject[3]{ null, null, null };
 
+		private Paragraph currentPara = new Paragraph ("1");
+
 		void Start ()
 		{
 //			初始化控件
@@ -63,53 +65,57 @@ namespace MyNamespace
 		{
 			//获取新的Paragraph
 			Paragraph para = ParaManager.GetNextPara ();
+
 			print (para.ToString ());
-
-			//背景显示
-//			print(mBgImage.texture.name);
-			if (mBgImage.texture && mBgImage.texture.name.Equals (para.background)) {
-				print ("背景已存在");
-			} else {
-				mBgImage.texture = Resources.Load<Texture> ("background/" + para.background);
-			}
-
-			//文字显示
-//			mMainText.text = para.content;
-			//设置dotween
-//			GameObject mMainTextClone = GameObject.Instantiate (mMainTextPrefab);
-//			mMainTextClone.transform.SetParent (mCanvasTrans, false);//加false后uGUI位置就对了
-//			tweener.ChangeEndValue (para.content, 5f, true);//这里就不需要ChangeEndValue了
-			tweener.ChangeValues ("", para.content, para.content.Length / 10);//直接使用ChangeValues//使用富文本后出字速度明显慢了
-			tweener.Restart ();
-
-			//人物显示
-			string[] models = new string[3]{ para.model_0, para.model_1, para.model_2 };//3个位置上的模型名
-			for (int i = 0; i < models.Length; i++) {
-//				print ("输出：" + i + "=" + models [i]);
-				//获取人物并判断和已有人物是否相同
-				if (mLiveCharacters [i] && !string.IsNullOrEmpty (models [i]) && mLiveCharacters [i].name.Contains (models [i])) {//已存在同名模型，什么也不做
-					continue;
-				} else {//表中读取的模型不存在，需要加载模型
-					GameObject.Destroy (mLiveCharacters [i]);
-					if (!string.IsNullOrEmpty (models [i])) {//如果是空位，销毁后不需要加载
-						GameObject tempPrefab = Resources.Load<GameObject> ("prefabs/" + models [i]);
-						switch (i) {
-						case 0:
-							tempPrefab.GetComponent<Benchmark> ().mPosX = 0f;//根据model设置位置
-							break;
-						case 1:
-							tempPrefab.GetComponent<Benchmark> ().mPosX = -1f;
-							break;
-						case 2:
-							tempPrefab.GetComponent<Benchmark> ().mPosX = 1f;
-							break;
+			if (!string.IsNullOrEmpty (currentPara.next)) {
+				//背景显示
+				//			print(mBgImage.texture.name);
+				if (mBgImage.texture && mBgImage.texture.name.Equals (para.background)) {
+					print ("背景已存在");
+				} else {
+					mBgImage.texture = Resources.Load<Texture> ("background/" + para.background);
+				}
+				
+				//文字显示
+				//			mMainText.text = para.content;
+				//设置dotween
+				//			GameObject mMainTextClone = GameObject.Instantiate (mMainTextPrefab);
+				//			mMainTextClone.transform.SetParent (mCanvasTrans, false);//加false后uGUI位置就对了
+				//			tweener.ChangeEndValue (para.content, 5f, true);//这里就不需要ChangeEndValue了
+				tweener.ChangeValues ("", para.content, para.content.Length / 10);//直接使用ChangeValues//使用富文本后出字速度明显慢了
+				tweener.Restart ();
+				
+				//人物显示
+				string[] models = new string[3]{ para.model_0, para.model_1, para.model_2 };//3个位置上的模型名
+				for (int i = 0; i < models.Length; i++) {
+					//				print ("输出：" + i + "=" + models [i]);
+					//获取人物并判断和已有人物是否相同
+					if (mLiveCharacters [i] && !string.IsNullOrEmpty (models [i]) && mLiveCharacters [i].name.Contains (models [i])) {//已存在同名模型，什么也不做
+						continue;
+					} else {//表中读取的模型不存在，需要加载模型
+						GameObject.Destroy (mLiveCharacters [i]);
+						if (!string.IsNullOrEmpty (models [i])) {//如果是空位，销毁后不需要加载
+							GameObject tempPrefab = Resources.Load<GameObject> ("prefabs/" + models [i]);
+							switch (i) {
+							case 0:
+								tempPrefab.GetComponent<Benchmark> ().mPosX = 0f;//根据model设置位置
+								break;
+							case 1:
+								tempPrefab.GetComponent<Benchmark> ().mPosX = -1f;
+								break;
+							case 2:
+								tempPrefab.GetComponent<Benchmark> ().mPosX = 1f;
+								break;
+							}
+							GameObject character = GameObject.Instantiate (tempPrefab);
+							mLiveCharacters [i] = character;
 						}
-						GameObject character = GameObject.Instantiate (tempPrefab);
-						mLiveCharacters [i] = character;
 					}
 				}
-			}
 
+			}
+			//保存到当前
+			currentPara = para;
 
 		}
 

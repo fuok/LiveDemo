@@ -25,7 +25,7 @@
             "model_0":"",
             "model_1":"Live2DModel 1",
             "model_2":"Live2DModel 2",
-            "next":"end"
+            "next":""
         }
     ]
 }
