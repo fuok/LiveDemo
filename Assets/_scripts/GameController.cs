@@ -20,6 +20,9 @@ namespace MyNamespace
 		[Header ("人物显示")]
 		public GameObject mLive2DHolder;
 		public GameObject[] mLiveCharacters = new GameObject[3]{ null, null, null };
+		[Header ("选项分支")]
+		public GameObject mOptionPanel;
+		public Button btnOption1, btnOption2;
 
 		//临时保存当前para
 		private Paragraph currentPara = new Paragraph ("1");
@@ -27,9 +30,23 @@ namespace MyNamespace
 
 		void Start ()
 		{
-//			初始化控件
+			Init ();
+		}
+
+		/// <summary>
+		/// Init this instance.
+		/// </summary>
+		private void Init ()
+		{
+			//初始化控件
 			mShowText.onClick.AddListener (ShowNextParagraph);
-//			初始化文字DoTween
+			btnOption1.onClick.AddListener (delegate() {
+				ChooseOption (1);
+			});
+			btnOption2.onClick.AddListener (delegate() {
+				ChooseOption (2);
+			});
+			//初始化文字DoTween
 			InitTweener ();
 		}
 
@@ -116,8 +133,8 @@ namespace MyNamespace
 
 				//选项显示
 				if (string.IsNullOrEmpty (para.next) && !string.IsNullOrEmpty (para.option_1)) {
-//					print("show option");
-
+					print ("option_1:" + para.option_1);
+					print ("option_2:" + para.option_2);
 				}
 				//把取到的para保存到当前
 				currentPara = para;
@@ -126,7 +143,11 @@ namespace MyNamespace
 		}
 
 
-
+		//
+		private void ChooseOption (int index)
+		{
+			print (index);	
+		}
 
 	}
 }
