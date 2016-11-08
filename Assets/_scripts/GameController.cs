@@ -23,6 +23,7 @@ namespace MyNamespace
 
 		//临时保存当前para
 		private Paragraph currentPara = new Paragraph ("1");
+		//针对第一次进来的时候,要预设一个next
 
 		void Start ()
 		{
@@ -67,10 +68,7 @@ namespace MyNamespace
 			//获取新的Paragraph
 			Paragraph para = ParaManager.Instance.GetNextPara (currentPara.next);//如果next为空，会取到一个空para
 			print (para.ToString ());
-//			if (currentPara == null) {//针对第一次进来的时候
-//				currentPara = para;
-//			}
-			if (!string.IsNullOrEmpty (currentPara.next)) {
+			if (!string.IsNullOrEmpty (currentPara.next)) {//如果next为空就什么也不做，这里主要针对的是遇到分支的情况
 				//背景显示
 				//			print(mBgImage.texture.name);
 				if (mBgImage.texture && mBgImage.texture.name.Equals (para.background)) {
@@ -121,7 +119,7 @@ namespace MyNamespace
 //					print("show option");
 
 				}
-				//保存到当前
+				//把取到的para保存到当前
 				currentPara = para;
 			}
 

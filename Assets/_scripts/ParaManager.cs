@@ -62,7 +62,7 @@ public class ParaManager : MonoBehaviour
 	}
 
 	/// <summary>
-	/// 写入
+	/// 写入JSON到数据库
 	/// </summary>
 	/// <returns>The para.</returns>
 	private IEnumerator InitPara ()
@@ -118,8 +118,10 @@ public class ParaManager : MonoBehaviour
 //		paraIndex++;
 		//通过next字段查找下一个Para
 		sqReader = db.SelectWhere (Constants.tableName, new string[] {
-			"id", "background",
-			"content", "model_0", "model_1", "model_2", "option_1", "goto_1", "option_2", "goto_2", "next"
+			"id", "background", "content", 
+			"model_0", "model_1", "model_2", 
+			"option_1", "goto_1", "option_2", "goto_2", 
+			"next"
 		}, new string[]{ "id" }, new string[]{ "=" }, new string[]{ next });
 
 		//声明Paragraph对象
