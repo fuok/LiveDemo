@@ -16,7 +16,7 @@
             "model_0":"Live2DModel 2",
             "model_1":"",
             "model_2":"",
-            "next":"3"
+            "next":"4"
         },  
         {
             "id": "3",

@@ -8,11 +8,18 @@ using System.IO;
 //通过DB操作，保存和读取Paragraph，只包含CRUD的CR
 public class ParaManager : MonoBehaviour
 {
+	public static ParaManager Instance{ get; private set; }
+
 	private static DbAccess db;
 	private static SqliteDataReader sqReader;
 	//当前的Para情报
-	private static Paragraph currentPara = new Paragraph ("1");
-	private static int paraIndex;
+	//	private static Paragraph currentPara = new Paragraph ("1");
+	//	private static int paraIndex;
+
+	void Awake ()
+	{
+		Instance = this;
+	}
 
 	void Start ()
 	{
@@ -106,16 +113,17 @@ public class ParaManager : MonoBehaviour
 	/// 分段读取
 	/// </summary>
 	/// <returns>The next para.</returns>
-	public static Paragraph GetNextPara ()
+	public Paragraph GetNextPara (string next)
 	{
 //		paraIndex++;
 		//通过next字段查找下一个Para
 		sqReader = db.SelectWhere (Constants.tableName, new string[] {
 			"id", "background",
 			"content", "model_0", "model_1", "model_2", "option_1", "goto_1", "option_2", "goto_2", "next"
-		}, new string[]{ "id" }, new string[]{ "=" }, new string[]{ currentPara.next });
+		}, new string[]{ "id" }, new string[]{ "=" }, new string[]{ next });
 
 		//声明Paragraph对象
+		Paragraph currentPara = new Paragraph ();
 		while (sqReader.Read ()) {//如果上边的查找没有结果，就不会进这里，我觉得最好给end一个特殊标记
 //			print ("找到了");
 			currentPara = new Paragraph (sqReader.GetString (sqReader.GetOrdinal ("id")), sqReader.GetString (sqReader.GetOrdinal ("background")), sqReader.GetString (sqReader.GetOrdinal ("content")), sqReader.GetString (sqReader.GetOrdinal ("model_0")), sqReader.GetString (sqReader.GetOrdinal ("model_1")), sqReader.GetString (sqReader.GetOrdinal ("model_2")), sqReader.GetString (sqReader.GetOrdinal ("option_1")), sqReader.GetString (sqReader.GetOrdinal ("goto_1")), sqReader.GetString (sqReader.GetOrdinal ("option_2")), sqReader.GetString (sqReader.GetOrdinal ("goto_2")), sqReader.GetString (sqReader.GetOrdinal ("next")));

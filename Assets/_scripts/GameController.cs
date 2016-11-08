@@ -22,7 +22,7 @@ namespace MyNamespace
 		public GameObject[] mLiveCharacters = new GameObject[3]{ null, null, null };
 
 		//临时保存当前para
-		private Paragraph currentPara;
+		private Paragraph currentPara = new Paragraph ("1");
 
 		void Start ()
 		{
@@ -65,11 +65,11 @@ namespace MyNamespace
 		private void ShowNextParagraph ()
 		{
 			//获取新的Paragraph
-			Paragraph para = ParaManager.GetNextPara ();
+			Paragraph para = ParaManager.Instance.GetNextPara (currentPara.next);//如果next为空，会取到一个空para
 			print (para.ToString ());
-			if (currentPara == null) {//针对第一次进来的时候
-				currentPara = para;
-			}
+//			if (currentPara == null) {//针对第一次进来的时候
+//				currentPara = para;
+//			}
 			if (!string.IsNullOrEmpty (currentPara.next)) {
 				//背景显示
 				//			print(mBgImage.texture.name);
@@ -116,9 +116,14 @@ namespace MyNamespace
 					}
 				}
 
+				//选项显示
+				if (string.IsNullOrEmpty (para.next) && !string.IsNullOrEmpty (para.option_1)) {
+//					print("show option");
+
+				}
+				//保存到当前
+				currentPara = para;
 			}
-			//保存到当前
-			currentPara = para;
 
 		}
 
