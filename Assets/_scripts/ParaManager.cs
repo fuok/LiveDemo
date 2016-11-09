@@ -10,8 +10,8 @@ public class ParaManager : MonoBehaviour
 {
 	public static ParaManager Instance{ get; private set; }
 
-	private static DbAccess db;
-	private static SqliteDataReader sqReader;
+	private DbAccess db;
+	private SqliteDataReader sqReader;
 	//当前的Para情报
 	//	private static Paragraph currentPara = new Paragraph ("1");
 	//	private static int paraIndex;
@@ -23,33 +23,49 @@ public class ParaManager : MonoBehaviour
 
 	void Start ()
 	{
+		#if UNITY_EDITOR
+
 		//读取数据库
-		db = new DbAccess ("data source=" + Constants.dbName);//数据库名//("Server=127.0.0.1;UserId=root;Password=;Database=li")
+		db = new DbAccess ("data source=" + Constants.dbPath);//数据库名//("Server=127.0.0.1;UserId=root;Password=;Database=li")
+		#elif UNITY_ANDROID
+		string appDBPath = Application.persistentDataPath + "/" + Constants.dbName;
+		if (!File.Exists (appDBPath)) {
+			WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/" + Constants.dbName);
+			while(!loadDB.isDone){}
+			File.WriteAllBytes(appDBPath, loadDB.bytes);
+		}
+		db = new DbAccess("URI=file:" + appDBPath);
+
+	
+		#endif
+
+
+
 		//检查数据库版本
 		int version = PlayerPrefs.GetInt ("dataBaseVersion", 0);//检查版本号
 		print ("version=" + version);
-		if (Constants.dataBaseVersion > version) {
-			//升级数据库
-			try {
-				db.DeleteTable (Constants.tableName);
-			} catch (System.Exception ex) {
-					
-			}
-			PlayerPrefs.SetInt ("dataBaseVersion", Constants.dataBaseVersion);
-			//创建数据库表，与字段
-			db.CreateTable (Constants.tableName, new string[] {
-				"id",
-				"background",
-				"content",
-				"model_0", "model_1", "model_2",
-				"option_1", "goto_1", "option_2", "goto_2",
-				"next"
-			}, new string[] {
-				"text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text"
-			}, false);
-			//初始化Para表
-			StartCoroutine (InitPara ());
-		}
+//		if (Constants.dataBaseVersion > version) {
+//			//升级数据库
+//			try {
+//				db.DeleteTable (Constants.tableName);
+//			} catch (System.Exception ex) {
+//					
+//			}
+//			PlayerPrefs.SetInt ("dataBaseVersion", Constants.dataBaseVersion);
+//			//创建数据库表，与字段
+//			db.CreateTable (Constants.tableName, new string[] {
+//				"id",
+//				"background",
+//				"content",
+//				"model_0", "model_1", "model_2",
+//				"option_1", "goto_1", "option_2", "goto_2",
+//				"next"
+//			}, new string[] {
+//				"text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text"
+//			}, false);
+//			//初始化Para表
+//			StartCoroutine (InitPara ());
+//		}
 	}
 
 	void Update ()
@@ -92,6 +108,24 @@ public class ParaManager : MonoBehaviour
 			});
 		}
 
+		//针对Android
+//		#if UNITY_ANDROID
+//		if (File.Exists (Constants.dbPath)) {
+//			print ("数据库存在");
+//			string dbPathAndroid = Application.persistentDataPath + "/" + Constants.dbName;
+//			if (File.Exists (dbPathAndroid)) {
+//				File.Delete (dbPathAndroid);
+//			}
+//			db.CloseSqlConnection ();
+//			WWW loadDb = new WWW ("jar:file://" + Application.dataPath + "!/assets/" + Constants.dbName);
+//			yield return loadDb;
+//			File.WriteAllBytes (dbPathAndroid, loadDb.bytes);
+//			db = new DbAccess ("URI=file:" + dbPathAndroid);
+//		} else {
+//			print ("找不到");
+//			print (Application.dataPath + "/" + Constants.dbName);
+//		}
+//		#endif
 	}
 
 	public void SavePara ()
