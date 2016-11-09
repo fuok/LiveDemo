@@ -135,18 +135,34 @@ namespace MyNamespace
 				if (string.IsNullOrEmpty (para.next) && !string.IsNullOrEmpty (para.option_1)) {
 					print ("option_1:" + para.option_1);
 					print ("option_2:" + para.option_2);
+					mOptionPanel.SetActive (true);
+					btnOption1.GetComponentInChildren<Text> ().text = para.option_1;
+					btnOption2.GetComponentInChildren<Text> ().text = para.option_2;
 				}
-				//把取到的para保存到当前
+
+				//把取到的para保存到当前,⭐️
 				currentPara = para;
 			}
 
 		}
 
-
-		//
+		/// <summary>
+		/// Chooses the option.
+		/// </summary>
+		/// <param name="index">Index.</param>
 		private void ChooseOption (int index)
 		{
-			print (index);	
+			switch (index) {
+			case 1:
+				currentPara.next = currentPara.goto_1;
+				break;
+			case 2:
+				currentPara.next = currentPara.goto_2;
+				break;
+			default:
+				break;
+			}
+			mOptionPanel.SetActive (false);
 		}
 
 	}
