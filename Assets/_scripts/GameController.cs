@@ -18,11 +18,16 @@ namespace MyNamespace
 		public Button mShowText;
 		private Tweener tweener;
 		[Header ("人物显示")]
-		public GameObject mLive2DHolder;
-		public GameObject[] mLiveCharacters = new GameObject[3]{ null, null, null };
+//		public GameObject mLive2DHolder;
+		[SerializeField]
+		private GameObject[] mLiveCharacters = new GameObject[3]{ null, null, null };
 		[Header ("选项分支")]
 		public GameObject mOptionPanel;
 		public Button btnOption1, btnOption2;
+		[Header ("Save/Load/Quit")]
+		public Button btnSave;
+		public Button btnLoad;
+		public Button btnQuit;
 
 		//临时保存当前para
 		private Paragraph currentPara = new Paragraph ("1");
@@ -39,13 +44,18 @@ namespace MyNamespace
 		private void Init ()
 		{
 			//初始化控件
-			mShowText.onClick.AddListener (ShowNextParagraph);
+			mShowText.onClick.AddListener (delegate() {
+				ShowParagraph (currentPara.next);
+			});
 			btnOption1.onClick.AddListener (delegate() {
 				ChooseOption (1);
 			});
 			btnOption2.onClick.AddListener (delegate() {
 				ChooseOption (2);
 			});
+			btnSave.onClick.AddListener (SaveGame);
+			btnLoad.onClick.AddListener (LoadGame);
+			btnQuit.onClick.AddListener (QuitGame);
 			//初始化文字DoTween
 			InitTweener ();
 		}
@@ -80,12 +90,12 @@ namespace MyNamespace
 		/// <summary>
 		/// Shows the next paragraph.
 		/// </summary>
-		private void ShowNextParagraph ()
+		private void ShowParagraph (string id)
 		{
 			//获取新的Paragraph
-			Paragraph para = ParaManager.Instance.GetNextPara (currentPara.next);//如果next为空，会取到一个空para
+			Paragraph para = ParaManager.Instance.GetNextPara (id);//如果next为空，会取到一个空para
 			print (para.ToString ());
-			if (!string.IsNullOrEmpty (currentPara.next)) {//如果next为空就什么也不做，这里主要针对的是遇到分支的情况
+			if (!string.IsNullOrEmpty (id)) {//如果next为空就什么也不做，这里主要针对的是遇到分支的情况
 				//背景显示
 				//			print(mBgImage.texture.name);
 				if (mBgImage.texture && mBgImage.texture.name.Equals (para.background)) {
@@ -163,6 +173,23 @@ namespace MyNamespace
 				break;
 			}
 			mOptionPanel.SetActive (false);
+		}
+
+
+		private void SaveGame ()
+		{
+			PlayerPrefs.SetString ("saveData_1", currentPara.id);
+		}
+
+		private void LoadGame ()
+		{
+			string id = PlayerPrefs.GetString ("saveData_1", "0");
+			ShowParagraph (id);
+		}
+
+		private void QuitGame ()
+		{
+			Application.Quit ();
 		}
 
 	}

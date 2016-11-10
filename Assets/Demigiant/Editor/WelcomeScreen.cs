@@ -11,7 +11,7 @@ public class Appload
         {
             //EditorApplication.update += Update;
             PlayerPrefs.SetInt("sikiwelcomescreen", 1);
-            WelcomeScreen.ShowWindow();
+//            WelcomeScreen.ShowWindow();
         }
     }
 
