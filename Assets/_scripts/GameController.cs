@@ -109,7 +109,7 @@ namespace MyNamespace
 				//设置dotween
 				//			mMainTextClone.transform.SetParent (mCanvasTrans, false);//加false后uGUI位置就对了
 				//			tweener.ChangeEndValue (para.content, 5f, true);//这里就不需要ChangeEndValue了
-				tweener.ChangeValues ("", para.content, para.content.Length / 20f);//直接使用ChangeValues//使用富文本后出字速度明显慢了
+				tweener.ChangeValues ("", para.content, para.content.Length / 20f);//直接使用ChangeValues//使用富文本后出字速度明显慢了//注意最后的参数是float时间才是正常的
 				tweener.Restart ();
 				
 				//人物显示
