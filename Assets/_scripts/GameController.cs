@@ -93,9 +93,9 @@ namespace MyNamespace
 		private void ShowParagraph (string id)
 		{
 			//获取新的Paragraph
-			Paragraph para = ParaManager.Instance.GetNextPara (id);//如果next为空，会取到一个空para
+			Paragraph para = ParaManager.Instance.GetNextPara (id);//如果id为空，会取到一个空para
 			print (para.ToString ());
-			if (!string.IsNullOrEmpty (id)) {//如果next为空就什么也不做，这里主要针对的是遇到分支的情况
+			if (!string.IsNullOrEmpty (id)) {//如果id为空就什么也不做，这里主要针对的是遇到分支的情况
 				//背景显示
 				//			print(mBgImage.texture.name);
 				if (mBgImage.texture && mBgImage.texture.name.Equals (para.background)) {
@@ -107,10 +107,9 @@ namespace MyNamespace
 				//文字显示
 				//			mMainText.text = para.content;
 				//设置dotween
-				//			GameObject mMainTextClone = GameObject.Instantiate (mMainTextPrefab);
 				//			mMainTextClone.transform.SetParent (mCanvasTrans, false);//加false后uGUI位置就对了
 				//			tweener.ChangeEndValue (para.content, 5f, true);//这里就不需要ChangeEndValue了
-				tweener.ChangeValues ("", para.content, para.content.Length / 20);//直接使用ChangeValues//使用富文本后出字速度明显慢了
+				tweener.ChangeValues ("", para.content, para.content.Length / 20f);//直接使用ChangeValues//使用富文本后出字速度明显慢了
 				tweener.Restart ();
 				
 				//人物显示
@@ -173,6 +172,7 @@ namespace MyNamespace
 				break;
 			}
 			mOptionPanel.SetActive (false);
+			ShowParagraph (currentPara.next);
 		}
 
 
@@ -183,7 +183,7 @@ namespace MyNamespace
 
 		private void LoadGame ()
 		{
-			string id = PlayerPrefs.GetString ("saveData_1", "0");
+			string id = PlayerPrefs.GetString ("saveData_1", "");//如果没有存档就取空
 			ShowParagraph (id);
 		}
 
