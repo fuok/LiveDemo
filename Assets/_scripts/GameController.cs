@@ -62,7 +62,6 @@ namespace MyNamespace
 
 		void Update ()
 		{
-			
 			if (Input.GetKeyDown (KeyCode.A)) {
 //				mMainText.text = "";
 				tweener.ChangeValues ("", "12345hfejhfjdhsf", 5f);
@@ -140,6 +139,11 @@ namespace MyNamespace
 					}
 				}
 
+				//特殊脚本方法
+				if (!string.IsNullOrEmpty (para.function)) {
+					Invoke (para.function, 0.5f);
+				}
+
 				//选项显示
 				if (string.IsNullOrEmpty (para.next) && !string.IsNullOrEmpty (para.option_1)) {
 					print ("option_1:" + para.option_1);
@@ -190,6 +194,16 @@ namespace MyNamespace
 		private void QuitGame ()
 		{
 			Application.Quit ();
+		}
+
+		//----------------------------------------------------------------------------
+
+		/// <summary>
+		/// Shakes the camera.
+		/// </summary>
+		private void ShakeCamera ()
+		{
+			Camera.main.DOShakePosition (2f, 0.2f);
 		}
 
 	}
