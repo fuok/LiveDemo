@@ -16,11 +16,11 @@ public class AudioManagerS : MonoBehaviour
 {
 	private static bool mUseAudioClip;
 	//音频剪辑数组
-	public AudioClip[] mAuClipArray;
+//	public AudioClip[] mAuClipArray;
 	//音频源数组,这两种使用时任选
 	public AudioSource[] mAuSourceArray;
 	//保存音频库索引,同样为AudioClip和AudioSource任选
-	private static Dictionary<string, AudioClip> mDicClip;
+//	private static Dictionary<string, AudioClip> mDicClip;
 	private static Dictionary<string,AudioSource> mDicSource;
 	//背景音乐音频源
 	private static AudioSource mAuSourceBGMusic;
@@ -30,15 +30,16 @@ public class AudioManagerS : MonoBehaviour
 	void Awake ()
 	{
 		//当传入AudioClip时
-		if (mAuClipArray.Length > 0) {
-			mDicClip = new Dictionary<string, AudioClip> ();//加载音频库
-			foreach (AudioClip audioClip in mAuClipArray) {
-				mDicClip.Add (audioClip.name, audioClip);
-			}
-			mUseAudioClip = true;
-		}
-		//当传入是AudioSource时
-		else if (mAuSourceArray.Length > 0) {
+//		if (mAuClipArray.Length > 0) {
+//			mDicClip = new Dictionary<string, AudioClip> ();//加载音频库
+//			foreach (AudioClip audioClip in mAuClipArray) {
+//				mDicClip.Add (audioClip.name, audioClip);
+//			}
+//			mUseAudioClip = true;
+//		}
+//		//当传入是AudioSource时
+//		else 
+			if (mAuSourceArray.Length > 0) {
 			mDicSource = new Dictionary<string, AudioSource> ();
 			foreach (AudioSource audioSource in mAuSourceArray) {
 				mDicSource.Add (audioSource.clip.name, audioSource);
@@ -59,14 +60,14 @@ public class AudioManagerS : MonoBehaviour
 	///传值 “音乐剪辑” 播放 “背景音乐” 
 	/// </summary>
 	/// <param name="audiClip">背景音乐剪辑</param>
-	public static void PlayBGMusic (AudioClip audiClip)
-	{
-		if (audiClip) {
-			mAuSourceBGMusic.loop = true;
-			mAuSourceBGMusic.clip = audiClip;    //音频剪辑的赋值
-			mAuSourceBGMusic.Play ();             //播放背景音乐
-		}
-	}
+//	public static void PlayBGMusic (AudioClip audiClip)
+//	{
+//		if (audiClip) {
+//			mAuSourceBGMusic.loop = true;
+//			mAuSourceBGMusic.clip = audiClip;    //音频剪辑的赋值
+//			mAuSourceBGMusic.Play ();             //播放背景音乐
+//		}
+//	}
 
 	/// <summary>
 	/// 传入背景音乐为AudioSource
@@ -88,7 +89,7 @@ public class AudioManagerS : MonoBehaviour
 		
 		if (!string.IsNullOrEmpty (strAudioClipName)) {
 			if (mUseAudioClip) {
-				PlayBGMusic (mDicClip [strAudioClipName]);
+//				PlayBGMusic (mDicClip [strAudioClipName]);
 			} else {
 				PlayBGMusic (mDicSource [strAudioClipName]);
 			}
@@ -99,26 +100,26 @@ public class AudioManagerS : MonoBehaviour
 	///传值 “音乐剪辑” 播放 “背景音乐”
 	/// </summary>
 	/// <param name="audiClip">游戏音效剪辑</param>
-	public static void PlayEffAudio (AudioClip audiClip)
-	{   
-		if (audiClip) {//播放
-			AudioSource[] AS = mAudioManagerInstance.GetComponents<AudioSource> ();//先获取当前对象下的AudioSource
-			for (int i = 1; i < AS.Length; i++) {//跳过下标0,0位预留给背景音乐
-				if (!AS [i].isPlaying) {
-					AS [i].clip = audiClip;//音频剪辑的赋值
-					AS [i].Play ();//播放背景音乐
-					return;
-				} else {
-					//元素被占用
-				}
-			}
-			//当需要同时播放多个音效或当前对象的AudioSource不足,添加新AudioSource
-			AudioSource NewAS = mAudioManagerInstance.AddComponent<AudioSource> ();
-			NewAS.loop = false;
-			NewAS.clip = audiClip;
-			NewAS.Play ();
-		}
-	}
+//	public static void PlayEffAudio (AudioClip audiClip)
+//	{   
+//		if (audiClip) {//播放
+//			AudioSource[] AS = mAudioManagerInstance.GetComponents<AudioSource> ();//先获取当前对象下的AudioSource
+//			for (int i = 1; i < AS.Length; i++) {//跳过下标0,0位预留给背景音乐
+//				if (!AS [i].isPlaying) {
+//					AS [i].clip = audiClip;//音频剪辑的赋值
+//					AS [i].Play ();//播放背景音乐
+//					return;
+//				} else {
+//					//元素被占用
+//				}
+//			}
+//			//当需要同时播放多个音效或当前对象的AudioSource不足,添加新AudioSource
+//			AudioSource NewAS = mAudioManagerInstance.AddComponent<AudioSource> ();
+//			NewAS.loop = false;
+//			NewAS.clip = audiClip;
+//			NewAS.Play ();
+//		}
+//	}
 
 	/// <summary>
 	/// 传入AudioSource时使用这个方法,这个方法目前不支持多个音效一起播放
@@ -139,7 +140,7 @@ public class AudioManagerS : MonoBehaviour
 	{
 		if (!string.IsNullOrEmpty (audioName)) {
 			if (mUseAudioClip) {
-				PlayEffAudio (mDicClip [audioName]);
+//				PlayEffAudio (mDicClip [audioName]);
 			} else {
 				PlayEffAudio (mDicSource [audioName]);      
 			}
