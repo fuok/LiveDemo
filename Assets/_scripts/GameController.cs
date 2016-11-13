@@ -68,6 +68,10 @@ namespace MyNamespace
 //				tweener.Restart ();
 				tweener.Rewind ();//Rewind是动画回初始状态，这里会回到5f的状态，按照说明，ChangeValues相当于修改初始值+Rewind
 			}
+
+//			if (Input.GetKeyDown (KeyCode.Y)) {
+//				AudioManagerS.Instance.PlayEffAudioMultiple ("sfx_1");
+//			}
 		}
 
 		/// <summary>
@@ -143,6 +147,8 @@ namespace MyNamespace
 				if (!string.IsNullOrEmpty (para.function)) {
 					Invoke (para.function, 0.5f);
 				}
+
+				//音效播放,TODO
 
 				//选项显示
 				if (string.IsNullOrEmpty (para.next) && !string.IsNullOrEmpty (para.option_1)) {
