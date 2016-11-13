@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
      <Compile Include="Assets\Libraries\SimpleJSON\SimpleJSON.cs" />
+     <Compile Include="Assets\_scripts\AudioManagerS.cs" />
      <Compile Include="Assets\_scripts\Benchmark.cs" />
      <Compile Include="Assets\_scripts\Constants.cs" />
      <Compile Include="Assets\_scripts\DbAccess.cs" />
