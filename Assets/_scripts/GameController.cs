@@ -70,7 +70,10 @@ namespace MyNamespace
 			}
 
 //			if (Input.GetKeyDown (KeyCode.Y)) {
-//				AudioManagerS.Instance.PlayEffAudioMultiple ("sfx_1");
+//				AudioManagerS.Instance.PlayBGM ("bgm_1");
+//			}
+//			if (Input.GetKeyDown (KeyCode.U)) {
+//				AudioManagerS.Instance.PlayBGM ("bgm_2");
 //			}
 		}
 
@@ -148,7 +151,8 @@ namespace MyNamespace
 					Invoke (para.function, 0.5f);
 				}
 
-				//音效播放,TODO
+				//背景音乐播放
+				AudioManagerS.Instance.PlayBGM (para.bgm);
 
 				//选项显示
 				if (string.IsNullOrEmpty (para.next) && !string.IsNullOrEmpty (para.option_1)) {
