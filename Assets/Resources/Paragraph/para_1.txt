@@ -3,7 +3,7 @@
         {
             "id": "1",
             "background": "nc016a",
-            "portrait": "image_1",
+            "portrait": "position_0",
             "content": "<color=#a52a2aff>这是第一段</color>",
             "model_0":"Live2DModel 1",
             "model_1":"",
@@ -14,7 +14,7 @@
         {
             "id": "2",
             "background": "nc016a",
-            "portrait": "image_1",
+            "portrait": "position_0",
             "content": "<color=#008000ff>这是第二段</color>",
             "model_0":"Live2DModel 2",
             "model_1":"",
@@ -25,6 +25,7 @@
         {
             "id": "3",
             "background": "nc016a",
+            "portrait": "image_1",
             "content": "这是分支",
             "model_0":"",
             "model_1":"",

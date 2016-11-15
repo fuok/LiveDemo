@@ -20,7 +20,6 @@ namespace MyNamespace
 		public Button mShowText;
 		private Tweener tweener;
 		[Header ("人物显示")]
-//		public GameObject mLive2DHolder;
 		[SerializeField]
 		private GameObject[] mLiveCharacters = new GameObject[3]{ null, null, null };
 		[Header ("选项分支")]
