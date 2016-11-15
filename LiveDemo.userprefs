@@ -1,12 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_scripts/AudioManagerS.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Resources/Paragraph/para_1.txt">
     <Files>
       <File FileName="Assets/_scripts/AudioManagerS.cs" Line="40" Column="3" />
-      <File FileName="Assets/_scripts/ParaManager.cs" Line="139" Column="400" />
-      <File FileName="Assets/_scripts/GameController.cs" Line="155" Column="45" />
-      <File FileName="Assets/Resources/Paragraph/para_1.txt" Line="43" Column="25" />
-      <File FileName="Assets/_scripts/ParagraphData.cs" Line="56" Column="165" />
+      <File FileName="Assets/_scripts/ParaManager.cs" Line="140" Column="189" />
+      <File FileName="Assets/_scripts/GameController.cs" Line="119" Column="85" />
+      <File FileName="Assets/Resources/Paragraph/para_1.txt" Line="41" Column="36" />
+      <File FileName="Assets/_scripts/ParagraphData.cs" Line="58" Column="64" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

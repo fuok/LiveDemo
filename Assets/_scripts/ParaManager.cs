@@ -44,14 +44,14 @@ public class ParaManager : MonoBehaviour
 			//创建数据库表，与字段
 			db.CreateTable (Constants.tableName, new string[] {
 				"id",
-				"background",
+				"background", "portrait",
 				"content",
 				"model_0", "model_1", "model_2",
 				"bgm", "function",
 				"option_1", "goto_1", "option_2", "goto_2",
 				"next"
 			}, new string[] {
-				"text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text"
+				"text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text"
 			}, false);
 			//初始化Para表
 			StartCoroutine (InitPara ());
@@ -86,6 +86,7 @@ public class ParaManager : MonoBehaviour
 			db.InsertInto (Constants.tableName, new string[] {
 				"'" + para.id + "'",
 				"'" + para.background + "'",
+				"'" + para.portrait + "'",
 				"'" + para.content + "'",
 				"'" + para.model_0 + "'",
 				"'" + para.model_1 + "'",
@@ -125,7 +126,7 @@ public class ParaManager : MonoBehaviour
 //		paraIndex++;
 		//通过next字段查找下一个Para
 		sqReader = db.SelectWhere (Constants.tableName, new string[] {
-			"id", "background", "content", 
+			"id", "background", "portrait", "content", 
 			"model_0", "model_1", "model_2",
 			"bgm", "function",
 			"option_1", "goto_1", "option_2", "goto_2", 
@@ -136,7 +137,7 @@ public class ParaManager : MonoBehaviour
 		Paragraph currentPara = new Paragraph ();
 		while (sqReader.Read ()) {//如果上边的查找没有结果，就不会进这里，我觉得最好给end一个特殊标记
 //			print ("找到了");
-			currentPara = new Paragraph (sqReader.GetString (sqReader.GetOrdinal ("id")), sqReader.GetString (sqReader.GetOrdinal ("background")), sqReader.GetString (sqReader.GetOrdinal ("content")), sqReader.GetString (sqReader.GetOrdinal ("model_0")), sqReader.GetString (sqReader.GetOrdinal ("model_1")), sqReader.GetString (sqReader.GetOrdinal ("model_2")), sqReader.GetString (sqReader.GetOrdinal ("bgm")), sqReader.GetString (sqReader.GetOrdinal ("function")), sqReader.GetString (sqReader.GetOrdinal ("option_1")), sqReader.GetString (sqReader.GetOrdinal ("goto_1")), sqReader.GetString (sqReader.GetOrdinal ("option_2")), sqReader.GetString (sqReader.GetOrdinal ("goto_2")), sqReader.GetString (sqReader.GetOrdinal ("next")));
+			currentPara = new Paragraph (sqReader.GetString (sqReader.GetOrdinal ("id")), sqReader.GetString (sqReader.GetOrdinal ("background")), sqReader.GetString (sqReader.GetOrdinal ("portrait")), sqReader.GetString (sqReader.GetOrdinal ("content")), sqReader.GetString (sqReader.GetOrdinal ("model_0")), sqReader.GetString (sqReader.GetOrdinal ("model_1")), sqReader.GetString (sqReader.GetOrdinal ("model_2")), sqReader.GetString (sqReader.GetOrdinal ("bgm")), sqReader.GetString (sqReader.GetOrdinal ("function")), sqReader.GetString (sqReader.GetOrdinal ("option_1")), sqReader.GetString (sqReader.GetOrdinal ("goto_1")), sqReader.GetString (sqReader.GetOrdinal ("option_2")), sqReader.GetString (sqReader.GetOrdinal ("goto_2")), sqReader.GetString (sqReader.GetOrdinal ("next")));
 		}
 		return currentPara;
 	}

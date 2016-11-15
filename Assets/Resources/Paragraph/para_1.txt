@@ -3,6 +3,7 @@
         {
             "id": "1",
             "background": "nc016a",
+            "portrait": "image_1",
             "content": "<color=#a52a2aff>这是第一段</color>",
             "model_0":"Live2DModel 1",
             "model_1":"",
@@ -13,6 +14,7 @@
         {
             "id": "2",
             "background": "nc016a",
+            "portrait": "image_1",
             "content": "<color=#008000ff>这是第二段</color>",
             "model_0":"Live2DModel 2",
             "model_1":"",
@@ -36,6 +38,7 @@
         {
             "id": "4",
             "background": "nc019a",
+            "portrait": "position_1",
             "content": "<color=#008080ff>按摩牛君</color>，<color=#ff0000ff>不可以把这个世界拱手让给我们所鄙视的人</color>。",
             "model_0":"",
             "model_1":"Live2DModel 1",
@@ -46,6 +49,7 @@
         {
             "id": "5",
             "background": "nc019a",
+            "portrait": "position_2",
             "content": "<color=#008080ff>按摩牛君</color>，<color=#ff0000ff>不可以同情自己</color>。",
             "model_0":"",
             "model_1":"Live2DModel 1",

@@ -13,6 +13,8 @@ namespace MyNamespace
 	{
 		[Header ("背景显示区域")]
 		public RawImage mBgImage;
+		[Header ("头像区域")]
+		public RawImage mPortraitImage;
 		[Header ("文字显示区域")]
 		public Text mMainText;
 		public Button mShowText;
@@ -102,12 +104,19 @@ namespace MyNamespace
 			Paragraph para = ParaManager.Instance.GetNextPara (id);//如果id为空，会取到一个空para
 			print (para.ToString ());
 			if (!string.IsNullOrEmpty (id)) {//如果id为空就什么也不做，这里主要针对的是遇到分支的情况
+				//⭐️目前背景显示和头像显示使用的逻辑是相同的，就是每个para中都要有值，如果是空值就会显示空背景和空头像。
 				//背景显示
-				//			print(mBgImage.texture.name);
 				if (mBgImage.texture && mBgImage.texture.name.Equals (para.background)) {
 					print ("背景已存在");
 				} else {
 					mBgImage.texture = Resources.Load<Texture> ("background/" + para.background);
+				}
+
+				//头像显示
+				if (mPortraitImage.texture && mPortraitImage.texture.name.Equals (para.portrait)) {
+					print ("头像已存在");
+				} else {
+					mPortraitImage.texture = Resources.Load<Texture> ("portrait/" + para.portrait);
 				}
 				
 				//文字显示
@@ -118,7 +127,7 @@ namespace MyNamespace
 				tweener.ChangeValues ("", para.content, para.content.Length / 20f);//直接使用ChangeValues//使用富文本后出字速度明显慢了//注意最后的参数是float时间才是正常的
 				tweener.Restart ();
 				
-				//人物显示
+				//人物live2d显示
 				string[] models = new string[3]{ para.model_0, para.model_1, para.model_2 };//3个位置上的模型名
 				for (int i = 0; i < models.Length; i++) {
 					//				print ("输出：" + i + "=" + models [i]);
