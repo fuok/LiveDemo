@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Test : MonoBehaviour
 {
-	public Button btnStart;
+	public Button btnStart, btnExit;
 	private AsyncOperation async;
 	private int progress = 0;
 
@@ -14,6 +14,9 @@ public class Test : MonoBehaviour
 	{
 		btnStart.onClick.AddListener (delegate() {
 			StartCoroutine (LoadScene ());
+		});
+		btnExit.onClick.AddListener (() => {
+			Application.Quit ();
 		});
 	}
 	

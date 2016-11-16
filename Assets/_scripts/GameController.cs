@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using GameData;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 namespace MyNamespace
 {
@@ -211,7 +212,7 @@ namespace MyNamespace
 
 		private void QuitGame ()
 		{
-			Application.Quit ();
+			SceneManager.LoadScene ("Start", LoadSceneMode.Single);
 		}
 
 		//----------------------------------------------------------------------------

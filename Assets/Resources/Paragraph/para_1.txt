@@ -40,7 +40,7 @@
             "id": "4",
             "background": "nc019a",
             "portrait": "position_1",
-            "content": "<color=#008080ff>按摩牛君</color>，<color=#ff0000ff>不可以把这个世界拱手让给我们所鄙视的人</color>。",
+            "content": "[woshinvzhu]\t<color=#008080ff>按摩牛君</color>，<color=#ff0000ff>不可以把这个世界拱手让给我们所鄙视的人</color>。",
             "model_0":"",
             "model_1":"Live2DModel 1",
             "model_2":"Live2DModel 2",
