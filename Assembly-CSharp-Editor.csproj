@@ -45,13 +45,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Apshai Arts\CodeGuard\Editor\CodeGuard.cs" />
+     <Compile Include="Assets\Apshai Arts\CodeGuard\Editor\CodeGuardWindow.cs" />
      <Compile Include="Assets\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
      <Compile Include="Assets\Demigiant\Editor\WelcomeScreen.cs" />
+     <None Include="Assets\Apshai Arts\CodeGuard\Editor\Compatibility.txt" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-MultCullMasked.shader" />
      <None Include="Assets\Demigiant\DOTweenPro\readme.txt" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-Normal.shader" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-AddMasked.shader" />
      <None Include="Assets\Demigiant\DOTween\DOTween50.xml" />
+     <None Include="Assets\Apshai Arts\CodeGuard\Editor\Mobile.txt" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-MultCull.shader" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-NormalCull.shader" />
      <None Include="Assets\Demigiant\DOTween\DOTween46.xml" />
@@ -60,11 +64,14 @@
      <None Include="Assets\Demigiant\DemiLib\DemiLib.xml" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-NormalCullMasked.shader" />
      <None Include="Assets\Demigiant\DOTween\readme.txt" />
+     <None Include="Assets\Apshai Arts\CodeGuard\Editor\Web Player.txt" />
      <None Include="Assets\Demigiant\DOTween\DOTween43.xml" />
+     <None Include="Assets\Apshai Arts\CodeGuard\Editor\Quick Start.txt" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-AddCullMasked.shader" />
      <None Include="Assets\Resources\Paragraph\para_1.txt" />
      <None Include="Assets\Live2D\Resources\shader\Live2D-SetupMask.shader" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-NormalMasked.shader" />
+     <None Include="Assets\Apshai Arts\CodeGuard\Editor\Read Me.txt" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-MultMasked.shader" />
      <None Include="Assets\Demigiant\readme_DOTweenPro.txt" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-Add.shader" />
@@ -145,6 +152,15 @@
  </Reference>
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>/Applications/Unity/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="ApshaiArts.CodeGuard">
+ <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Apshai Arts/CodeGuard/Editor/ApshaiArts.CodeGuard.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.Cecil.Rocks">
+ <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Apshai Arts/CodeGuard/Editor/Mono.Cecil/Mono.Cecil.Rocks.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.Cecil">
+ <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Apshai Arts/CodeGuard/Editor/Mono.Cecil/Mono.Cecil.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
