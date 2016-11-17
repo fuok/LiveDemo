@@ -38,6 +38,9 @@ namespace MyNamespace
 		void Start ()
 		{
 			Init ();
+			//进来后开始游戏
+			string continuePara = PlayerPrefs.GetString ("continuePara", "1");
+//			ShowParagraph (continuePara);
 		}
 
 		/// <summary>
