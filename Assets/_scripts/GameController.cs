@@ -40,11 +40,12 @@ namespace MyNamespace
 			Init ();
 			//进来后开始游戏
 			string continuePara = PlayerPrefs.GetString ("continuePara", "1");
-//			ShowParagraph (continuePara);
+			//这里设定了脚本执行顺序，ParaManager必须先执行
+			ShowParagraph (continuePara);
 		}
 
 		/// <summary>
-		/// Init this instance.
+		/// 初始化.
 		/// </summary>
 		private void Init ()
 		{

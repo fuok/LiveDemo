@@ -53,9 +53,10 @@
      <Compile Include="Assets\_scripts\DbAccess.cs" />
      <Compile Include="Assets\_scripts\DebugInfo.cs" />
      <Compile Include="Assets\_scripts\GameController.cs" />
+     <Compile Include="Assets\_scripts\LoadingSceneManager.cs" />
      <Compile Include="Assets\_scripts\ParaManager.cs" />
      <Compile Include="Assets\_scripts\ParagraphData.cs" />
-     <Compile Include="Assets\_scripts\Test.cs" />
+     <Compile Include="Assets\_scripts\StartSceneManager.cs" />
      <None Include="Assets\Apshai Arts\CodeGuard\Editor\Compatibility.txt" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-MultCullMasked.shader" />
      <None Include="Assets\Demigiant\DOTweenPro\readme.txt" />

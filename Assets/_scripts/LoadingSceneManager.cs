@@ -1,23 +1,19 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
-public class Test : MonoBehaviour
+public class LoadingSceneManager : MonoBehaviour
 {
-	public Button btnStart, btnExit;
 	private AsyncOperation async;
 	private int progress = 0;
 
 	// Use this for initialization
 	void Start ()
 	{
-		btnStart.onClick.AddListener (delegate() {
-			StartCoroutine (LoadScene ());
-		});
-		btnExit.onClick.AddListener (() => {
-			Application.Quit ();
-		});
+		ParaManager.Instance.InitPara ();
+		//TODO,简单处理
+		StartCoroutine (StartMain ());
 	}
 	
 	// Update is called once per frame
@@ -29,8 +25,9 @@ public class Test : MonoBehaviour
 		}
 	}
 
-	private IEnumerator LoadScene ()
+	private IEnumerator StartMain ()
 	{
+		yield return new WaitForSeconds (2f);
 		async = SceneManager.LoadSceneAsync ("Main", LoadSceneMode.Single);
 		yield return async;
 	}

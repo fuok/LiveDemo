@@ -12,9 +12,6 @@ public class ParaManager : MonoBehaviour
 
 	private DbAccess db;
 	private SqliteDataReader sqReader;
-	//当前的Para情报
-	//	private static Paragraph currentPara = new Paragraph ("1");
-	//	private static int paraIndex;
 
 	void Awake ()
 	{
@@ -29,7 +26,27 @@ public class ParaManager : MonoBehaviour
 		#elif UNITY_ANDROID
 		db = new DbAccess ("URI=file:" + Constants.dbPathAndroid);
 		#endif
+	}
 
+	void Update ()
+	{
+
+	}
+
+	/// <summary>
+	/// Raises the destroy event.
+	/// </summary>
+	void OnDestroy ()//认为游戏结束
+	{
+		print ("OnDesrtoy");
+		//关闭对象
+		db.CloseSqlConnection ();
+	}
+
+	//-------------------------public function-------------
+
+	public void InitPara ()
+	{
 		//检查数据库版本
 		int version = PlayerPrefs.GetInt ("dataBaseVersion", 0);//检查版本号
 		print ("version=" + version);
@@ -38,7 +55,7 @@ public class ParaManager : MonoBehaviour
 			try {
 				db.DeleteTable (Constants.tableName);
 			} catch (System.Exception ex) {
-					
+
 			}
 			PlayerPrefs.SetInt ("dataBaseVersion", Constants.dataBaseVersion);
 			//创建数据库表，与字段
@@ -54,16 +71,7 @@ public class ParaManager : MonoBehaviour
 				"text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text"
 			}, false);
 			//初始化Para表
-			StartCoroutine (InitPara ());
-		}
-	}
-
-	void Update ()
-	{
-		//test
-		if (Input.GetKeyDown (KeyCode.P)) {
-			PlayerPrefs.DeleteKey ("dataBaseVersion");
-			db.DeleteTable (Constants.tableName);
+			StartCoroutine (WritePara2DB ());
 		}
 	}
 
@@ -71,7 +79,7 @@ public class ParaManager : MonoBehaviour
 	/// 写入JSON到数据库
 	/// </summary>
 	/// <returns>The para.</returns>
-	private IEnumerator InitPara ()
+	private IEnumerator WritePara2DB ()
 	{
 		IEnumerator ie;
 		TextAsset paraAsset = Resources.Load<TextAsset> ("paragraph/para_1");
@@ -143,12 +151,12 @@ public class ParaManager : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Raises the destroy event.
+	/// 清除数据库，用于测试
 	/// </summary>
-	void OnDestroy ()//认为游戏结束
+	public void CleanParaDB ()
 	{
-		print ("OnDesrtoy");
-		//关闭对象
-		db.CloseSqlConnection ();
+		PlayerPrefs.DeleteKey ("dataBaseVersion");
+		db.DeleteTable (Constants.tableName);
 	}
+
 }
