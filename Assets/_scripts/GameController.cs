@@ -141,16 +141,16 @@ namespace MyNamespace
 					} else {//表中读取的模型不存在，需要加载模型
 						GameObject.Destroy (mLiveCharacters [i]);
 						if (!string.IsNullOrEmpty (models [i])) {//如果是空位，销毁后不需要加载
-							GameObject tempPrefab = Resources.Load<GameObject> ("prefabs/" + models [i]);
+							GameObject tempPrefab = Resources.Load<GameObject> ("models/" + models [i]);
 							switch (i) {
 							case 0:
-								tempPrefab.GetComponent<Benchmark> ().mPosX = 0f;//根据model设置位置
+								tempPrefab.GetComponent<Benchmark> ().mPos.x = 0f;//根据model设置位置
 								break;
 							case 1:
-								tempPrefab.GetComponent<Benchmark> ().mPosX = -1f;
+								tempPrefab.GetComponent<Benchmark> ().mPos.x = -1f;
 								break;
 							case 2:
-								tempPrefab.GetComponent<Benchmark> ().mPosX = 1f;
+								tempPrefab.GetComponent<Benchmark> ().mPos.x = 1f;
 								break;
 							}
 							GameObject character = GameObject.Instantiate (tempPrefab);
