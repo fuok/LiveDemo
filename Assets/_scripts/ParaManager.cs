@@ -13,6 +13,12 @@ public class ParaManager : MonoBehaviour
 	private DbAccess db;
 	private SqliteDataReader sqReader;
 
+	static ParaManager ()
+	{
+		//全局最先调用，这里没用
+		print ("ParaManager Construct");
+	}
+
 	void Awake ()
 	{
 		Instance = this;
