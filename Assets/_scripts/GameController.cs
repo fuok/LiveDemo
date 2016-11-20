@@ -16,6 +16,7 @@ namespace MyNamespace
 		public RawImage mBgImage;
 		[Header ("头像区域")]
 		public RawImage mPortraitImage;
+		public Texture mTransparentImage;
 		[Header ("文字显示区域")]
 		public Text mMainText;
 		public Button mShowText;
@@ -108,17 +109,18 @@ namespace MyNamespace
 			Paragraph para = ParaManager.Instance.GetNextPara (id);//如果id为空，会取到一个空para
 			print (para.ToString ());
 			if (!string.IsNullOrEmpty (id)) {//如果id为空就什么也不做，这里主要针对的是遇到分支的情况
-				//⭐️目前背景显示和头像显示使用的逻辑是相同的，就是每个para中都要有值，如果是空值就会显示空背景和空头像。
+				//⭐️,背景显示和头像显示使用的逻辑是不同的：背景是只有有值才发生改变，无值则保持现状。
 				//背景显示
-				if (mBgImage.texture && mBgImage.texture.name.Equals (para.background)) {
-					print ("背景已存在");
-				} else {
+				if (!string.IsNullOrEmpty (para.background)) {
 					mBgImage.texture = Resources.Load<Texture> ("background/" + para.background);
 				}
-
+				//⭐️,头像逻辑是每个para中都要有值，如果是空值就会显示空头像。
 				//头像显示
 				if (mPortraitImage.texture && mPortraitImage.texture.name.Equals (para.portrait)) {
 					print ("头像已存在");
+				} else if (string.IsNullOrEmpty (para.portrait)) {
+					//空头像，显示透明图
+					mPortraitImage.texture = mTransparentImage;
 				} else {
 					mPortraitImage.texture = Resources.Load<Texture> ("portrait/" + para.portrait);
 				}
