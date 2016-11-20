@@ -98,7 +98,7 @@ public class ParaManager : MonoBehaviour
 
 		while (ie.MoveNext ()) {
 			Paragraph para = ie.Current as Paragraph;
-			print (para.content);
+//			print (para.content);
 			db.InsertInto (Constants.tableName, new string[] {
 				"'" + para.id + "'",
 				"'" + para.background + "'",
