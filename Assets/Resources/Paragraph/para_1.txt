@@ -460,7 +460,22 @@
          "model_1" : "epsilon_angry",
          "model_2" : "",
          "function" : "",
-         "next" : "43"
+         "next" : "42.5"
+      },
+      {
+         "id" : "42.5",
+         "background" : "",
+         "portrait" : "",
+         "content" : "<color=black>事到如今要如何是好……</color>",
+         "model_0" : "",
+         "model_1" : "",
+         "model_2" : "",
+         "function" : "",
+         "option_1":"一口咬定没有看到。",
+         "option_2":"虽然看到了裙底，但没看到内裤。",
+         "goto_1":"43",
+         "goto_2":"43",
+         "next" : ""
       },
       {
          "id" : "43",
