@@ -20,7 +20,7 @@ namespace MyNamespace
 		[Header ("文字显示区域")]
 		public Text mMainText;
 		public Button mShowText;
-		private Tweener tweener;
+		private Tweener tweenerText;
 		[Header ("人物显示")]
 		[SerializeField]
 		private GameObject[] mLiveCharacters = new GameObject[3]{ null, null, null };
@@ -71,9 +71,9 @@ namespace MyNamespace
 		{
 			if (Input.GetKeyDown (KeyCode.A)) {
 //				mMainText.text = "";
-				tweener.ChangeValues ("", "12345hfejhfjdhsf", 5f);
+				tweenerText.ChangeValues ("", "12345hfejhfjdhsf", 5f);
 //				tweener.Restart ();
-				tweener.Rewind ();//Rewind是动画回初始状态，这里会回到5f的状态，按照说明，ChangeValues相当于修改初始值+Rewind
+				tweenerText.Rewind ();//Rewind是动画回初始状态，这里会回到5f的状态，按照说明，ChangeValues相当于修改初始值+Rewind
 			}
 
 //			if (Input.GetKeyDown (KeyCode.Y)) {
@@ -89,15 +89,15 @@ namespace MyNamespace
 		/// </summary>
 		private void InitTweener ()
 		{
-			tweener = mMainText.DOText ("", 0f, true, ScrambleMode.None, null);
-			tweener.SetAutoKill (false);
-			tweener.SetLoops (1);
-			tweener.SetEase (Ease.Linear);
-			tweener.OnComplete (() => {
+			tweenerText = mMainText.DOText ("", 0f, true, ScrambleMode.None, null);
+			tweenerText.SetAutoKill (false);
+			tweenerText.SetLoops (1);
+			tweenerText.SetEase (Ease.Linear);
+			tweenerText.OnComplete (() => {
 //				tweener.Kill (true);
 				print ("text done");
 			});
-			tweener.Pause ();//这里必须先暂停，否则后面restart重设duration也没用,而是会继续使用这里的0f
+			tweenerText.Pause ();//这里必须先暂停，否则后面restart重设duration也没用,而是会继续使用这里的0f
 		}
 
 		/// <summary>
@@ -130,8 +130,8 @@ namespace MyNamespace
 				//设置dotween
 				//			mMainTextClone.transform.SetParent (mCanvasTrans, false);//加false后uGUI位置就对了
 				//			tweener.ChangeEndValue (para.content, 5f, true);//这里就不需要ChangeEndValue了
-				tweener.ChangeValues ("", para.content, para.content.Length / 20f);//直接使用ChangeValues//使用富文本后出字速度明显慢了//注意最后的参数是float时间才是正常的
-				tweener.Restart ();
+				tweenerText.ChangeValues ("", para.content, para.content.Length / 20f);//直接使用ChangeValues//使用富文本后出字速度明显慢了//注意最后的参数是float时间才是正常的
+				tweenerText.Restart ();
 				
 				//人物live2d显示
 				string[] models = new string[3]{ para.model_0, para.model_1, para.model_2 };//3个位置上的模型名
