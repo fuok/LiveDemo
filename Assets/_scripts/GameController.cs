@@ -13,7 +13,10 @@ namespace MyNamespace
 	public class GameController : MonoBehaviour
 	{
 		[Header ("背景显示区域")]
-		public RawImage mBgImage;
+		public RawImage mBgImage1;
+		public RawImage mBgImage2;
+		//用两张图片切换显示，轮流fade in/out实现转场效果
+		private bool useFirstBg;
 		[Header ("头像区域")]
 		public RawImage mPortraitImage;
 		public Texture mTransparentImage;
@@ -112,7 +115,17 @@ namespace MyNamespace
 				//⭐️,背景显示和头像显示使用的逻辑是不同的：背景是只有有值才发生改变，无值则保持现状。
 				//背景显示
 				if (!string.IsNullOrEmpty (para.background)) {
-					mBgImage.texture = Resources.Load<Texture> ("background/" + para.background);
+					if (useFirstBg) {//两站背景图轮流切换，这里doTween不需要初始化，直接用，不深究
+						useFirstBg = false;
+						mBgImage1.texture = Resources.Load<Texture> ("background/" + para.background);
+						mBgImage1.DOFade (1f, 2f);
+						mBgImage2.DOFade (0f, 2f);
+					} else {
+						useFirstBg = true;
+						mBgImage2.texture = Resources.Load<Texture> ("background/" + para.background);
+						mBgImage1.DOFade (0f, 2f);
+						mBgImage2.DOFade (1f, 2f);
+					}
 				}
 				//⭐️,头像逻辑是每个para中都要有值，如果是空值就会显示空头像。
 				//头像显示
