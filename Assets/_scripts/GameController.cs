@@ -13,8 +13,8 @@ namespace MyNamespace
 	public class GameController : MonoBehaviour
 	{
 		[Header ("背景显示区域")]
-		public RawImage mBgImage1;
-		public RawImage mBgImage2;
+		public GameObject mBgImage1;
+		public GameObject mBgImage2;
 		//用两张图片切换显示，轮流fade in/out实现转场效果
 		private bool useFirstBg;
 		[Header ("头像区域")]
@@ -115,16 +115,24 @@ namespace MyNamespace
 				//⭐️,背景显示和头像显示使用的逻辑是不同的：背景是只有有值才发生改变，无值则保持现状。
 				//背景显示
 				if (!string.IsNullOrEmpty (para.background)) {
-					if (useFirstBg) {//两站背景图轮流切换，这里doTween不需要初始化，直接用，不深究
+					if (useFirstBg) {//两站背景图轮流切换，这里doTween不需要初始化，直接用，不深究;如果希望面片上的贴图渐隐，shader需要用透明
 						useFirstBg = false;
-						mBgImage1.texture = Resources.Load<Texture> ("background/" + para.background);
-						mBgImage1.DOFade (1f, 2f);
-						mBgImage2.DOFade (0f, 2f);
+						mBgImage1.GetComponent<Renderer> ().material = Resources.Load<Material> ("background/material/" + para.background);
+						//载入的图片默认alpha为255，所以设置为0
+						Color cc = mBgImage1.GetComponent<Renderer> ().material.color;
+						mBgImage1.GetComponent<Renderer> ().material.color = new Color (cc.r, cc.g, cc.b, 0f);
+						mBgImage1.GetComponent<Renderer> ().material.DOFade (1f, 2f);
+						//显示另一张
+						mBgImage2.GetComponent<Renderer> ().material.DOFade (0f, 2f);
 					} else {
 						useFirstBg = true;
-						mBgImage2.texture = Resources.Load<Texture> ("background/" + para.background);
-						mBgImage1.DOFade (0f, 2f);
-						mBgImage2.DOFade (1f, 2f);
+						mBgImage2.GetComponent<Renderer> ().material = Resources.Load<Material> ("background/material/" + para.background);
+						//载入的图片默认alpha为255，所以设置为0
+						Color cc = mBgImage2.GetComponent<Renderer> ().material.color;
+						mBgImage2.GetComponent<Renderer> ().material.color = new Color (cc.r, cc.g, cc.b, 0f);
+						mBgImage2.GetComponent<Renderer> ().material.DOFade (1f, 2f);
+						//显示另一张
+						mBgImage1.GetComponent<Renderer> ().material.DOFade (0f, 2f);
 					}
 				}
 				//⭐️,头像逻辑是每个para中都要有值，如果是空值就会显示空头像。
