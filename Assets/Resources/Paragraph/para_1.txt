@@ -13,7 +13,7 @@
       },
       {
          "id" : "2",
-         "background" : "nc019a",
+         "background" : "",
          "portrait" : "",
          "content" : "<color=black>两人会怎样看待昨天的彻底失败呢，我在某种程度上带着些期望走进活动室——小和和真真已经到场，正隔着桌子在喝茶。</color>",
          "model_0" : "",
@@ -24,7 +24,7 @@
       },
       {
          "id" : "3",
-         "background" : "nc016a",
+         "background" : "",
          "portrait" : "position_1",
          "content" : "<color=green>【小和】\n『总之，在搞笑的意义上算是成功了吧。』</color>",
          "model_0" : "",

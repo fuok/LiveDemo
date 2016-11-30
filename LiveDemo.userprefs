@@ -1,9 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_scripts/GameController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Resources/Paragraph/para_1.txt">
     <Files>
       <File FileName="Assets/_scripts/GameController.cs" Line="130" Column="32" />
-      <File FileName="Assets/Resources/Paragraph/para_1.txt" Line="27" Column="32" />
+      <File FileName="Assets/Resources/Paragraph/para_1.txt" Line="32" Column="25" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
