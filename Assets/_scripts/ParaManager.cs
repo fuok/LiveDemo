@@ -23,11 +23,11 @@ public class ParaManager : MonoBehaviour
 	{
 		Instance = this;
 
-		//读取/创建数据库
-		#if UNITY_EDITOR
-		db = new DbAccess ("data source=" + Constants.dbPath);//数据库名//("Server=127.0.0.1;UserId=root;Password=;Database=li")
-		#elif UNITY_ANDROID
+		//读取/创建数据库,目前只有android和pc后需要加入ios
+		#if UNITY_ANDROID
 		db = new DbAccess ("URI=file:" + Constants.dbPathAndroid);
+		#else
+		db = new DbAccess ("data source=" + Constants.dbPath);//数据库名//("Server=127.0.0.1;UserId=root;Password=;Database=li")
 		#endif
 	}
 
