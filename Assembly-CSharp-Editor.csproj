@@ -49,6 +49,8 @@
      <Compile Include="Assets\Apshai Arts\CodeGuard\Editor\CodeGuardWindow.cs" />
      <Compile Include="Assets\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
      <Compile Include="Assets\Demigiant\Editor\WelcomeScreen.cs" />
+     <Compile Include="Assets\Editor\CreateCanvas.cs" />
+     <Compile Include="Assets\Editor\Live2DImporter.cs" />
      <None Include="Assets\Apshai Arts\CodeGuard\Editor\Compatibility.txt" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-MultCullMasked.shader" />
      <None Include="Assets\Demigiant\DOTweenPro\readme.txt" />
