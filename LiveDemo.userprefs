@@ -1,10 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_scripts\GameController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_scripts/sample/LAppLive2DManager.cs">
     <Files>
-      <File FileName="Assets\_scripts\GameController.cs" Line="157" Column="17" />
-      <File FileName="Assets\_scripts\ParaManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Paragraph\para_1.txt" Line="64" Column="25" />
+      <File FileName="Assets/_scripts/sample/MyGameController.cs" Line="4" Column="7" />
+      <File FileName="Assets/_scripts/sample/LAppLive2DManager.cs" Line="80" Column="4" />
+      <File FileName="Assets/_scripts/Constants.cs" Line="1" Column="1" />
+      <File FileName="Assets/_scripts/sample/LAppModelProxy.cs" Line="33" Column="36" />
+      <File FileName="Assets/_scripts/Benchmark.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
