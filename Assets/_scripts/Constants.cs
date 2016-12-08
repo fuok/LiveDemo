@@ -16,4 +16,7 @@ public class Constants
 	//Android数据库地址
 	public static string dbPathAndroid = Application.persistentDataPath + "/" + dbName;
 
+	public static Vector3 mPos0 = new Vector3 (0f, 0f, 0f);
+	public static Vector3 mPos1 = new Vector3 (-7f, 0f, 0f);
+	public static Vector3 mPos2 = new Vector3 (7f, 0f, 0f);
 }

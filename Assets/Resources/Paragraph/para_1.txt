@@ -28,7 +28,7 @@
          "portrait" : "position_1",
          "content" : "<color=green>【小和】\n『总之，在搞笑的意义上算是成功了吧。』</color>",
          "model_0" : "",
-         "model_1" : "epsilon_idle",
+         "model_1" : "haru",
          "model_2" : "",
          "bgm" : "",
          "next" : "4"
@@ -39,7 +39,7 @@
          "portrait" : "position_2",
          "content" : "<color=maroon>【真真】\n『正是。首先在展示自我的存在感方面算是开了一个好头吧？』</color>",
          "model_0" : "",
-         "model_1" : "epsilon_idle",
+         "model_1" : "haru",
          "model_2" : "hibiki_idle",
          "function" : "",
          "next" : "5"
@@ -50,7 +50,7 @@
          "portrait" : "",
          "content" : "<color=navy>【按摩牛】\n（……没救了，这两人完全没有得到教训。）</color>",
          "model_0" : "",
-         "model_1" : "epsilon_idle",
+         "model_1" : "haru",
          "model_2" : "hibiki_idle",
          "bgm" : "",
          "next" : "6"
@@ -193,7 +193,7 @@
          "portrait" : "position_1",
          "content" : "<color=green>【小和】\n『按摩牛君明明是一番好意我却乱开玩笑，真对不起。』</color>",
          "model_0" : "",
-         "model_1" : "epsilon_idle",
+         "model_1" : "haru",
          "model_2" : "",
          "function" : "",
          "next" : "19"
@@ -215,7 +215,7 @@
          "portrait" : "position_1",
          "content" : "<color=green>【小和】\n『谢谢替我担心。我会注意的。』</color>",
          "model_0" : "",
-         "model_1" : "epsilon_idle",
+         "model_1" : "haru",
          "model_2" : "",
          "function" : "",
          "next" : "21"
@@ -660,7 +660,7 @@
          "portrait" : "position_2",
          "content" : "<color=maroon>【真真】\n『所以说得用‘走光’啊。如果是走光，那就不是‘给别人看’而是能表演出‘被看到了?’这种感觉吧？』</color>",
          "model_0" : "",
-         "model_1" : "epsilon_idle",
+         "model_1" : "haru",
          "model_2" : "hibiki_idle",
          "bgm" : "",
          "next" : "60"
