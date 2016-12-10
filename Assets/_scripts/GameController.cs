@@ -189,24 +189,36 @@ namespace MyNamespace
 //						}
 //					}
 //				}
-				string[] models = new string[3]{ para.model_0, para.model_1, para.model_2 };//3个位置上的模型名
+				string[] models = new string[3]{ para.model_0, para.model_1, para.model_2 };//3个位置上的模型名,json获取
+				//遍历所有角色，把需要的显示出来，不需要的隐藏
 				IEnumerator ie = mModelsDic.Keys.GetEnumerator ();
 				while (ie.MoveNext ()) {
-					print ("test:" + ie.Current.ToString ());
-					//TODO
+//					print ("test:" + ie.Current);
 					bool mGetModel = false;
 					for (int i = 0; i < models.Length; i++) {
-						if (!string.IsNullOrEmpty (models [i])) {
-							if (models [i].Equals (ie.Current.ToString ())) {
-								print ("找到已显示");
-								mGetModel = true;
+						if (!string.IsNullOrEmpty (models [i]) && models [i].Equals (ie.Current)) {
+							print ("找到已显示");
+							GameObject model = mModelsDic [ie.Current.ToString ()];
+							model.GetComponent<LAppModelProxy> ().SetVisible (true);
+							//根据配置位置修改live位置
+							switch (i) {
+							case 0:
+								model.transform.position = Constants.mPos0;
+								break;
+							case 1:
+								model.transform.position = Constants.mPos1;
+								break;
+							case 2:
+								model.transform.position = Constants.mPos2;
+								break;
+							default:
 								break;
 							}
+							mGetModel = true;
+							break;
 						}
 					}
-					if (mGetModel) {
-						mModelsDic [ie.Current.ToString ()].GetComponent<LAppModelProxy> ().SetVisible (true);
-					} else {
+					if (!mGetModel) {
 						mModelsDic [ie.Current.ToString ()].GetComponent<LAppModelProxy> ().SetVisible (false);
 					}
 				}
@@ -253,7 +265,6 @@ namespace MyNamespace
 			mOptionPanel.SetActive (false);
 			ShowParagraph (currentPara.next);
 		}
-
 
 		private void SaveGame ()
 		{
