@@ -28,7 +28,7 @@ namespace MyNamespace
 		[SerializeField]
 		//		private GameObject[] mLiveCharacters = new GameObject[3]{ null, null, null };
 		public GameObject[] mModelsList;
-		private string[] mModelsName = new string[]{ "haru", "wanko" };
+		//		private string[] mModelsName = new string[]{ "haru", "wanko" };
 		private Dictionary<string,GameObject> mModelsDic = new Dictionary<string, GameObject> ();
 		[Header ("选项分支")]
 		public GameObject mOptionPanel;
@@ -46,7 +46,7 @@ namespace MyNamespace
 		{
 			//塞model数据，mModelsList和mModelsName长度和顺序必须一致
 			for (int i = 0; i < mModelsList.Length; i++) {
-				mModelsDic.Add (mModelsName [i], mModelsList [i]);
+				mModelsDic.Add (mModelsList [i].GetComponent<LAppModelProxy> ().name, mModelsList [i]);
 			}
 		}
 
@@ -203,13 +203,13 @@ namespace MyNamespace
 							//根据配置位置修改live位置
 							switch (i) {
 							case 0:
-								model.transform.position = Constants.mPos0;
+								model.transform.position = Constants.POSITION_CENTER;
 								break;
 							case 1:
-								model.transform.position = Constants.mPos1;
+								model.transform.position = Constants.POSITION_LEFT;
 								break;
 							case 2:
-								model.transform.position = Constants.mPos2;
+								model.transform.position = Constants.POSITION_RIGHT;
 								break;
 							default:
 								break;
