@@ -15,8 +15,11 @@ namespace GameData
 		public string portrait;
 		public string content;
 		public string model_0;
+		public string motion_0;
 		public string model_1;
+		public string motion_1;
 		public string model_2;
+		public string motion_2;
 		public string bgm;
 		public string function;
 		public string option_1;
@@ -35,15 +38,18 @@ namespace GameData
 			this.next = next;
 		}
 
-		public Paragraph (string id, string background, string portrait, string content, string model_0, string model_1, string model_2, string bgm, string function, string option_1, string goto_1, string option_2, string goto_2, string next)
+		public Paragraph (string id, string background, string portrait, string content, string model_0, string motion_0, string model_1, string motion_1, string model_2, string motion_2, string bgm, string function, string option_1, string goto_1, string option_2, string goto_2, string next)
 		{
 			this.id = id;
 			this.background = background;
 			this.portrait = portrait;
 			this.content = content;
 			this.model_0 = model_0;
+			this.motion_0 = motion_0;
 			this.model_1 = model_1;
+			this.motion_1 = motion_1;
 			this.model_2 = model_2;
+			this.motion_2 = motion_2;
 			this.bgm = bgm;
 			this.function = function;
 			this.option_1 = option_1;
