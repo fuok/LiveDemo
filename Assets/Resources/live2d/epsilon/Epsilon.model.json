@@ -12,7 +12,7 @@
 				"file":"motions/Epsilon_idle_01.mtn"
 			}
 		],
-		"null":[
+		"tap_body":[
 			{
 				"file":"motions/Epsilon_m_01.mtn"
 			},

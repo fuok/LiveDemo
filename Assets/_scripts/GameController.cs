@@ -203,13 +203,25 @@ namespace MyNamespace
 							//根据配置位置修改live位置
 							switch (i) {
 							case 0:
-								model.transform.position = Constants.POSITION_CENTER;
+								model.transform.position = new Vector3 (Constants.POSITION_CENTER, model.transform.position.y, 0f);
+								//动作
+								if (!string.IsNullOrEmpty (para.motion_0)) {
+									model.GetComponent<LAppModelProxy> ().StartRandomMotion (para.motion_0, LAppDefine.PRIORITY_NORMAL);
+								}
 								break;
 							case 1:
-								model.transform.position = Constants.POSITION_LEFT;
+								model.transform.position = new Vector3 (Constants.POSITION_LEFT, model.transform.position.y, 0f);
+								//动作
+								if (!string.IsNullOrEmpty (para.motion_1)) {
+									model.GetComponent<LAppModelProxy> ().StartRandomMotion (para.motion_1, LAppDefine.PRIORITY_NORMAL);
+								}
 								break;
 							case 2:
-								model.transform.position = Constants.POSITION_RIGHT;
+								model.transform.position = new Vector3 (Constants.POSITION_RIGHT, model.transform.position.y, 0f);
+								//动作
+								if (!string.IsNullOrEmpty (para.motion_2)) {
+									model.GetComponent<LAppModelProxy> ().StartRandomMotion (para.motion_2, LAppDefine.PRIORITY_NORMAL);
+								}
 								break;
 							default:
 								break;

@@ -29,6 +29,7 @@
          "content" : "<color=green>【小和】\n『总之，在搞笑的意义上算是成功了吧。』</color>",
          "model_0" : "",
          "model_1" : "epsilon",
+         "motion_1" : "tap_body",
          "model_2" : "",
          "bgm" : "",
          "next" : "4"
@@ -41,6 +42,7 @@
          "model_0" : "",
          "model_1" : "epsilon",
          "model_2" : "hibiki",
+         "motion_2" : "tap_body",
          "function" : "",
          "next" : "5"
       },
