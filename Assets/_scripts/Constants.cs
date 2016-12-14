@@ -16,6 +16,7 @@ public class Constants
 	//Android数据库地址
 	public static string dbPathAndroid = Application.persistentDataPath + "/" + dbName;
 
+	//model位置，需要考虑到model高度不同，这里只使用X轴，不要使用Y轴
 	public static Vector3 POSITION_CENTER = new Vector3 (0f, 0f, 0f);
 	public static Vector3 POSITION_LEFT = new Vector3 (-7f, 0f, 0f);
 	public static Vector3 POSITION_RIGHT = new Vector3 (7f, 0f, 0f);
