@@ -1,13 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_scripts/GameController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Editor/Live2DImporter.cs">
     <Files>
-      <File FileName="Assets/_scripts/Constants.cs" Line="22" Column="41" />
-      <File FileName="Assets/_scripts/GameController.cs" Line="223" Column="80" />
-      <File FileName="Assets/_scripts/sample/LAppModelProxy.cs" Line="114" Column="42" />
-      <File FileName="Assets/_scripts/sample/LAppModel.cs" Line="442" Column="4" />
+      <File FileName="Assets/_scripts/Constants.cs" Line="1" Column="1" />
+      <File FileName="Assets/_scripts/GameController.cs" Line="1" Column="1" />
+      <File FileName="Assets/_scripts/sample/LAppModelProxy.cs" Line="1" Column="1" />
+      <File FileName="Assets/_scripts/sample/LAppModel.cs" Line="1" Column="1" />
       <File FileName="Assets/_scripts/sample/LAppView.cs" Line="1" Column="1" />
-      <File FileName="Assets/_scripts/sample/LAppDefine.cs" Line="32" Column="43" />
+      <File FileName="Assets/_scripts/sample/LAppDefine.cs" Line="1" Column="1" />
+      <File FileName="Assets/Editor/Live2DImporter.cs" Line="7" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
