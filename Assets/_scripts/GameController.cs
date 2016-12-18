@@ -24,6 +24,8 @@ namespace MyNamespace
 		public Text mMainText;
 		public Button mShowText;
 		private Tweener tweenerText;
+		//跳过文字显示过程
+		private bool isTextShowing;
 		[Header ("人物显示")]
 		[SerializeField]
 		//		private GameObject[] mLiveCharacters = new GameObject[3]{ null, null, null };
@@ -66,7 +68,12 @@ namespace MyNamespace
 		{
 			//初始化控件
 			mShowText.onClick.AddListener (delegate() {
-				ShowParagraph (currentPara.next);
+				if (isTextShowing) {
+					//快速显示
+					tweenerText.Complete ();
+				} else {
+					ShowParagraph (currentPara.next);
+				}
 			});
 			btnOption1.onClick.AddListener (delegate() {
 				ChooseOption (1);
@@ -108,6 +115,7 @@ namespace MyNamespace
 			tweenerText.OnComplete (() => {
 //				tweener.Kill (true);
 				print ("text done");
+				isTextShowing = false;
 			});
 			tweenerText.Pause ();//这里必须先暂停，否则后面restart重设duration也没用,而是会继续使用这里的0f
 		}
@@ -161,7 +169,8 @@ namespace MyNamespace
 				//			tweener.ChangeEndValue (para.content, 5f, true);//这里就不需要ChangeEndValue了
 				tweenerText.ChangeValues ("", para.content, para.content.Length / 20f);//直接使用ChangeValues//使用富文本后出字速度明显慢了//注意最后的参数是float时间才是正常的
 				tweenerText.Restart ();
-				
+				isTextShowing = true;
+
 				//人物live2d显示
 //				string[] models = new string[3]{ para.model_0, para.model_1, para.model_2 };//3个位置上的模型名
 //				for (int i = 0; i < models.Length; i++) {

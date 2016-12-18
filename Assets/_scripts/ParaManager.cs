@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Mono.Data.Sqlite;
 using GameData;
 using Newtonsoft.Json;
@@ -82,22 +83,20 @@ public class ParaManager : MonoBehaviour
 			//创建数据库表，与字段
 			db.CreateTable (Constants.tableName, paraCol, paraColType, false);
 			//初始化Para表
-			StartCoroutine (WritePara2DB ());
+			WritePara2DB ();
 		}
 	}
 
 	/// <summary>
-	/// 写入JSON到数据库
+	/// 写入JSON到数据库,5.5之后List的GetEnumerator无法再获取IEnumerator类型，所以不能再用Coroutine
 	/// </summary>
 	/// <returns>The para.</returns>
-	private IEnumerator WritePara2DB ()
+	private void WritePara2DB ()
 	{
-		IEnumerator ie;
 		TextAsset paraAsset = Resources.Load<TextAsset> ("paragraph/para_1");
 		ParagraphData mData = JsonConvert.DeserializeObject<ParagraphData> (paraAsset.text);
 		Resources.UnloadUnusedAssets ();
-		ie = mData.paragraphList.GetEnumerator ();
-		yield return ie;
+		List<Paragraph>.Enumerator ie = mData.paragraphList.GetEnumerator ();
 
 		while (ie.MoveNext ()) {
 			Paragraph para = ie.Current as Paragraph;
