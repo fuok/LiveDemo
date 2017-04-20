@@ -13,6 +13,18 @@ public class DatabaseManager : MonoBehaviour
 		Instance = this;
 	}
 
+	/// <summary>
+	/// Raises the destroy event.
+	/// </summary>
+	void OnDestroy ()//认为游戏结束
+	{
+		print ("OnDesrtoy");
+		//关闭对象
+		db.CloseSqlConnection ();
+	}
+
+	//-------------------------public function-------------
+
 	public void StartDatabase ()
 	{
 		//读取/创建数据库,目前只有android和pc后需要加入ios
@@ -28,7 +40,7 @@ public class DatabaseManager : MonoBehaviour
 		if (Constants.dataBaseVersion > version) {
 			//升级数据库
 			try {
-				db.DeleteTable (Constants.tableName);
+				db.DeleteTable (Constants.tableNamePara);//TODO
 			} catch (System.Exception ex) {
 
 			}
@@ -36,15 +48,16 @@ public class DatabaseManager : MonoBehaviour
 		}
 		//初始化bean
 		ParaBean.Instance.InitParaBean (db);
+		GameSaveBean.Instance.InitSaveBean (db);
 	}
 
 	/// <summary>
-	/// Raises the destroy event.
+	/// 清除数据库，用于测试
 	/// </summary>
-	void OnDestroy ()//认为游戏结束
+	public void CleanParaDB ()
 	{
-		print ("OnDesrtoy");
-		//关闭对象
-		db.CloseSqlConnection ();
+		PlayerPrefs.DeleteKey (Constants.DATABASE_VERSION);
+		db.DeleteTable (Constants.tableNamePara);
+		db.DeleteTable (Constants.tableNameSave);
 	}
 }

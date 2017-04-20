@@ -7,6 +7,7 @@ namespace GameData
 	
 	public class GameSave
 	{
+		public int savId;
 		public string savParaId;
 		public string savText;
 		public string savImgPath;

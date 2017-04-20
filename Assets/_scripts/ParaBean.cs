@@ -14,7 +14,7 @@ public class ParaBean : MonoBehaviour
 	private DbAccess db;
 	private SqliteDataReader sqReader;
 
-	private string[] paraCol = new string[] {
+	private string[] colName = new string[] {
 		"id",
 		"background", "portrait",
 		"content",
@@ -23,7 +23,7 @@ public class ParaBean : MonoBehaviour
 		"option_1", "goto_1", "option_2", "goto_2",
 		"next"
 	};
-	private string[] paraColType = new string[] {
+	private string[] colType = new string[] {
 		"text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text"
 	};
 
@@ -38,18 +38,13 @@ public class ParaBean : MonoBehaviour
 		Instance = this;
 	}
 
-	//	void Start ()
-	//	{
-	//		InitPara ();
-	//	}
-
 	//-------------------------public function-------------
 
 	public void InitParaBean (DbAccess db)
 	{
 		this.db = db;
 		//创建数据库表，与字段
-		db.CreateTable (Constants.tableName, paraCol, paraColType, false);
+		db.CreateTable (Constants.tableNamePara, colName, colType, false);
 		//初始化Para表
 		WritePara2DB ();
 	}
@@ -68,7 +63,7 @@ public class ParaBean : MonoBehaviour
 		while (ie.MoveNext ()) {
 			Paragraph para = ie.Current as Paragraph;
 //			print (para.content);
-			db.InsertInto (Constants.tableName, new string[] {
+			db.InsertInto (Constants.tableNamePara, new string[] {
 				"'" + para.id + "'",
 				"'" + para.background + "'",
 				"'" + para.portrait + "'",
@@ -90,20 +85,20 @@ public class ParaBean : MonoBehaviour
 		}
 	}
 
-	public void SavePara ()
-	{
-		
-	}
-
-	public void LoadPara ()
-	{
-		
-	}
-
-	public void GetAllPara ()
-	{
-		
-	}
+	//	public void SavePara ()
+	//	{
+	//
+	//	}
+	//
+	//	public void LoadPara ()
+	//	{
+	//
+	//	}
+	//
+	//	public void GetAllPara ()
+	//	{
+	//
+	//	}
 
 	/// <summary>
 	/// 分段读取
@@ -112,7 +107,7 @@ public class ParaBean : MonoBehaviour
 	public Paragraph GetPara (string id)
 	{
 		//通过next字段查找下一个Para
-		sqReader = db.SelectWhere (Constants.tableName, paraCol, new string[]{ "id" }, new string[]{ "=" }, new string[]{ id });
+		sqReader = db.SelectWhere (Constants.tableNamePara, colName, new string[]{ "id" }, new string[]{ "=" }, new string[]{ id });
 
 		//声明Paragraph对象
 		Paragraph currentPara = new Paragraph ();
@@ -137,15 +132,6 @@ public class ParaBean : MonoBehaviour
 				sqReader.GetString (sqReader.GetOrdinal ("next")));
 		}
 		return currentPara;
-	}
-
-	/// <summary>
-	/// 清除数据库，用于测试
-	/// </summary>
-	public void CleanParaDB ()
-	{
-		PlayerPrefs.DeleteKey (Constants.DATABASE_VERSION);
-		db.DeleteTable (Constants.tableName);
 	}
 
 }

@@ -5,8 +5,9 @@ public class Constants
 {
 	//数据库名
 	public const string dbName = "live db.db";
-	//para表名
-	public const string tableName = "paragraph";
+	//表名
+	public const string tableNamePara = "paragraph";
+	public const string tableNameSave = "gamesave";
 	//数据库版本号
 	public const int dataBaseVersion = 1;
 	//数据库地址(自行创建),//注意不是在根目录下,Application.dataPath会读取./assets/下面的

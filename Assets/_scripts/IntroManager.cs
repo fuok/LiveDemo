@@ -19,7 +19,7 @@ public class IntroManager : MonoBehaviour
 	{
 		//test
 		if (Input.GetKeyDown (KeyCode.P)) {
-			ParaBean.Instance.CleanParaDB ();
+			DatabaseManager.Instance.CleanParaDB ();
 		}
 
 	}
