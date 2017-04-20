@@ -36,55 +36,22 @@ public class ParaBean : MonoBehaviour
 	void Awake ()
 	{
 		Instance = this;
-
-		//读取/创建数据库,目前只有android和pc后需要加入ios
-		#if UNITY_ANDROID
-		db = new DbAccess ("URI=file:" + Constants.dbPathAndroid);
-		#else
-		db = new DbAccess ("data source=" + Constants.dbPath);//数据库名//("Server=127.0.0.1;UserId=root;Password=;Database=li")
-		#endif
 	}
 
-	void Start ()
-	{
-		InitPara ();
-	}
-
-	//	void Update ()
+	//	void Start ()
 	//	{
-	//
+	//		InitPara ();
 	//	}
-
-	/// <summary>
-	/// Raises the destroy event.
-	/// </summary>
-	void OnDestroy ()//认为游戏结束
-	{
-		print ("OnDesrtoy");
-		//关闭对象
-		db.CloseSqlConnection ();
-	}
 
 	//-------------------------public function-------------
 
-	public void InitPara ()
+	public void InitParaBean (DbAccess db)
 	{
-		//检查数据库版本
-		int version = PlayerPrefs.GetInt (Constants.DATABASE_VERSION, 0);//检查版本号
-		print ("version=" + version);
-		if (Constants.dataBaseVersion > version) {
-			//升级数据库
-			try {
-				db.DeleteTable (Constants.tableName);
-			} catch (System.Exception ex) {
-
-			}
-			PlayerPrefs.SetInt (Constants.DATABASE_VERSION, Constants.dataBaseVersion);
-			//创建数据库表，与字段
-			db.CreateTable (Constants.tableName, paraCol, paraColType, false);
-			//初始化Para表
-			WritePara2DB ();
-		}
+		this.db = db;
+		//创建数据库表，与字段
+		db.CreateTable (Constants.tableName, paraCol, paraColType, false);
+		//初始化Para表
+		WritePara2DB ();
 	}
 
 	/// <summary>

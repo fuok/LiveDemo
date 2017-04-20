@@ -58,7 +58,6 @@ namespace MyNamespace
 			Init ();
 			//进来后开始游戏
 			string continueParaId = PlayerPrefs.GetString (Constants.CONTINUE_PARA_ID, "1");
-			//这里设定了脚本执行顺序，ParaManager必须先执行
 			Paragraph pNext = GetParagraphById (continueParaId);
 			ShowParagraph (pNext);
 		}
