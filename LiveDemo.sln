@@ -1,9 +1,9 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{899BE648-F11D-8ED2-6314-C0792B6DEFDB}") = "LiveDemo", "Assembly-CSharp.csproj", "{AE3D9FAC-42CA-C971-9F5D-F81B5415C3FA}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveDemo", "Assembly-CSharp.csproj", "{AE3D9FAC-42CA-C971-9F5D-F81B5415C3FA}"
 EndProject
-Project("{899BE648-F11D-8ED2-6314-C0792B6DEFDB}") = "LiveDemo", "Assembly-CSharp-Editor.csproj", "{20BD9030-8FBE-2899-636D-C6F2D62ECC49}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveDemo", "Assembly-CSharp-Editor.csproj", "{20BD9030-8FBE-2899-636D-C6F2D62ECC49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

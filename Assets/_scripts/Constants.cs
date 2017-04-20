@@ -20,4 +20,7 @@ public class Constants
 	public static float POSITION_CENTER = 0f;
 	public static float POSITION_LEFT = -7f;
 	public static float POSITION_RIGHT = 7f;
+
+	//--------------strings-------------------------------------------------------------------
+	public const string CONTINUE_PARA_ID = "continue para id";
 }

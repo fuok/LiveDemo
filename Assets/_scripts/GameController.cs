@@ -27,7 +27,7 @@ namespace MyNamespace
 		//跳过文字显示过程
 		private bool isTextShowing;
 		[Header ("人物显示")]
-		[SerializeField]
+		//		[SerializeField]
 		//		private GameObject[] mLiveCharacters = new GameObject[3]{ null, null, null };
 		public GameObject[] mModelsList;
 		//		private string[] mModelsName = new string[]{ "haru", "wanko" };
@@ -40,9 +40,10 @@ namespace MyNamespace
 		public Button btnLoad;
 		public Button btnQuit;
 
-		//临时保存当前para
+		//保存当前para,针对第一次进来的时候,要预设一个初始next值
 		private Paragraph currentPara = new Paragraph ("1");
-		//针对第一次进来的时候,要预设一个next
+		//保存前一个para
+		private Paragraph lastPara = new Paragraph ();
 
 		void Awake ()
 		{
@@ -56,9 +57,10 @@ namespace MyNamespace
 		{
 			Init ();
 			//进来后开始游戏
-			string continuePara = PlayerPrefs.GetString ("continuePara", "1");
+			string continueParaId = PlayerPrefs.GetString (Constants.CONTINUE_PARA_ID, "1");
 			//这里设定了脚本执行顺序，ParaManager必须先执行
-			ShowParagraph (continuePara);
+			Paragraph pNext = GetParagraphById (continueParaId);
+			ShowParagraph (pNext);
 		}
 
 		/// <summary>
@@ -69,10 +71,11 @@ namespace MyNamespace
 			//初始化控件
 			mShowText.onClick.AddListener (delegate() {
 				if (isTextShowing) {
-					//快速显示
+					//文字快速显示
 					tweenerText.Complete ();
 				} else {
-					ShowParagraph (currentPara.next);
+					Paragraph pNext = GetParagraphById (currentPara.next);
+					ShowParagraph (pNext);
 				}
 			});
 			btnOption1.onClick.AddListener (delegate() {
@@ -121,17 +124,31 @@ namespace MyNamespace
 		}
 
 		/// <summary>
-		/// Shows the next paragraph.
+		/// Gets the paragraph by identifier.
 		/// </summary>
-		private void ShowParagraph (string id)
+		/// <returns>The paragraph by identifier.</returns>
+		/// <param name="id">Identifier.</param>
+		private Paragraph GetParagraphById (string id)
 		{
 			//获取新的Paragraph
-			Paragraph para = ParaManager.Instance.GetNextPara (id);//如果id为空，会取到一个空para
-			print (para.ToString ());
-			if (!string.IsNullOrEmpty (id)) {//如果id为空就什么也不做，这里主要针对的是遇到分支的情况
-				//⭐️,背景显示和头像显示使用的逻辑是不同的：背景是只有有值才发生改变，无值则保持现状。
-				//背景显示
-				if (!string.IsNullOrEmpty (para.background)) {
+			return ParaManager.Instance.GetNextPara (id);//如果id为空，会取到一个空para
+		}
+
+		/// <summary>
+		/// Shows the next paragraph.
+		/// </summary>
+		private void ShowParagraph (Paragraph para)
+		{
+			if (!string.IsNullOrEmpty (para.id)) {//如果id为空就什么也不做，这里主要针对的是遇到分支的情况
+				//把取到的para保存到当前,⭐️
+				lastPara = currentPara;
+				currentPara = para;
+				print (para.ToString ());
+
+				//背景显示,原先背景显示和头像显示使用的逻辑是不同的：背景是只有有值才发生改变，无值则保持现状。但读取进度会显示错误的背景
+//				if (!string.IsNullOrEmpty (para.background)) {
+				if (!para.background.Equals (lastPara.background)) {
+					print (para.background + "-" + lastPara.background);
 					if (useFirstBg) {//两站背景图轮流切换，这里doTween不需要初始化，直接用，不深究;如果希望面片上的贴图渐隐，shader需要用透明
 						useFirstBg = false;
 						mBgImage1.GetComponent<Renderer> ().material = Resources.Load<Material> ("background/material/" + para.background);
@@ -206,7 +223,7 @@ namespace MyNamespace
 					bool mGetModel = false;
 					for (int i = 0; i < models.Length; i++) {
 						if (!string.IsNullOrEmpty (models [i]) && models [i].Equals (ie.Current)) {
-							print ("找到已显示");
+							print ("角色已存在");
 							GameObject model = mModelsDic [ie.Current.ToString ()];
 							model.GetComponent<LAppModelProxy> ().SetVisible (true);
 							//根据配置位置修改live位置
@@ -260,11 +277,7 @@ namespace MyNamespace
 					btnOption1.GetComponentInChildren<Text> ().text = para.option_1;
 					btnOption2.GetComponentInChildren<Text> ().text = para.option_2;
 				}
-
-				//把取到的para保存到当前,⭐️
-				currentPara = para;
 			}
-
 		}
 
 		/// <summary>
@@ -284,7 +297,8 @@ namespace MyNamespace
 				break;
 			}
 			mOptionPanel.SetActive (false);
-			ShowParagraph (currentPara.next);
+			Paragraph pNext = GetParagraphById (currentPara.next);
+			ShowParagraph (pNext);
 		}
 
 		private void SaveGame ()
@@ -295,7 +309,7 @@ namespace MyNamespace
 		private void LoadGame ()
 		{
 			string id = PlayerPrefs.GetString ("saveData_1", "");//如果没有存档就取空
-			ShowParagraph (id);
+			ShowParagraph (GetParagraphById (id));
 		}
 
 		private void QuitGame ()
