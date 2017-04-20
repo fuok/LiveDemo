@@ -55,17 +55,33 @@ namespace MyNamespace
 
 		void Start ()
 		{
-			Init ();
+			//
+			InitUI ();
 			//进来后开始游戏
 			string continueParaId = PlayerPrefs.GetString (Constants.CONTINUE_PARA_ID, "1");
 			Paragraph pNext = GetParagraphById (continueParaId);
 			ShowParagraph (pNext);
 		}
 
+		void Update ()
+		{
+			//			if (Input.GetKeyDown (KeyCode.A)) {
+			//				tweenerText.ChangeValues ("", "12345hfejhfjdhsf", 5f);
+			//				tweenerText.Rewind ();//Rewind是动画回初始状态，这里会回到5f的状态，按照说明，ChangeValues相当于修改初始值+Rewind
+			//			}
+
+			//			if (Input.GetKeyDown (KeyCode.Y)) {
+			//				AudioManagerS.Instance.PlayBGM ("bgm_1");
+			//			}
+			//			if (Input.GetKeyDown (KeyCode.U)) {
+			//				AudioManagerS.Instance.PlayBGM ("bgm_2");
+			//			}
+		}
+
 		/// <summary>
 		/// 初始化.
 		/// </summary>
-		private void Init ()
+		private void InitUI ()
 		{
 			//初始化控件
 			mShowText.onClick.AddListener (delegate() {
@@ -88,21 +104,6 @@ namespace MyNamespace
 			btnQuit.onClick.AddListener (QuitGame);
 			//初始化文字DoTween
 			InitTweener ();
-		}
-
-		void Update ()
-		{
-//			if (Input.GetKeyDown (KeyCode.A)) {
-//				tweenerText.ChangeValues ("", "12345hfejhfjdhsf", 5f);
-//				tweenerText.Rewind ();//Rewind是动画回初始状态，这里会回到5f的状态，按照说明，ChangeValues相当于修改初始值+Rewind
-//			}
-
-//			if (Input.GetKeyDown (KeyCode.Y)) {
-//				AudioManagerS.Instance.PlayBGM ("bgm_1");
-//			}
-//			if (Input.GetKeyDown (KeyCode.U)) {
-//				AudioManagerS.Instance.PlayBGM ("bgm_2");
-//			}
 		}
 
 		/// <summary>

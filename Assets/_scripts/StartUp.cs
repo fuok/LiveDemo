@@ -5,17 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class StartUp : MonoBehaviour
 {
-	public GameObject mParaManager;
+	public GameObject mDatabaseManager;
 
 	// Use this for initialization
 	void Start ()
 	{
-		GameObject.DontDestroyOnLoad (mParaManager);
-		SceneManager.LoadScene ("[Intro]");
+		GameObject.DontDestroyOnLoad (mDatabaseManager);
+		SceneManager.LoadScene ("[Load]");
 	}
-	
-	// Update is called once per frame
-	//	void Update () {
-	//
-	//	}
 }

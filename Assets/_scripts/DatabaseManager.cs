@@ -6,15 +6,14 @@ public class DatabaseManager : MonoBehaviour
 {
 	public static DatabaseManager Instance{ get; private set; }
 
-	public DbAccess db;
+	private DbAccess db;
 
 	void Awake ()
 	{
 		Instance = this;
 	}
 
-	// Use this for initialization
-	void Start ()
+	public void StartDatabase ()
 	{
 		//读取/创建数据库,目前只有android和pc后需要加入ios
 		#if UNITY_ANDROID

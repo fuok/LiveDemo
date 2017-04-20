@@ -11,7 +11,6 @@ public class LoadingSceneManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		//TODO,简单处理
 		StartCoroutine (StartMain ());
 	}
 	
@@ -26,8 +25,9 @@ public class LoadingSceneManager : MonoBehaviour
 
 	private IEnumerator StartMain ()
 	{
-		yield return new WaitForSeconds (1f);
-		async = SceneManager.LoadSceneAsync ("[Play]", LoadSceneMode.Single);
+//		yield return new WaitForSeconds (1f);
+		async = SceneManager.LoadSceneAsync ("[Intro]", LoadSceneMode.Single);
+		print ("jin ru la !!!");
 		yield return async;
 	}
 

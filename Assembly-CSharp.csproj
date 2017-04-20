@@ -69,10 +69,10 @@
      <Compile Include="Assets\_scripts\DebugInfo.cs" />
      <Compile Include="Assets\_scripts\GameController.cs" />
      <Compile Include="Assets\_scripts\GameSave.cs" />
+     <Compile Include="Assets\_scripts\IntroManager.cs" />
      <Compile Include="Assets\_scripts\LoadingSceneManager.cs" />
      <Compile Include="Assets\_scripts\ParaBean.cs" />
      <Compile Include="Assets\_scripts\ParagraphData.cs" />
-     <Compile Include="Assets\_scripts\StartSceneManager.cs" />
      <Compile Include="Assets\_scripts\StartUp.cs" />
      <Compile Include="Assets\_scripts\sample\ButtonChangeModel.cs" />
      <Compile Include="Assets\_scripts\sample\LAppDefine.cs" />
