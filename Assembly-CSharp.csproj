@@ -64,13 +64,16 @@
      <Compile Include="Assets\Live2D\framework\Live2DFramework.cs" />
      <Compile Include="Assets\_scripts\AudioManagerS.cs" />
      <Compile Include="Assets\_scripts\Constants.cs" />
+     <Compile Include="Assets\_scripts\DatabaseManager.cs" />
      <Compile Include="Assets\_scripts\DbAccess.cs" />
      <Compile Include="Assets\_scripts\DebugInfo.cs" />
      <Compile Include="Assets\_scripts\GameController.cs" />
+     <Compile Include="Assets\_scripts\GameSave.cs" />
      <Compile Include="Assets\_scripts\LoadingSceneManager.cs" />
-     <Compile Include="Assets\_scripts\ParaManager.cs" />
+     <Compile Include="Assets\_scripts\ParaBean.cs" />
      <Compile Include="Assets\_scripts\ParagraphData.cs" />
      <Compile Include="Assets\_scripts\StartSceneManager.cs" />
+     <Compile Include="Assets\_scripts\StartUp.cs" />
      <Compile Include="Assets\_scripts\sample\ButtonChangeModel.cs" />
      <Compile Include="Assets\_scripts\sample\LAppDefine.cs" />
      <Compile Include="Assets\_scripts\sample\LAppLive2DManager.cs" />

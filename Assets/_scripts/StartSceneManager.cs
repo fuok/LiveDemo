@@ -9,23 +9,21 @@ public class StartSceneManager : MonoBehaviour
 	//	private AsyncOperation async;
 	//	private int progress = 0;
 
-	// Use this for initialization
 	void Start ()
 	{
 		btnStart.onClick.AddListener (delegate() {
-			SceneManager.LoadScene ("Load");
+			SceneManager.LoadScene ("[Load]");
 		});
 		btnExit.onClick.AddListener (() => {
 			Application.Quit ();
 		});
 	}
-	
-	// Update is called once per frame
+
 	void Update ()
 	{
 		//test
 		if (Input.GetKeyDown (KeyCode.P)) {
-			ParaManager.Instance.CleanParaDB ();
+			ParaBean.Instance.CleanParaDB ();
 		}
 
 	}

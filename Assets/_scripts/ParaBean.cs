@@ -7,9 +7,9 @@ using Newtonsoft.Json;
 using System.IO;
 
 //通过DB操作，保存和读取Paragraph，只包含CRUD的CR
-public class ParaManager : MonoBehaviour
+public class ParaBean : MonoBehaviour
 {
-	public static ParaManager Instance{ get; private set; }
+	public static ParaBean Instance{ get; private set; }
 
 	private DbAccess db;
 	private SqliteDataReader sqReader;
@@ -27,7 +27,7 @@ public class ParaManager : MonoBehaviour
 		"text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text"
 	};
 
-	static ParaManager ()
+	static ParaBean ()
 	{
 		//全局最先调用，这里没用
 		print ("ParaManager Construct");
@@ -47,13 +47,13 @@ public class ParaManager : MonoBehaviour
 
 	void Start ()
 	{
-		
+		InitPara ();
 	}
 
-	void Update ()
-	{
-
-	}
+	//	void Update ()
+	//	{
+	//
+	//	}
 
 	/// <summary>
 	/// Raises the destroy event.
@@ -70,7 +70,7 @@ public class ParaManager : MonoBehaviour
 	public void InitPara ()
 	{
 		//检查数据库版本
-		int version = PlayerPrefs.GetInt ("dataBaseVersion", 0);//检查版本号
+		int version = PlayerPrefs.GetInt (Constants.DATABASE_VERSION, 0);//检查版本号
 		print ("version=" + version);
 		if (Constants.dataBaseVersion > version) {
 			//升级数据库
@@ -79,7 +79,7 @@ public class ParaManager : MonoBehaviour
 			} catch (System.Exception ex) {
 
 			}
-			PlayerPrefs.SetInt ("dataBaseVersion", Constants.dataBaseVersion);
+			PlayerPrefs.SetInt (Constants.DATABASE_VERSION, Constants.dataBaseVersion);
 			//创建数据库表，与字段
 			db.CreateTable (Constants.tableName, paraCol, paraColType, false);
 			//初始化Para表
@@ -142,11 +142,10 @@ public class ParaManager : MonoBehaviour
 	/// 分段读取
 	/// </summary>
 	/// <returns>The next para.</returns>
-	public Paragraph GetNextPara (string next)
+	public Paragraph GetPara (string id)
 	{
-//		paraIndex++;
 		//通过next字段查找下一个Para
-		sqReader = db.SelectWhere (Constants.tableName, paraCol, new string[]{ "id" }, new string[]{ "=" }, new string[]{ next });
+		sqReader = db.SelectWhere (Constants.tableName, paraCol, new string[]{ "id" }, new string[]{ "=" }, new string[]{ id });
 
 		//声明Paragraph对象
 		Paragraph currentPara = new Paragraph ();
@@ -178,7 +177,7 @@ public class ParaManager : MonoBehaviour
 	/// </summary>
 	public void CleanParaDB ()
 	{
-		PlayerPrefs.DeleteKey ("dataBaseVersion");
+		PlayerPrefs.DeleteKey (Constants.DATABASE_VERSION);
 		db.DeleteTable (Constants.tableName);
 	}
 

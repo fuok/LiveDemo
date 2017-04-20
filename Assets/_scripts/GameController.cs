@@ -131,7 +131,7 @@ namespace MyNamespace
 		private Paragraph GetParagraphById (string id)
 		{
 			//获取新的Paragraph
-			return ParaManager.Instance.GetNextPara (id);//如果id为空，会取到一个空para
+			return ParaBean.Instance.GetPara (id);//如果id为空，会取到一个空para
 		}
 
 		/// <summary>
@@ -314,7 +314,7 @@ namespace MyNamespace
 
 		private void QuitGame ()
 		{
-			SceneManager.LoadScene ("Start", LoadSceneMode.Single);
+			SceneManager.LoadScene ("[Intro]", LoadSceneMode.Single);
 		}
 
 		//----------------------------------------------------------------------------

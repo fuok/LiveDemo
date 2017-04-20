@@ -21,6 +21,7 @@ public class Constants
 	public static float POSITION_LEFT = -7f;
 	public static float POSITION_RIGHT = 7f;
 
-	//--------------strings-------------------------------------------------------------------
+	//--------------playerprefab keys-------------------------------------------------------------------
 	public const string CONTINUE_PARA_ID = "continue para id";
+	public const string DATABASE_VERSION = "database version";
 }
