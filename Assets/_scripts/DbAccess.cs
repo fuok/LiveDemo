@@ -250,12 +250,12 @@ public class DbAccess
 	/// <param name="colsvalues">Colsvalues.</param>
 	/// <param name="selectkey">Selectkey.</param>
 	/// <param name="selectvalue">Selectvalue.</param>
-	public SqliteDataReader UpdateInto (string tableName, string[]cols, string[]colsvalues, string selectkey, string selectvalue)
+	public SqliteDataReader UpdateInto (string tableName, string[] targetCols, string[] targetValues, string selectkey, string selectvalue)
 	{
-		string query = "UPDATE " + tableName + " SET " + cols [0] + " = " + "'" + colsvalues [0] + "'";
+		string query = "UPDATE " + tableName + " SET " + targetCols [0] + " = " + "'" + targetValues [0] + "'";
 
-		for (int i = 1; i < colsvalues.Length; ++i) {
-			query += ", " + cols [i] + " =" + "'" + colsvalues [i] + "'";
+		for (int i = 1; i < targetValues.Length; ++i) {
+			query += ", " + targetCols [i] + " =" + "'" + targetValues [i] + "'";
 		}
 
 		query += " WHERE " + selectkey + " = " + "'" + selectvalue + "'";
