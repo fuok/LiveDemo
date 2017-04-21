@@ -306,15 +306,18 @@ namespace MyNamespace
 		{
 //			PlayerPrefs.SetString ("saveData_1", currentPara.id);
 
-//			GameSave save = new GameSave (1, "101", "haha", "null");
-//			GameSaveBean.Instance.AddGameSave2DB (save);
+			GameSave save = new GameSave (1, "101", "haha", "null");
+			GameSaveBean.Instance.AddGameSave2DB (save);
 		}
 
 		//读取游戏,TODO
 		private void LoadGame ()
 		{
-			string id = PlayerPrefs.GetString ("saveData_1", "");//如果没有存档就取空
-			ShowParagraph (GetParagraphById (id));
+//			string id = PlayerPrefs.GetString ("saveData_1", "");//如果没有存档就取空
+//			ShowParagraph (GetParagraphById (id));
+
+			GameSave save = GameSaveBean.Instance.GetGameSaveFromDB (1);
+			print (save.ToString ());
 		}
 
 		private void QuitGame ()

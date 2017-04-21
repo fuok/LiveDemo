@@ -115,7 +115,7 @@ public class DbAccess
 	/// <returns>The into.</returns>
 	/// <param name="tableName">Table name.</param>
 	/// <param name="values">Values.</param>
-	public SqliteDataReader InsertInto (string tableName, string[] values)
+	public SqliteDataReader InsertInto (string tableName, object[] values)
 	{
 		string query = "INSERT INTO " + tableName + " VALUES (" + values [0];
 
@@ -135,7 +135,7 @@ public class DbAccess
 	/// <param name="tableName">Table name.</param>
 	/// <param name="cols">Cols.</param>
 	/// <param name="values">Values.</param>
-	public SqliteDataReader InsertIntoSpecific (string tableName, string[] cols, string[] values)
+	public SqliteDataReader InsertIntoSpecific (string tableName, string[] cols, object[] values)
 	{
 		if (cols.Length != values.Length) {
 			throw new SqliteException ("columns.Length != values.Length");
@@ -188,7 +188,7 @@ public class DbAccess
 	/// <param name="tableName">Table name.</param>
 	/// <param name="cols">Cols.</param>
 	/// <param name="colsvalues">Colsvalues.</param>
-	public SqliteDataReader Delete (string tableName, string[]cols, string[]colsvalues)
+	public SqliteDataReader Delete (string tableName, string[] cols, object[] colsvalues)
 	{
 		string query = "DELETE FROM " + tableName + " WHERE " + cols [0] + " = " + colsvalues [0];
 
@@ -212,30 +212,29 @@ public class DbAccess
 	}
 
 	/// <summary>
-	/// 按条件查询数据
+	/// 按条件查询数据,2017-04-22
 	/// </summary>
 	/// <returns>The where.</returns>
 	/// <param name="tableName">Table name.</param>
-	/// <param name="items">Items.</param>
-	/// <param name="col">Col.</param>
+	/// <param name="items">查找的列名，一般是全部</param>
+	/// <param name="col">作为查找条件的列名</param>
 	/// <param name="operation">Operation.</param>
-	/// <param name="values">Values.</param>
-	public SqliteDataReader SelectWhere (string tableName, string[] items, string[] col, string[] operation, string[] values)
+	/// <param name="values">查找的值，类型是object，string型需要加单引号</param>
+	public SqliteDataReader SelectWhere (string tableName, string[] searchCols, string[] selectCol, string[] operation, object[] selectvalue)
 	{
-		if (col.Length != operation.Length || operation.Length != values.Length) {		
+		if (selectCol.Length != operation.Length || operation.Length != selectvalue.Length) {		
 			throw new SqliteException ("col.Length != operation.Length != values.Length");
 		}
+		string query = "SELECT " + searchCols [0];
 
-		string query = "SELECT " + items [0];
-
-		for (int i = 1; i < items.Length; ++i) {
-			query += ", " + items [i];
+		for (int i = 1; i < searchCols.Length; ++i) {
+			query += ", " + searchCols [i];
 		}
 
-		query += " FROM " + tableName + " WHERE " + col [0] + operation [0] + "'" + values [0] + "' ";
+		query += " FROM " + tableName + " WHERE " + selectCol [0] + operation [0] + selectvalue [0];
 
-		for (int i = 1; i < col.Length; ++i) {
-			query += " AND " + col [i] + operation [i] + "'" + values [0] + "' ";
+		for (int i = 1; i < selectCol.Length; ++i) {
+			query += " AND " + selectCol [i] + operation [i] + selectvalue [0];
 		}
 
 		return ExecuteQuery (query);
@@ -250,15 +249,15 @@ public class DbAccess
 	/// <param name="colsvalues">Colsvalues.</param>
 	/// <param name="selectkey">Selectkey.</param>
 	/// <param name="selectvalue">Selectvalue.</param>
-	public SqliteDataReader UpdateInto (string tableName, string[] targetCols, string[] targetValues, string selectkey, string selectvalue)
+	public SqliteDataReader UpdateInto (string tableName, string[] targetCols, object[] targetValues, string selectCol, object selectvalue)
 	{
-		string query = "UPDATE " + tableName + " SET " + targetCols [0] + " = " + "'" + targetValues [0] + "'";
+		string query = "UPDATE " + tableName + " SET " + targetCols [0] + " = " + targetValues [0];
 
 		for (int i = 1; i < targetValues.Length; ++i) {
-			query += ", " + targetCols [i] + " =" + "'" + targetValues [i] + "'";
+			query += ", " + targetCols [i] + " =" + targetValues [i];
 		}
 
-		query += " WHERE " + selectkey + " = " + "'" + selectvalue + "'";
+		query += " WHERE " + selectCol + " = " + selectvalue;
 
 		return ExecuteQuery (query);
 	}

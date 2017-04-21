@@ -107,7 +107,7 @@ public class ParaBean : MonoBehaviour
 	public Paragraph GetParaFromDB (string id)
 	{
 		//通过next字段查找下一个Para
-		sqReader = db.SelectWhere (Constants.tableNamePara, colName, new string[]{ "id" }, new string[]{ "=" }, new string[]{ id });
+		sqReader = db.SelectWhere (Constants.tableNamePara, colName, new string[]{ "id" }, new string[]{ "=" }, new string[]{ "'" + id + "'" });
 
 		//声明Paragraph对象
 		Paragraph currentPara = new Paragraph ();

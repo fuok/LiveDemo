@@ -34,8 +34,8 @@ public class GameSaveBean : MonoBehaviour
 
 	public void AddGameSave2DB (GameSave save)
 	{
-		db.InsertInto (Constants.tableNameSave, new string[] {
-			"'" + save.savId + "'",
+		db.InsertInto (Constants.tableNameSave, new object[] {
+			save.savId,
 			"'" + save.savParaId + "'",
 			"'" + save.savText + "'",
 			"'" + save.savImgPath + "'"
@@ -44,7 +44,14 @@ public class GameSaveBean : MonoBehaviour
 
 	public GameSave GetGameSaveFromDB (int id)
 	{
-//		sqReader = db.SelectWhere (Constants.tableNameSave, colName, new string[]{ "id" }, new string[]{ "=" }, new string[]{ id });
-		return null;
+		sqReader = db.SelectWhere (Constants.tableNameSave, colName, new string[]{ "savId" }, new string[]{ "=" }, new object[]{ id });
+		GameSave save = new GameSave ();
+		while (sqReader.Read ()) {
+			save = new GameSave (sqReader.GetInt32 (sqReader.GetOrdinal ("savId")), 
+				sqReader.GetString (sqReader.GetOrdinal ("savParaId")),
+				sqReader.GetString (sqReader.GetOrdinal ("savText")),
+				sqReader.GetString (sqReader.GetOrdinal ("savImgPath")));
+		}
+		return save;
 	}
 }
