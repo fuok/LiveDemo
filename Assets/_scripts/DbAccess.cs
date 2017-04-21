@@ -72,13 +72,11 @@ public class DbAccess
 	/// <param name="sqlQuery">Sql query.</param>
 	private SqliteDataReader ExecuteQuery (string sqlQuery)
 	{
-//		Debug.Log (sqlQuery);
+		Debug.Log ("ExecuteQuery:" + sqlQuery);
+//		dbCommand = new SqliteCommand (sqlQuery, dbConnection);
 		dbCommand = dbConnection.CreateCommand ();
 		dbCommand.CommandText = sqlQuery;
-		//			dbCommand = new SqliteCommand (sqlQuery, dbConnection);
-
 		reader = dbCommand.ExecuteReader ();
-
 		return reader;
 	}
 

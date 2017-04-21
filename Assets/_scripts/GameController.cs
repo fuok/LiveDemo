@@ -131,7 +131,7 @@ namespace MyNamespace
 		private Paragraph GetParagraphById (string id)
 		{
 			//获取新的Paragraph
-			return ParaBean.Instance.GetPara (id);//如果id为空，会取到一个空para
+			return ParaBean.Instance.GetParaFromDB (id);//如果id为空，会取到一个空para
 		}
 
 		/// <summary>
@@ -301,11 +301,16 @@ namespace MyNamespace
 			ShowParagraph (pNext);
 		}
 
+		//储存游戏,TODO
 		private void SaveGame ()
 		{
-			PlayerPrefs.SetString ("saveData_1", currentPara.id);
+//			PlayerPrefs.SetString ("saveData_1", currentPara.id);
+
+//			GameSave save = new GameSave (1, "101", "haha", "null");
+//			GameSaveBean.Instance.AddGameSave2DB (save);
 		}
 
+		//读取游戏,TODO
 		private void LoadGame ()
 		{
 			string id = PlayerPrefs.GetString ("saveData_1", "");//如果没有存档就取空
