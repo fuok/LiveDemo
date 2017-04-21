@@ -305,8 +305,7 @@ namespace MyNamespace
 		private void SaveGame ()
 		{
 //			PlayerPrefs.SetString ("saveData_1", currentPara.id);
-
-			GameSave save = new GameSave (1, "101", "haha", "null");
+			GameSave save = new GameSave (1, currentPara.id, currentPara.content, "null");
 			GameSaveBean.Instance.AddGameSave2DB (save);
 		}
 
@@ -314,9 +313,8 @@ namespace MyNamespace
 		private void LoadGame ()
 		{
 //			string id = PlayerPrefs.GetString ("saveData_1", "");//如果没有存档就取空
-//			ShowParagraph (GetParagraphById (id));
-
 			GameSave save = GameSaveBean.Instance.GetGameSaveFromDB (1);
+			ShowParagraph (GetParagraphById (save.savParaId));
 			print (save.ToString ());
 		}
 
