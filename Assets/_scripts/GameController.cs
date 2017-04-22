@@ -12,6 +12,10 @@ namespace MyNamespace
 	
 	public class GameController : MonoBehaviour
 	{
+		[Header ("游戏主区域")]
+		public GameObject panelInGame;
+		public Button btnMainMenu;
+
 		[Header ("背景显示区域")]
 		public GameObject mBgImage1;
 		public GameObject mBgImage2;
@@ -35,10 +39,12 @@ namespace MyNamespace
 		[Header ("选项分支")]
 		public GameObject mOptionPanel;
 		public Button btnOption1, btnOption2;
-		[Header ("Save/Load/Quit")]
+		[Header ("Main Menu")]
+		public GameObject panelMainMenu;
 		public Button btnSave;
 		public Button btnLoad;
 		public Button btnQuit;
+		public Button btnBack;
 
 		//保存当前para,针对第一次进来的时候,要预设一个初始next值
 		private Paragraph currentPara = new Paragraph ("1");
@@ -79,11 +85,10 @@ namespace MyNamespace
 		}
 
 		/// <summary>
-		/// 初始化.
+		/// 初始化控件
 		/// </summary>
 		private void InitUI ()
 		{
-			//初始化控件
 			mShowText.onClick.AddListener (delegate() {
 				if (isTextShowing) {
 					//文字快速显示
@@ -93,17 +98,27 @@ namespace MyNamespace
 					ShowParagraph (pNext);
 				}
 			});
+			//分支
 			btnOption1.onClick.AddListener (delegate() {
 				ChooseOption (1);
 			});
 			btnOption2.onClick.AddListener (delegate() {
 				ChooseOption (2);
 			});
+			//初始化文字DoTween
+			InitTweener ();
+			//Main Menu
+			btnMainMenu.onClick.AddListener (() => {
+				panelInGame.SetActive (false);
+				panelMainMenu.SetActive (true);
+			});
 			btnSave.onClick.AddListener (SaveGame);
 			btnLoad.onClick.AddListener (LoadGame);
 			btnQuit.onClick.AddListener (QuitGame);
-			//初始化文字DoTween
-			InitTweener ();
+			btnBack.onClick.AddListener (() => {
+				panelMainMenu.SetActive (false);
+				panelInGame.SetActive (true);
+			});
 		}
 
 		/// <summary>
