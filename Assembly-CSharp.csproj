@@ -75,6 +75,7 @@
      <Compile Include="Assets\_scripts\ParaBean.cs" />
      <Compile Include="Assets\_scripts\ParagraphData.cs" />
      <Compile Include="Assets\_scripts\StartUp.cs" />
+     <Compile Include="Assets\_scripts\Utils.cs" />
      <Compile Include="Assets\_scripts\sample\ButtonChangeModel.cs" />
      <Compile Include="Assets\_scripts\sample\LAppDefine.cs" />
      <Compile Include="Assets\_scripts\sample\LAppLive2DManager.cs" />

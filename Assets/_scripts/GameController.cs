@@ -45,6 +45,13 @@ namespace MyNamespace
 		public Button btnLoad;
 		public Button btnQuit;
 		public Button btnBack;
+		[Header ("Save Panel")]
+		public GameObject panelSaveGame;
+		public Text txtSaveId;
+		public Text txtSaveContent;
+		public Button btnSaveConfirm;
+		public Button btnBackToMain;
+		public RenderTexture rtScreenCapture;
 
 		//保存当前para,针对第一次进来的时候,要预设一个初始next值
 		private Paragraph currentPara = new Paragraph ("1");
@@ -112,12 +119,21 @@ namespace MyNamespace
 				panelInGame.SetActive (false);
 				panelMainMenu.SetActive (true);
 			});
-			btnSave.onClick.AddListener (SaveGame);
+			btnSave.onClick.AddListener (() => {
+				panelMainMenu.SetActive (false);
+				panelSaveGame.SetActive (true);
+			});
 			btnLoad.onClick.AddListener (LoadGame);
 			btnQuit.onClick.AddListener (QuitGame);
 			btnBack.onClick.AddListener (() => {
 				panelMainMenu.SetActive (false);
 				panelInGame.SetActive (true);
+			});
+			//save game
+			btnSaveConfirm.onClick.AddListener (SaveGame);
+			btnBackToMain.onClick.AddListener (() => {
+				panelSaveGame.SetActive (false);
+				panelMainMenu.SetActive (true);
 			});
 		}
 
@@ -320,8 +336,12 @@ namespace MyNamespace
 		private void SaveGame ()
 		{
 //			PlayerPrefs.SetString ("saveData_1", currentPara.id);
-			GameSave save = new GameSave (1, currentPara.id, currentPara.content, "null");
+			//先保存屏幕
+			string path = Utils.WriteRenderTexture2File (rtScreenCapture);
+			//声明Save对象
+			GameSave save = new GameSave (1, currentPara.id, currentPara.content, path);
 			GameSaveBean.Instance.AddGameSave2DB (save);
+			//UI刷新,TODO
 		}
 
 		//读取游戏,TODO
