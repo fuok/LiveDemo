@@ -45,7 +45,7 @@ public class GameSaveBean : MonoBehaviour
 	public GameSave GetGameSaveFromDB (int id)
 	{
 		sqReader = db.SelectWhere (Constants.tableNameSave, colName, new string[]{ "savId" }, new string[]{ "=" }, new object[]{ id });
-		GameSave save = new GameSave ();
+		GameSave save = null;
 		while (sqReader.Read ()) {
 			save = new GameSave (sqReader.GetInt32 (sqReader.GetOrdinal ("savId")), 
 				sqReader.GetString (sqReader.GetOrdinal ("savParaId")),

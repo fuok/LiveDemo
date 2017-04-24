@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
+     <Compile Include="Assets\GameSaveManager.cs" />
      <Compile Include="Assets\Libraries\SimpleJSON\SimpleJSON.cs" />
      <Compile Include="Assets\Live2D\framework\IPlatformManager.cs" />
      <Compile Include="Assets\Live2D\framework\L2DBaseModel.cs" />
