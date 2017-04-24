@@ -1,8 +1,22 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿#if UNITY_ANDROID && !UNITY_EDITOR
+#define ANDROID
+#endif
+
+#if UNITY_IPHONE && !UNITY_EDITOR
+#define IPHONE
+#endif
+
+using UnityEngine;
 
 public class Constants
 {
+	//沙盒目录
+	#if ANDROID || IPHONE
+	public static string LOCAL_PATH = Application.persistentDataPath;
+	#else
+	public static string LOCAL_PATH = Application.dataPath;
+	#endif
+
 	//数据库名
 	public const string dbName = "live db.db";
 	//表名
@@ -12,10 +26,10 @@ public class Constants
 	public const int dataBaseVersion = 1;
 	//数据库地址(自行创建),//注意不是在根目录下,Application.dataPath会读取./assets/下面的
 	public static string dbPath = Application.dataPath + "/" + dbName;
-	//数据库地址(外部导入)
-	public static string dbPathPc = "URI=file:" + Application.streamingAssetsPath + "/" + dbName;
 	//Android数据库地址
 	public static string dbPathAndroid = Application.persistentDataPath + "/" + dbName;
+	//数据库地址(外部导入)
+	public static string dbPathStreamIn = "URI=file:" + Application.streamingAssetsPath + "/" + dbName;
 
 	//model位置，需要考虑到model高度不同，这里只使用X轴，不要使用Y轴
 	public static float POSITION_CENTER = 0f;

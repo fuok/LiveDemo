@@ -49,9 +49,17 @@ namespace MyNamespace
 		public GameObject panelSaveGame;
 		public Text txtSaveId;
 		public Text txtSaveContent;
+		public RawImage imgSaveThumbnail;
 		public Button btnSaveConfirm;
 		public Button btnBackToMain;
 		public RenderTexture rtScreenCapture;
+		[Header ("Load Panel")]
+		public GameObject panelLoadGame;
+		public Text txtLoadId;
+		public Text txtLoadContent;
+		public RawImage imgLoadThumbnail;
+		public Button btnLoadConfirm;
+		public Button btnBackToMain2;
 
 		//保存当前para,针对第一次进来的时候,要预设一个初始next值
 		private Paragraph currentPara = new Paragraph ("1");
@@ -123,7 +131,11 @@ namespace MyNamespace
 				panelMainMenu.SetActive (false);
 				panelSaveGame.SetActive (true);
 			});
-			btnLoad.onClick.AddListener (LoadGame);
+			btnLoad.onClick.AddListener (() => {
+				panelMainMenu.SetActive (false);
+				panelLoadGame.SetActive (true);
+				SetLoadedGame ();
+			});
 			btnQuit.onClick.AddListener (QuitGame);
 			btnBack.onClick.AddListener (() => {
 				panelMainMenu.SetActive (false);
@@ -133,6 +145,12 @@ namespace MyNamespace
 			btnSaveConfirm.onClick.AddListener (SaveGame);
 			btnBackToMain.onClick.AddListener (() => {
 				panelSaveGame.SetActive (false);
+				panelMainMenu.SetActive (true);
+			});
+			//load game
+			btnLoadConfirm.onClick.AddListener (LoadGame);
+			btnBackToMain2.onClick.AddListener (() => {
+				panelLoadGame.SetActive (false);
 				panelMainMenu.SetActive (true);
 			});
 		}
@@ -341,16 +359,36 @@ namespace MyNamespace
 			//声明Save对象
 			GameSave save = new GameSave (1, currentPara.id, currentPara.content, path);
 			GameSaveBean.Instance.AddGameSave2DB (save);
-			//UI刷新,TODO
+			//UI刷新
+			txtSaveId.text = save.savId.ToString ();
+			txtSaveContent.text = save.savText;
+			StartCoroutine (LoadLocalImage (imgSaveThumbnail, save.savImgPath));
+//			print ("缩略图地址：" + save.savImgPath);
+		}
+
+		//
+		private void SetLoadedGame ()
+		{
+			GameSave save = GameSaveBean.Instance.GetGameSaveFromDB (1);
+			txtLoadId.text = save.savId.ToString ();
+			txtLoadContent.text = save.savText;
+			StartCoroutine (LoadLocalImage (imgLoadThumbnail, save.savImgPath));
 		}
 
 		//读取游戏,TODO
 		private void LoadGame ()
 		{
-//			string id = PlayerPrefs.GetString ("saveData_1", "");//如果没有存档就取空
+			//			string id = PlayerPrefs.GetString ("saveData_1", "");//如果没有存档就取空
 			GameSave save = GameSaveBean.Instance.GetGameSaveFromDB (1);
 			ShowParagraph (GetParagraphById (save.savParaId));
 			print (save.ToString ());
+		}
+
+		IEnumerator LoadLocalImage (RawImage img, string filePath)
+		{
+			WWW www = new WWW ("file://" + filePath);
+			yield return www;
+			img.texture = www.texture;
 		}
 
 		private void QuitGame ()
