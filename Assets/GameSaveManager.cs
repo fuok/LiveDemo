@@ -12,44 +12,54 @@ public class GameSaveManager : MonoBehaviour
 
 	void Start ()
 	{
-		for (int i = 0; i < itemSaveGame.Length; i++) {
-			itemSaveGame [i].transform.Find ("Button Save").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
-				SaveGame (i, GameController.Instance.currentPara);
-				SetLoadedGame ();
-			}));
-			itemSaveGame [i].transform.Find ("Button Load").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
-				LoadGame (i);
-			}));
-		}
+		itemSaveGame [0].transform.Find ("Button Save").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
+			SaveGame (1);
+			ShowLoadedGame ();
+		}));
+		itemSaveGame [0].transform.Find ("Button Load").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
+			LoadGame (1);
+		}));
+		
+		itemSaveGame [1].transform.Find ("Button Save").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
+			SaveGame (2);
+			ShowLoadedGame ();
+		}));
+		itemSaveGame [1].transform.Find ("Button Load").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
+			LoadGame (2);
+		}));
+		itemSaveGame [2].transform.Find ("Button Save").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
+			SaveGame (3);
+			ShowLoadedGame ();
+		}));
+		itemSaveGame [2].transform.Find ("Button Load").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
+			LoadGame (3);
+		}));
 	}
 
 	void OnEnable ()
 	{
-//		print ("kaishi");
-		SetLoadedGame ();
+		ShowLoadedGame ();
 	}
 
 	//储存游戏
-	private void SaveGame (int saveId, Paragraph currentPara)
+	private void SaveGame (int saveId)
 	{
+		print ("SaveGame (),saveId=" + saveId);
+		Paragraph currentPara = GameController.Instance.currentPara;
 		//先保存屏幕
 		string path = Utils.WriteRenderTexture2File (rtScreenCapture);
 		//声明Save对象
 		GameSave save = new GameSave (saveId, currentPara.id, currentPara.content, path);
 		GameSaveBean.Instance.AddGameSave2DB (save);
-		//UI刷新
-//		txtSaveId.text = save.savId.ToString ();
-//		txtSaveContent.text = save.savText;
-//		StartCoroutine (LoadLocalImage (imgSaveThumbnail, save.savImgPath));
-		//			print ("缩略图地址：" + save.savImgPath);
 	}
 
 	//获取存档界面
-	private void SetLoadedGame ()
+	private void ShowLoadedGame ()
 	{
 		for (int i = 0; i < itemSaveGame.Length; i++) {
-			GameSave save = GameSaveBean.Instance.GetGameSaveFromDB (i);
-			if (save != null) {
+			GameSave save = GameSaveBean.Instance.GetGameSaveFromDB (i + 1);
+			print (save.ToString ());
+			if (save.savId != 0) {
 				itemSaveGame [i].transform.Find ("Text ID").GetComponent<Text> ().text = save.savId.ToString ();
 				itemSaveGame [i].transform.Find ("Text Content").GetComponent<Text> ().text = save.savText;
 				StartCoroutine (LoadLocalImage (itemSaveGame [i].transform.Find ("Raw Thumbnail").GetComponent<RawImage> (), save.savImgPath));
@@ -60,6 +70,7 @@ public class GameSaveManager : MonoBehaviour
 	//读取游戏
 	private void LoadGame (int saveId)
 	{
+		print ("LoadGame (),saveId=" + saveId);
 		GameSave save = GameSaveBean.Instance.GetGameSaveFromDB (saveId);
 		GameController.Instance.ShowParagraph (GameController.Instance.GetParagraphById (save.savParaId));
 //		print (save.ToString ());

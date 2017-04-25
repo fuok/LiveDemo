@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿#if UNITY_ANDROID && !UNITY_EDITOR
+#define ANDROID
+#endif
+
+#if UNITY_IPHONE && !UNITY_EDITOR
+#define IPHONE
+#endif
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,7 +36,7 @@ public class DatabaseManager : MonoBehaviour
 	public void StartDatabase ()
 	{
 		//读取/创建数据库,目前只有android和pc后需要加入ios
-		#if UNITY_ANDROID
+		#if ANDROID || IPHONE
 		db = new DbAccess ("URI=file:" + Constants.dbPathAndroid);
 		#else
 		db = new DbAccess ("data source=" + Constants.dbPath);//数据库名//("Server=127.0.0.1;UserId=root;Password=;Database=li")
@@ -54,7 +62,7 @@ public class DatabaseManager : MonoBehaviour
 	/// <summary>
 	/// 清除数据库，用于测试
 	/// </summary>
-	public void CleanParaDB ()
+	public void CleanDB ()
 	{
 		PlayerPrefs.DeleteKey (Constants.DATABASE_VERSION);
 		db.DeleteTable (Constants.tableNamePara);

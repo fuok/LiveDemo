@@ -19,7 +19,7 @@ public class IntroManager : MonoBehaviour
 	{
 		//test
 		if (Input.GetKeyDown (KeyCode.P)) {
-			DatabaseManager.Instance.CleanParaDB ();
+			DatabaseManager.Instance.CleanDB ();
 		}
 
 	}

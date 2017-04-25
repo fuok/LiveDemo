@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour
 	[Header ("人物显示")]
 	//		[SerializeField]
 		//		private GameObject[] mLiveCharacters = new GameObject[3]{ null, null, null };
-		public GameObject[] mModelsList;
+	public GameObject[] mModelsList;
 	//		private string[] mModelsName = new string[]{ "haru", "wanko" };
 	private Dictionary<string,GameObject> mModelsDic = new Dictionary<string, GameObject> ();
 	[Header ("选项分支")]
@@ -121,7 +121,7 @@ public class GameController : MonoBehaviour
 		});
 		btnLoad.onClick.AddListener (() => {
 			panelMainMenu.SetActive (false);
-//			panelLoadGame.SetActive (true);
+			panelSaveGame.SetActive (true);
 //				SetLoadedGame ();
 		});
 		btnQuit.onClick.AddListener (QuitGame);
