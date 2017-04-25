@@ -12,6 +12,7 @@ public class GameSaveManager : MonoBehaviour
 
 	void Start ()
 	{
+		//Item 1
 		itemSaveGame [0].transform.Find ("Button Save").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
 			SaveGame (1);
 			ShowLoadedGame ();
@@ -19,7 +20,10 @@ public class GameSaveManager : MonoBehaviour
 		itemSaveGame [0].transform.Find ("Button Load").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
 			LoadGame (1);
 		}));
-		
+		itemSaveGame [0].transform.Find ("Button Delete").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
+			DeleteGame (1);
+		}));
+		//Item 2
 		itemSaveGame [1].transform.Find ("Button Save").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
 			SaveGame (2);
 			ShowLoadedGame ();
@@ -27,12 +31,19 @@ public class GameSaveManager : MonoBehaviour
 		itemSaveGame [1].transform.Find ("Button Load").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
 			LoadGame (2);
 		}));
+		itemSaveGame [1].transform.Find ("Button Delete").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
+			DeleteGame (2);
+		}));
+		//Item 3
 		itemSaveGame [2].transform.Find ("Button Save").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
 			SaveGame (3);
 			ShowLoadedGame ();
 		}));
 		itemSaveGame [2].transform.Find ("Button Load").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
 			LoadGame (3);
+		}));
+		itemSaveGame [2].transform.Find ("Button Delete").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
+			DeleteGame (3);
 		}));
 	}
 
@@ -81,5 +92,11 @@ public class GameSaveManager : MonoBehaviour
 		WWW www = new WWW ("file://" + filePath);
 		yield return www;
 		img.texture = www.texture;
+	}
+
+	//删除存档
+	private void DeleteGame (int saveId)
+	{
+		
 	}
 }

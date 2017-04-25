@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
-     <Compile Include="Assets\GameSaveManager.cs" />
      <Compile Include="Assets\Libraries\SimpleJSON\SimpleJSON.cs" />
      <Compile Include="Assets\Live2D\framework\IPlatformManager.cs" />
      <Compile Include="Assets\Live2D\framework\L2DBaseModel.cs" />
@@ -71,6 +70,7 @@
      <Compile Include="Assets\_scripts\GameController.cs" />
      <Compile Include="Assets\_scripts\GameSave.cs" />
      <Compile Include="Assets\_scripts\GameSaveBean.cs" />
+     <Compile Include="Assets\_scripts\GameSaveManager.cs" />
      <Compile Include="Assets\_scripts\IntroManager.cs" />
      <Compile Include="Assets\_scripts\LoadingSceneManager.cs" />
      <Compile Include="Assets\_scripts\ParaBean.cs" />
