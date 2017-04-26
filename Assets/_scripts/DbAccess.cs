@@ -188,14 +188,13 @@ public class DbAccess
 	/// <param name="tableName">Table name.</param>
 	/// <param name="cols">Cols.</param>
 	/// <param name="colsvalues">Colsvalues.</param>
-	public SqliteDataReader Delete (string tableName, string[] cols, object[] colsvalues)
+	public SqliteDataReader Delete (string tableName, string[] givenCols, object[] givenValues)
 	{
-		string query = "DELETE FROM " + tableName + " WHERE " + cols [0] + " = " + colsvalues [0];
+		string query = "DELETE FROM " + tableName + " WHERE " + givenCols [0] + " = " + givenValues [0];
 
-		for (int i = 1; i < colsvalues.Length; ++i) {
-			query += " or " + cols [i] + " = " + colsvalues [i];
+		for (int i = 1; i < givenValues.Length; ++i) {
+			query += " or " + givenCols [i] + " = " + givenValues [i];
 		}
-		//			Debug.Log(query);
 		return ExecuteQuery (query);//SQLite貌似没有ExecuteNonQuery()
 	}
 
@@ -220,21 +219,21 @@ public class DbAccess
 	/// <param name="col">作为查找条件的列名</param>
 	/// <param name="operation">Operation.</param>
 	/// <param name="values">查找的值，类型是object，string型需要加单引号</param>
-	public SqliteDataReader SelectWhere (string tableName, string[] searchCols, string[] selectCol, string[] operation, object[] selectvalue)
+	public SqliteDataReader SelectWhere (string tableName, string[] targetCols, string[] givenCols, string[] operation, object[] givenValues)
 	{
-		if (selectCol.Length != operation.Length || operation.Length != selectvalue.Length) {		
+		if (givenCols.Length != operation.Length || operation.Length != givenValues.Length) {		
 			throw new SqliteException ("col.Length != operation.Length != values.Length");
 		}
-		string query = "SELECT " + searchCols [0];
+		string query = "SELECT " + targetCols [0];
 
-		for (int i = 1; i < searchCols.Length; ++i) {
-			query += ", " + searchCols [i];
+		for (int i = 1; i < targetCols.Length; ++i) {
+			query += ", " + targetCols [i];
 		}
 
-		query += " FROM " + tableName + " WHERE " + selectCol [0] + operation [0] + selectvalue [0];
+		query += " FROM " + tableName + " WHERE " + givenCols [0] + operation [0] + givenValues [0];
 
-		for (int i = 1; i < selectCol.Length; ++i) {
-			query += " AND " + selectCol [i] + operation [i] + selectvalue [0];
+		for (int i = 1; i < givenCols.Length; ++i) {
+			query += " AND " + givenCols [i] + operation [i] + givenValues [0];
 		}
 
 		return ExecuteQuery (query);
@@ -249,7 +248,7 @@ public class DbAccess
 	/// <param name="colsvalues">Colsvalues.</param>
 	/// <param name="selectkey">Selectkey.</param>
 	/// <param name="selectvalue">Selectvalue.</param>
-	public SqliteDataReader UpdateInto (string tableName, string[] targetCols, object[] targetValues, string selectCol, object selectvalue)
+	public SqliteDataReader UpdateInto (string tableName, string[] targetCols, object[] targetValues, string givenCol, object givenValue)
 	{
 		string query = "UPDATE " + tableName + " SET " + targetCols [0] + " = " + targetValues [0];
 
@@ -257,7 +256,7 @@ public class DbAccess
 			query += ", " + targetCols [i] + " =" + targetValues [i];
 		}
 
-		query += " WHERE " + selectCol + " = " + selectvalue;
+		query += " WHERE " + givenCol + " = " + givenValue;
 
 		return ExecuteQuery (query);
 	}
