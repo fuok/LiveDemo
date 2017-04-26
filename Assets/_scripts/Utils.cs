@@ -18,4 +18,10 @@ public class Utils
 		return path;
 	}
 
+	public static void DeleteFile (string path)
+	{
+		if (File.Exists (path)) {
+			File.Delete (path);
+		}
+	}
 }

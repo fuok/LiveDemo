@@ -22,6 +22,7 @@ public class GameSaveManager : MonoBehaviour
 		}));
 		itemSaveGame [0].transform.Find ("Button Delete").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
 			DeleteGame (1);
+			ShowLoadedGame ();
 		}));
 		//Item 2
 		itemSaveGame [1].transform.Find ("Button Save").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
@@ -33,6 +34,7 @@ public class GameSaveManager : MonoBehaviour
 		}));
 		itemSaveGame [1].transform.Find ("Button Delete").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
 			DeleteGame (2);
+			ShowLoadedGame ();
 		}));
 		//Item 3
 		itemSaveGame [2].transform.Find ("Button Save").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
@@ -44,6 +46,7 @@ public class GameSaveManager : MonoBehaviour
 		}));
 		itemSaveGame [2].transform.Find ("Button Delete").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
 			DeleteGame (3);
+			ShowLoadedGame ();
 		}));
 	}
 
@@ -97,6 +100,10 @@ public class GameSaveManager : MonoBehaviour
 	//删除存档
 	private void DeleteGame (int saveId)
 	{
-		
+		GameSave save = GameSaveBean.Instance.GetGameSaveFromDB (saveId);
+		//删除截屏
+		Utils.DeleteFile (save.savImgPath);
+		//删除数据
+		GameSaveBean.Instance.DeleteGameSave (saveId);
 	}
 }
