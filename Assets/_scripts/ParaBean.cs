@@ -17,6 +17,7 @@ public class ParaBean : MonoBehaviour
 	private string[] colName = new string[] {
 		"id",
 		"background", "portrait",
+		"name",
 		"content",
 		"model_0", "motion_0", "model_1", "motion_1", "model_2", "motion_2",
 		"bgm", "function",
@@ -24,7 +25,7 @@ public class ParaBean : MonoBehaviour
 		"next"
 	};
 	private string[] colType = new string[] {
-		"text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text"
+		"text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text"
 	};
 
 	static ParaBean ()
@@ -67,6 +68,7 @@ public class ParaBean : MonoBehaviour
 				"'" + para.id + "'",
 				"'" + para.background + "'",
 				"'" + para.portrait + "'",
+				"'" + para.name + "'",
 				"'" + para.content + "'",
 				"'" + para.model_0 + "'",
 				"'" + para.motion_0 + "'",
@@ -116,6 +118,7 @@ public class ParaBean : MonoBehaviour
 			currentPara = new Paragraph (sqReader.GetString (sqReader.GetOrdinal ("id")), 
 				sqReader.GetString (sqReader.GetOrdinal ("background")),
 				sqReader.GetString (sqReader.GetOrdinal ("portrait")),
+				sqReader.GetString (sqReader.GetOrdinal ("name")),
 				sqReader.GetString (sqReader.GetOrdinal ("content")),
 				sqReader.GetString (sqReader.GetOrdinal ("model_0")),
 				sqReader.GetString (sqReader.GetOrdinal ("motion_0")),

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace GameData
@@ -13,6 +14,7 @@ namespace GameData
 		public string id;
 		public string background;
 		public string portrait;
+		public string name;
 		public string content;
 		public string model_0;
 		public string motion_0;
@@ -38,11 +40,12 @@ namespace GameData
 			this.next = next;
 		}
 
-		public Paragraph (string id, string background, string portrait, string content, string model_0, string motion_0, string model_1, string motion_1, string model_2, string motion_2, string bgm, string function, string option_1, string goto_1, string option_2, string goto_2, string next)
+		public Paragraph (string id, string background, string portrait, string name, string content, string model_0, string motion_0, string model_1, string motion_1, string model_2, string motion_2, string bgm, string function, string option_1, string goto_1, string option_2, string goto_2, string next)
 		{
 			this.id = id;
 			this.background = background;
 			this.portrait = portrait;
+			this.name = name;
 			this.content = content;
 			this.model_0 = model_0;
 			this.motion_0 = motion_0;
@@ -57,6 +60,11 @@ namespace GameData
 			this.option_2 = option_2;
 			this.goto_2 = goto_2;
 			this.next = next;
+		}
+
+		public string ToJson ()
+		{
+			return JsonConvert.SerializeObject (this);
 		}
 
 		public override string ToString ()
