@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
 	public RawImage mPortraitImage;
 	public Texture mTransparentImage;
 	[Header ("文字显示区域")]
+	public Text mNameText;
 	public Text mMainText;
 	public Button mShowText;
 	private Tweener tweenerText;
@@ -217,6 +218,14 @@ public class GameController : MonoBehaviour
 				mPortraitImage.texture = Resources.Load<Texture> ("portrait/" + para.portrait);
 			}
 				
+			//角色名字显示
+			if (string.IsNullOrEmpty (para.name)) {
+				mNameText.transform.parent.gameObject.SetActive (false);
+			} else {
+				mNameText.transform.parent.gameObject.SetActive (true);
+				mNameText.text = para.name;
+			}
+
 			//文字显示
 			//设置dotween
 			//			mMainTextClone.transform.SetParent (mCanvasTrans, false);//加false后uGUI位置就对了
