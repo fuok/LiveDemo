@@ -23,7 +23,7 @@ public class Constants
 	public const string tableNamePara = "paragraph";
 	public const string tableNameSave = "gamesave";
 	//数据库版本号
-	public const int dataBaseVersion = 1;
+	public const int dataBaseVersion = 2;
 	//数据库地址(自行创建),//注意不是在根目录下,Application.dataPath会读取./assets/下面的
 	public static string dbPath = Application.dataPath + "/" + dbName;
 	//Android数据库地址
