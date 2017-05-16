@@ -1657,7 +1657,7 @@
          "id" : "140",
          "background" : "nc019a",
          "portrait" : "",
-         "content" : "<color=black>测试内容完结。</color>",
+         "content" : "<color=black>测试章节完毕，敬请期待后续内容。</color>",
          "model_0" : "wanko",
          "model_1" : "",
          "model_2" : "",
