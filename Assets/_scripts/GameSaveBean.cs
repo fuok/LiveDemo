@@ -12,10 +12,10 @@ public class GameSaveBean : MonoBehaviour
 	private SqliteDataReader sqReader;
 
 	private string[] colName = new string[] {
-		"savId", "savParaId", "savText", "savImgPath"
+		"savId", "savParaId", "savTime", "savText", "savImgPath"
 	};
 	private string[] colType = new string[] {
-		"integer", "text", "text", "text"
+		"integer", "text", "text", "text", "text"
 	};
 
 	void Awake ()
@@ -31,7 +31,7 @@ public class GameSaveBean : MonoBehaviour
 		//创建数据库表，与字段
 		db.CreateTable (Constants.tableNameSave, colName, colType, false);
 		//此处应该添加一个空存档id=0，这样当删除记录后取到空数据就会显示为这个,TODO
-		GameSave save = new GameSave (0, "", "", Constants.LOCAL_PATH + "/" + "default.png");
+		GameSave save = new GameSave (0, "", "", "", Constants.LOCAL_PATH + "/" + "default.png");//现在只是取到一个空值，实际上获取不到这一条
 		AddGameSave2DB (save);
 	}
 
@@ -40,6 +40,7 @@ public class GameSaveBean : MonoBehaviour
 		db.InsertInto (Constants.tableNameSave, new object[] {
 			save.savId,
 			"'" + save.savParaId + "'",
+			"'" + save.savTime + "'",
 			"'" + save.savText + "'",
 			"'" + save.savImgPath + "'"
 		});
@@ -52,6 +53,7 @@ public class GameSaveBean : MonoBehaviour
 		while (sqReader.Read ()) {
 			save = new GameSave (sqReader.GetInt32 (sqReader.GetOrdinal ("savId")), 
 				sqReader.GetString (sqReader.GetOrdinal ("savParaId")),
+				sqReader.GetString (sqReader.GetOrdinal ("savTime")),
 				sqReader.GetString (sqReader.GetOrdinal ("savText")),
 				sqReader.GetString (sqReader.GetOrdinal ("savImgPath")));
 		}

@@ -9,6 +9,7 @@ namespace GameData
 	{
 		public int savId;
 		public string savParaId;
+		public string savTime;
 		public string savText;
 		public string savImgPath;
 
@@ -17,10 +18,11 @@ namespace GameData
 			
 		}
 
-		public GameSave (int savId, string savParaId, string savText, string savImgPath)
+		public GameSave (int savId, string savParaId, string savTime, string savText, string savImgPath)
 		{
 			this.savId = savId;
 			this.savParaId = savParaId;
+			this.savTime = savTime;
 			this.savText = savText;
 			this.savImgPath = savImgPath;
 		}

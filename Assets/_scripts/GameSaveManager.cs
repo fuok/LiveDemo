@@ -12,6 +12,7 @@ public class GameSaveManager : MonoBehaviour
 
 	void Start ()
 	{
+		//TODO,精简
 		//Item 1
 		itemSaveGame [0].transform.Find ("Button Save").GetComponent<Button> ().onClick.AddListener (new UnityEngine.Events.UnityAction (() => {
 			SaveGame (1);
@@ -62,8 +63,10 @@ public class GameSaveManager : MonoBehaviour
 		Paragraph currentPara = GameController.Instance.currentPara;
 		//先保存屏幕
 		string path = Utils.WriteRenderTexture2File (rtScreenCapture);
+		//获取当前时间
+		string time = System.DateTime.Now.ToString ("yyyy年-MM月-dd日 HH:mm:ss");
 		//声明Save对象
-		GameSave save = new GameSave (saveId, currentPara.id, currentPara.content, path);
+		GameSave save = new GameSave (saveId, currentPara.id, time, currentPara.content, path);
 		GameSaveBean.Instance.AddGameSave2DB (save);
 	}
 
@@ -75,6 +78,7 @@ public class GameSaveManager : MonoBehaviour
 			print (save.ToString ());
 			if (save.savId != 0) {
 				itemSaveGame [i].transform.Find ("Text ID").GetComponent<Text> ().text = save.savId.ToString ();
+				itemSaveGame [i].transform.Find ("Text Time").GetComponent<Text> ().text = save.savTime.ToString ();
 				itemSaveGame [i].transform.Find ("Text Content").GetComponent<Text> ().text = save.savText;
 				StartCoroutine (LoadLocalImage (itemSaveGame [i].transform.Find ("Raw Thumbnail").GetComponent<RawImage> (), save.savImgPath));
 			}
