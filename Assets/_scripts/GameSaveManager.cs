@@ -81,6 +81,11 @@ public class GameSaveManager : MonoBehaviour
 				itemSaveGame [i].transform.Find ("Text Time").GetComponent<Text> ().text = save.savTime.ToString ();
 				itemSaveGame [i].transform.Find ("Text Content").GetComponent<Text> ().text = save.savText;
 				StartCoroutine (LoadLocalImage (itemSaveGame [i].transform.Find ("Raw Thumbnail").GetComponent<RawImage> (), save.savImgPath));
+			} else {//返回0的就是没取到
+				itemSaveGame [i].transform.Find ("Text ID").GetComponent<Text> ().text = "";
+				itemSaveGame [i].transform.Find ("Text Time").GetComponent<Text> ().text = "";
+				itemSaveGame [i].transform.Find ("Text Content").GetComponent<Text> ().text = "";
+				itemSaveGame [i].transform.Find ("Raw Thumbnail").GetComponent<RawImage> ().texture = null;
 			}
 		}
 	}

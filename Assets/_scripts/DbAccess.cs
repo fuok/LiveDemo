@@ -115,7 +115,7 @@ public class DbAccess
 	/// <returns>The into.</returns>
 	/// <param name="tableName">Table name.</param>
 	/// <param name="values">Values.</param>
-	public SqliteDataReader InsertInto (string tableName, object[] values)
+	public SqliteDataReader InsertInto (string tableName, object[] values)//目前还不做不到根据id不重复插入，所以会重复添加相同数据,TODO
 	{
 		string query = "INSERT INTO " + tableName + " VALUES (" + values [0];
 
