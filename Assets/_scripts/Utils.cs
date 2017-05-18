@@ -13,7 +13,7 @@ public class Utils
 		tex2D.ReadPixels (new Rect (0, 0, rt.width, rt.height), 0, 0);
 		tex2D.Apply ();
 		RenderTexture.active = null;
-		string path = Constants.LOCAL_PATH + "/_save/" + DateTime.Now.ToFileTime ().ToString () + ".png";
+		string path = Constants.SAVE_PATH + DateTime.Now.ToFileTime ().ToString () + ".png";
 		File.WriteAllBytes (path, tex2D.EncodeToPNG ());  
 		return path;
 	}

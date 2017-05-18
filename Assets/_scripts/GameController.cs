@@ -322,6 +322,8 @@ public class GameController : MonoBehaviour
 				mOptionPanel.SetActive (true);
 				btnOption1.GetComponentInChildren<Text> ().text = para.option_1;
 				btnOption2.GetComponentInChildren<Text> ().text = para.option_2;
+			} else {
+				mOptionPanel.SetActive (false);
 			}
 		}
 	}

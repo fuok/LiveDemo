@@ -488,7 +488,7 @@
       {
          "id" : "42",
          "background" : "nc016a",
-         "portrait" : "position_1",
+         "portrait" : "",
          "content" : "<color=#2D2D2D>口气虽然平稳，但小和的眉毛一跳一跳的。这是她强忍怒气时的习惯。</color>",
          "model_0" : "",
          "model_1" : "epsilon",

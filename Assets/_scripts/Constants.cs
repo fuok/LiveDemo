@@ -12,9 +12,9 @@ public class Constants
 {
 	//沙盒目录
 	#if ANDROID || IPHONE
-	public static string LOCAL_PATH = Application.persistentDataPath;
+	public static string SAVE_PATH = Application.persistentDataPath;
 	#else
-	public static string LOCAL_PATH = Application.dataPath;
+	public static string SAVE_PATH = Application.dataPath + "/_save/";
 	#endif
 
 	//数据库名
