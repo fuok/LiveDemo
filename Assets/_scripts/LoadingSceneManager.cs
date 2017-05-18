@@ -25,7 +25,7 @@ public class LoadingSceneManager : MonoBehaviour
 
 	private IEnumerator StartMain ()
 	{
-//		yield return new WaitForSeconds (1f);
+		yield return new WaitForEndOfFrame ();
 		async = SceneManager.LoadSceneAsync ("[Intro]", LoadSceneMode.Single);
 		print ("jin ru la !!!");
 		yield return async;

@@ -46,15 +46,13 @@ public class ParaBean : MonoBehaviour
 		this.db = db;
 		//创建数据库表，与字段
 		db.CreateTable (Constants.tableNamePara, colName, colType, false);
-		//初始化Para表
-		WritePara2DB ();
 	}
 
 	/// <summary>
 	/// 写入JSON到数据库,5.5之后List的GetEnumerator无法再获取IEnumerator类型，所以不能再用Coroutine
 	/// </summary>
 	/// <returns>The para.</returns>
-	private void WritePara2DB ()
+	public void WritePara2DB ()
 	{
 		TextAsset paraAsset = Resources.Load<TextAsset> ("paragraph/para_1");
 		ParagraphData mData = JsonConvert.DeserializeObject<ParagraphData> (paraAsset.text);

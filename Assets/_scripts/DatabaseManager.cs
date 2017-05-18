@@ -46,17 +46,25 @@ public class DatabaseManager : MonoBehaviour
 		int version = PlayerPrefs.GetInt (Constants.DATABASE_VERSION, 0);//检查版本号
 		print ("version=" + version);
 		if (Constants.dataBaseVersion > version) {
-			//升级数据库
+			print ("database update");
+			//升级para数据库
 			try {
 				db.DeleteTable (Constants.tableNamePara);//TODO
 			} catch (System.Exception ex) {
 
 			}
 			PlayerPrefs.SetInt (Constants.DATABASE_VERSION, Constants.dataBaseVersion);
+			//初始化bean
+			ParaBean.Instance.InitParaBean (db);
+			GameSaveBean.Instance.InitSaveBean (db);
+			//初始化Para表
+			ParaBean.Instance.WritePara2DB ();
+		} else {
+			print ("no need update");
+			//初始化bean
+			ParaBean.Instance.InitParaBean (db);
+			GameSaveBean.Instance.InitSaveBean (db);
 		}
-		//初始化bean
-		ParaBean.Instance.InitParaBean (db);
-		GameSaveBean.Instance.InitSaveBean (db);
 	}
 
 	/// <summary>
