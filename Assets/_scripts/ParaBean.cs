@@ -51,8 +51,13 @@ public class ParaBean : MonoBehaviour
 	/// <summary>
 	/// 写入JSON到数据库,5.5之后List的GetEnumerator无法再获取IEnumerator类型，所以不能再用Coroutine
 	/// </summary>
-	/// <returns>The para.</returns>
+	/// <returns></returns>
 	public void WritePara2DB ()
+	{
+		StartCoroutine (DoWriteJob ());
+	}
+
+	IEnumerator DoWriteJob ()
 	{
 		TextAsset paraAsset = Resources.Load<TextAsset> ("paragraph/para_1");
 		ParagraphData mData = JsonConvert.DeserializeObject<ParagraphData> (paraAsset.text);
@@ -60,8 +65,9 @@ public class ParaBean : MonoBehaviour
 		List<Paragraph>.Enumerator ie = mData.paragraphList.GetEnumerator ();
 
 		while (ie.MoveNext ()) {
+			yield return new WaitForEndOfFrame ();//wait
 			Paragraph para = ie.Current as Paragraph;
-//			print (para.content);
+			//			print (para.content);
 			db.InsertInto (Constants.tableNamePara, new string[] {
 				"'" + para.id + "'",
 				"'" + para.background + "'",

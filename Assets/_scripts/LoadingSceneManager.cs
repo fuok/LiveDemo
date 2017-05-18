@@ -27,8 +27,9 @@ public class LoadingSceneManager : MonoBehaviour
 	{
 		yield return new WaitForEndOfFrame ();
 		async = SceneManager.LoadSceneAsync ("[Intro]", LoadSceneMode.Single);
-		print ("jin ru la !!!");
-		yield return async;
+		yield return new WaitForSeconds (3f);//并不能影响下面的
+		print ("jin ru la !!!");//甚至会因为没到3秒就切换了而完全不会输出
+		yield return async;//也就是说这里不写return async也完全没影响
 	}
 
 }
