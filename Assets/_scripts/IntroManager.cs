@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class IntroManager : MonoBehaviour
 {
-	public Button btnStart, btnExit;
+	public Button btnStart, btnContinue, btnExit;
 	//	private AsyncOperation async;
 	//	private int progress = 0;
 
@@ -32,6 +32,11 @@ public class IntroManager : MonoBehaviour
 	void InitUI ()
 	{
 		btnStart.onClick.AddListener (delegate() {
+			Constants.fromBeginning = true;
+			SceneManager.LoadScene ("[Play]");
+		});
+		btnContinue.onClick.AddListener (() => {
+			Constants.fromBeginning = false;
 			SceneManager.LoadScene ("[Play]");
 		});
 		btnExit.onClick.AddListener (() => {

@@ -68,7 +68,10 @@ public class GameController : MonoBehaviour
 		//
 		InitUI ();
 		//进来后开始游戏
-		string continueParaId = PlayerPrefs.GetString (Constants.CONTINUE_PARA_ID, "1");
+		string continueParaId = "1";
+		if (!Constants.fromBeginning) {
+			continueParaId = PlayerPrefs.GetString (Constants.CONTINUE_PARA_ID, "1");
+		}
 		Paragraph pNext = GetParagraphById (continueParaId);
 		ShowParagraph (pNext);
 	}
@@ -351,6 +354,7 @@ public class GameController : MonoBehaviour
 
 	private void QuitGame ()
 	{
+		PlayerPrefs.SetString (Constants.CONTINUE_PARA_ID, currentPara.id);
 		SceneManager.LoadScene ("[Intro]", LoadSceneMode.Single);
 	}
 

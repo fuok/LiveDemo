@@ -36,6 +36,9 @@ public class Constants
 	public static float POSITION_LEFT = -7f;
 	public static float POSITION_RIGHT = 7f;
 
+	//表示从头开始或者是从中断处开始游戏
+	public static bool fromBeginning = true;
+
 	//--------------playerprefab keys-------------------------------------------------------------------
 	public const string CONTINUE_PARA_ID = "continue para id";
 	public const string DATABASE_VERSION = "database version";
