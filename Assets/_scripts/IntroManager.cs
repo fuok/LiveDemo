@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class IntroManager : MonoBehaviour
 {
-	public Button btnStart, btnContinue, btnExit;
+	public GameObject panelMain;
+	public Button btnStart, btnContinue, btnSetting, btnExit;
+	public GameObject panelSetting;
+	public Button btnBack;
 	//	private AsyncOperation async;
 	//	private int progress = 0;
 
@@ -39,8 +42,16 @@ public class IntroManager : MonoBehaviour
 			Constants.fromBeginning = false;
 			SceneManager.LoadScene ("[Play]");
 		});
+		btnSetting.onClick.AddListener (() => {
+			panelMain.SetActive (false);
+			panelSetting.SetActive (true);
+		});
 		btnExit.onClick.AddListener (() => {
 			Application.Quit ();
+		});
+		btnBack.onClick.AddListener (() => {
+			panelSetting.SetActive (false);
+			panelMain.SetActive (true);
 		});
 	}
 
