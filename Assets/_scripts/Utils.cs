@@ -28,10 +28,12 @@ public class Utils
 	public static Color Hex2RGB (string hexStr)
 	{
 		//value = #ab364f
+//		Debug.Log (hexStr);
 		int r = Convert.ToInt32 ("0x" + hexStr.Substring (1, 2), 16);
 		int g = Convert.ToInt32 ("0x" + hexStr.Substring (3, 2), 16);
 		int b = Convert.ToInt32 ("0x" + hexStr.Substring (5, 2), 16);
-		Color color = new Color (r, g, b);
+		Color color = new Color (r / 255f, g / 255f, b / 255f);
+//		Debug.Log (color.ToString ());
 		return color;
 	}
 }

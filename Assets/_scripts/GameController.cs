@@ -226,13 +226,19 @@ public class GameController : MonoBehaviour
 				mNameText.transform.parent.gameObject.SetActive (false);
 			} else {
 				mNameText.transform.parent.gameObject.SetActive (true);
+				if (!string.IsNullOrEmpty (para.color)) {//描边
+					mNameText.gameObject.GetComponent<Outline> ().effectColor = Utils.Hex2RGB (para.color);
+				}
 				mNameText.text = para.name;
 			}
 
 			//文字显示
+			if (!string.IsNullOrEmpty (para.color)) {//描边
+				mMainText.gameObject.GetComponent<Outline> ().effectColor = Utils.Hex2RGB (para.color);
+			}
 			//设置dotween
-			//			mMainTextClone.transform.SetParent (mCanvasTrans, false);//加false后uGUI位置就对了
-			//			tweener.ChangeEndValue (para.content, 5f, true);//这里就不需要ChangeEndValue了
+//			mMainTextClone.transform.SetParent (mCanvasTrans, false);//加false后uGUI位置就对了
+//			tweener.ChangeEndValue (para.content, 5f, true);//这里就不需要ChangeEndValue了
 			tweenerText.ChangeValues ("", para.content, para.content.Length / 20f);//直接使用ChangeValues//使用富文本后出字速度明显慢了//注意最后的参数是float时间才是正常的
 			tweenerText.Restart ();
 			isTextShowing = true;
