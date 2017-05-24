@@ -55,10 +55,9 @@ public class IntroManager : MonoBehaviour
 		});
 	}
 
-	//	private IEnumerator LoadScene ()
-	//	{
-	//		async = SceneManager.LoadSceneAsync ("Main", LoadSceneMode.Single);
-	//		yield return async;
-	//	}
+	public void ShowMainPanel ()//dotween动画触发
+	{
+		panelMain.SetActive (true);
+	}
 
 }
