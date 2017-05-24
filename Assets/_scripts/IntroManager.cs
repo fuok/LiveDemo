@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class IntroManager : MonoBehaviour
 {
@@ -57,7 +58,9 @@ public class IntroManager : MonoBehaviour
 
 	public void ShowMainPanel ()//dotween动画触发
 	{
-		panelMain.SetActive (true);
+		foreach (var item in panelMain.GetComponentsInChildren<Image>()) {
+			item.DOFade (1f, 0.5f);
+		}
 	}
 
 }
