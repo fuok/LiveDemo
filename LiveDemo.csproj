@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{889513A6-0A78-2258-1B6A-6000B96F5A0A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>Android:13</UnityBuildTarget>
+    <UnityVersion>5.6.1f1</UnityVersion>
+    <RootNamespace></RootNamespace>
+    <LangVersion>4</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_5_6_1;UNITY_5_6;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;ENABLE_VIDEO;UNITY_ANDROID;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_2_0;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_HAS_GOOGLEVR</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_5_6_1;UNITY_5_6;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;ENABLE_VIDEO;UNITY_ANDROID;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_2_0;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_HAS_GOOGLEVR</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="Boo.Lang" />
+    <Reference Include="UnityScript.Lang" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>Library\UnityAssemblies\UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>Library\UnityAssemblies\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VR">
+      <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>Assets\Demigiant\DemiLib\DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Demigiant\DOTween\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>Assets\Demigiant\DOTween\DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>Assets\Demigiant\DOTween\DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>Assets\Demigiant\DOTween\DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>Assets\Demigiant\DOTweenPro\DOTweenPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\Libraries\Newtonsoft.Json\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>Assets\Libraries\SimpleJSON\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Live2DUnity">
+      <HintPath>Assets\Live2D\Live2DUnity.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Sqlite">
+      <HintPath>Assets\Plugins\Mono.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>Assets\Plugins\System.Data.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
+    <Compile Include="Assets\Libraries\SimpleJSON\SimpleJSON.cs" />
+    <Compile Include="Assets\Live2D\framework\IPlatformManager.cs" />
+    <Compile Include="Assets\Live2D\framework\L2DBaseModel.cs" />
+    <Compile Include="Assets\Live2D\framework\L2DColorConvertUtil.cs" />
+    <Compile Include="Assets\Live2D\framework\L2DExpressionMotion.cs" />
+    <Compile Include="Assets\Live2D\framework\L2DEyeBlink.cs" />
+    <Compile Include="Assets\Live2D\framework\L2DMatrix44.cs" />
+    <Compile Include="Assets\Live2D\framework\L2DModelMatrix.cs" />
+    <Compile Include="Assets\Live2D\framework\L2DMotionManager.cs" />
+    <Compile Include="Assets\Live2D\framework\L2DPhysics.cs" />
+    <Compile Include="Assets\Live2D\framework\L2DPose.cs" />
+    <Compile Include="Assets\Live2D\framework\L2DStandardID.cs" />
+    <Compile Include="Assets\Live2D\framework\L2DTargetPoint.cs" />
+    <Compile Include="Assets\Live2D\framework\L2DViewMatrix.cs" />
+    <Compile Include="Assets\Live2D\framework\Live2DFramework.cs" />
+    <Compile Include="Assets\_scripts\AudioManagerS.cs" />
+    <Compile Include="Assets\_scripts\Constants.cs" />
+    <Compile Include="Assets\_scripts\DatabaseManager.cs" />
+    <Compile Include="Assets\_scripts\DbAccess.cs" />
+    <Compile Include="Assets\_scripts\DebugInfo.cs" />
+    <Compile Include="Assets\_scripts\GameController.cs" />
+    <Compile Include="Assets\_scripts\GameSave.cs" />
+    <Compile Include="Assets\_scripts\GameSaveBean.cs" />
+    <Compile Include="Assets\_scripts\GameSaveManager.cs" />
+    <Compile Include="Assets\_scripts\IntroManager.cs" />
+    <Compile Include="Assets\_scripts\LoadingSceneManager.cs" />
+    <Compile Include="Assets\_scripts\ParaBean.cs" />
+    <Compile Include="Assets\_scripts\ParagraphData.cs" />
+    <Compile Include="Assets\_scripts\StartUp.cs" />
+    <Compile Include="Assets\_scripts\Utils.cs" />
+    <Compile Include="Assets\_scripts\sample\ButtonChangeModel.cs" />
+    <Compile Include="Assets\_scripts\sample\LAppDefine.cs" />
+    <Compile Include="Assets\_scripts\sample\LAppLive2DManager.cs" />
+    <Compile Include="Assets\_scripts\sample\LAppModel.cs" />
+    <Compile Include="Assets\_scripts\sample\LAppModelProxy.cs" />
+    <Compile Include="Assets\_scripts\sample\LAppView.cs" />
+    <Compile Include="Assets\_scripts\sample\MyGameController.cs" />
+    <Compile Include="Assets\_scripts\sample\PlatformManager.cs" />
+    <Compile Include="Assets\_scripts\utils\AccelHelper.cs" />
+    <Compile Include="Assets\_scripts\utils\FileManager.cs" />
+    <Compile Include="Assets\_scripts\utils\HitAreaUtil.cs" />
+    <Compile Include="Assets\_scripts\utils\ModelSetting.cs" />
+    <Compile Include="Assets\_scripts\utils\ModelSettingJson.cs" />
+    <Compile Include="Assets\_scripts\utils\TouchManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Apshai Arts\CodeGuard\Editor\Compatibility.txt" />
+    <None Include="Assets\Apshai Arts\CodeGuard\Editor\Mobile.txt" />
+    <None Include="Assets\Apshai Arts\CodeGuard\Editor\Quick Start.txt" />
+    <None Include="Assets\Apshai Arts\CodeGuard\Editor\Read Me.txt" />
+    <None Include="Assets\Apshai Arts\CodeGuard\Editor\Web Player.txt" />
+    <None Include="Assets\Demigiant\DOTween\DOTween.XML" />
+    <None Include="Assets\Demigiant\DOTween\DOTween43.xml" />
+    <None Include="Assets\Demigiant\DOTween\DOTween46.xml" />
+    <None Include="Assets\Demigiant\DOTween\DOTween50.xml" />
+    <None Include="Assets\Demigiant\DOTween\Editor\DOTweenEditor.XML" />
+    <None Include="Assets\Demigiant\DOTween\readme.txt" />
+    <None Include="Assets\Demigiant\DOTweenPro\DOTweenPro.XML" />
+    <None Include="Assets\Demigiant\DOTweenPro\Editor\DOTweenProEditor.XML" />
+    <None Include="Assets\Demigiant\DOTweenPro\readme.txt" />
+    <None Include="Assets\Demigiant\DemiLib\DemiLib.xml" />
+    <None Include="Assets\Demigiant\DemiLib\Editor\DemiEditor.XML" />
+    <None Include="Assets\Demigiant\readme_DOTweenPro.txt" />
+    <None Include="Assets\Live2D\Resources\shader\Live2D-SetupMask.shader" />
+    <None Include="Assets\Live2D\Resources\shader\merged\Live2D-Add.shader" />
+    <None Include="Assets\Live2D\Resources\shader\merged\Live2D-AddCull.shader" />
+    <None Include="Assets\Live2D\Resources\shader\merged\Live2D-AddCullMasked.shader" />
+    <None Include="Assets\Live2D\Resources\shader\merged\Live2D-AddMasked.shader" />
+    <None Include="Assets\Live2D\Resources\shader\merged\Live2D-Mult.shader" />
+    <None Include="Assets\Live2D\Resources\shader\merged\Live2D-MultCull.shader" />
+    <None Include="Assets\Live2D\Resources\shader\merged\Live2D-MultCullMasked.shader" />
+    <None Include="Assets\Live2D\Resources\shader\merged\Live2D-MultMasked.shader" />
+    <None Include="Assets\Live2D\Resources\shader\merged\Live2D-Normal.shader" />
+    <None Include="Assets\Live2D\Resources\shader\merged\Live2D-NormalCull.shader" />
+    <None Include="Assets\Live2D\Resources\shader\merged\Live2D-NormalCullMasked.shader" />
+    <None Include="Assets\Live2D\Resources\shader\merged\Live2D-NormalMasked.shader" />
+    <None Include="Assets\Resources\Paragraph\para_1.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+</Project>

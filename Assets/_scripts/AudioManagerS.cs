@@ -98,7 +98,7 @@ public class AudioManagerS : MonoBehaviour
 					//如果当前bgm在播放，就什么也不做.
 					return;
 				}
-				foreach (var item in transform.FindChild("bgm").GetComponentsInChildren<AudioSource>()) {
+				foreach (var item in transform.Find("bgm").GetComponentsInChildren<AudioSource>()) {
 					//关闭其他bgm
 					item.Stop ();
 				}
