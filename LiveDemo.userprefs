@@ -1,8 +1,8 @@
-﻿<Properties StartupItem="LiveDemo.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Paragraph\para_1.txt">
     <Files>
-      <File FileName="Assets\_scripts\Constants.cs" Line="23" Column="50" />
+      <File FileName="Assets\_scripts\Constants.cs" Line="1" Column="1" />
       <File FileName="Assets\_scripts\GameController.cs" Line="1" Column="1" />
       <File FileName="Assets\_scripts\LoadingSceneManager.cs" Line="1" Column="1" />
       <File FileName="Assets\_scripts\ParagraphData.cs" Line="1" Column="1" />
@@ -14,7 +14,7 @@
       <File FileName="Assets\_scripts\GameSaveManager.cs" Line="1" Column="1" />
       <File FileName="Assets\_scripts\Utils.cs" Line="1" Column="1" />
       <File FileName="Assets\_scripts\GameSave.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Paragraph\para_1.txt" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Paragraph\para_1.txt" Line="358" Column="25" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
