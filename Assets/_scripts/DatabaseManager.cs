@@ -24,7 +24,7 @@ public class DatabaseManager : MonoBehaviour
 	/// <summary>
 	/// Raises the destroy event.
 	/// </summary>
-	void OnDestroy ()//认为游戏结束
+	void OnDestroy ()//认为游戏结束了
 	{
 		print ("OnDesrtoy");
 		//关闭对象
