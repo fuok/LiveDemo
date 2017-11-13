@@ -1,20 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Paragraph\para_1.txt">
     <Files>
-      <File FileName="Assets\_scripts\Constants.cs" Line="1" Column="1" />
-      <File FileName="Assets\_scripts\GameController.cs" Line="1" Column="1" />
-      <File FileName="Assets\_scripts\LoadingSceneManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\_scripts\ParagraphData.cs" Line="1" Column="1" />
-      <File FileName="Assets\_scripts\ParaBean.cs" Line="1" Column="1" />
-      <File FileName="Assets\_scripts\IntroManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\_scripts\StartUp.cs" Line="1" Column="1" />
-      <File FileName="Assets\_scripts\DatabaseManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\_scripts\DbAccess.cs" Line="1" Column="1" />
-      <File FileName="Assets\_scripts\GameSaveManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\_scripts\Utils.cs" Line="1" Column="1" />
-      <File FileName="Assets\_scripts\GameSave.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Paragraph\para_1.txt" Line="358" Column="25" />
+      <File FileName="Assets/_scripts/DatabaseManager.cs" Line="27" Column="28" />
+      <File FileName="Assets/_scripts/StartUp.cs" Line="8" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
