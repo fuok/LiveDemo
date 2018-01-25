@@ -14,7 +14,7 @@ public class Utils
 		tex2D.Apply ();
 		RenderTexture.active = null;
 		string path = Constants.SAVE_PATH + DateTime.Now.ToFileTime ().ToString () + ".png";
-		File.WriteAllBytes (path, tex2D.EncodeToPNG ());  
+		File.WriteAllBytes (path, tex2D.EncodeToPNG ());
 		return path;
 	}
 
