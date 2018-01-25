@@ -24,11 +24,14 @@ public class Constants
 	public const string tableNameSave = "gamesave";
 	//数据库版本号
 	public const int dataBaseVersion = 1;
-	//数据库地址(自行创建),//注意不是在根目录下,Application.dataPath会读取./assets/下面的
-	public static string dbPath = Application.dataPath + "/" + dbName;
-	//Android数据库地址
-	public static string dbPathAndroid = Application.persistentDataPath + "/" + dbName;
-	//数据库地址(外部导入)
+	//数据库地址(StandAlone),//注意不是在根目录下,Application.dataPath会读取./assets/下面的
+	public static string dbPath = "data source=" + Application.dataPath + "/" + dbName;
+	//数据库地址(Android)
+	public static string dbPathAndroid = "URI=file:" + Application.persistentDataPath + "/" + dbName;
+	//数据库地址(IOS)
+	public static string dbPathIos = @"data source=" + Application.persistentDataPath + "/" + dbName;
+
+	//数据库地址(已经写好数据直接下载，应该也是Android的格式)
 	public static string dbPathStreamIn = "URI=file:" + Application.streamingAssetsPath + "/" + dbName;
 
 	//model位置，需要考虑到model高度不同，这里只使用X轴，不要使用Y轴

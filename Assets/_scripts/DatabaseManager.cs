@@ -35,12 +35,17 @@ public class DatabaseManager : MonoBehaviour
 
 	public void StartDatabase ()
 	{
+		string dbPath;
 		//读取/创建数据库,目前只有android和pc后需要加入ios
-		#if ANDROID || IPHONE
-		db = new DbAccess ("URI=file:" + Constants.dbPathAndroid);
+		#if ANDROID
+		dbPath = Constants.dbPathAndroid;
+		#elif IPHONE
+		dbPath = Constants.dbPathIos;
 		#else
-		db = new DbAccess ("data source=" + Constants.dbPath);//数据库名//("Server=127.0.0.1;UserId=root;Password=;Database=li")
+		dbPath = Constants.dbPath;//数据库名//("Server=127.0.0.1;UserId=root;Password=;Database=li")
 		#endif
+		print ("dbPath=" + dbPath);
+		db = new DbAccess (dbPath);
 
 		//检查数据库版本
 		int version = PlayerPrefs.GetInt (Constants.DATABASE_VERSION, 0);//检查版本号
