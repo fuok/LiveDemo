@@ -110,6 +110,7 @@
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-AddCull.shader" />
      <None Include="Assets\Demigiant\DemiLib\DemiLib.xml" />
      <None Include="Assets\Live2D\Resources\shader\merged\Live2D-NormalCullMasked.shader" />
+     <None Include="Assets\Libraries\JsonDotNet\link.xml" />
      <None Include="Assets\Demigiant\DOTween\readme.txt" />
      <None Include="Assets\WebplayerTemplates\Apshai Arts\CodeGuard\Editor\Web Player.txt" />
      <None Include="Assets\Demigiant\DOTween\DOTween43.xml" />
@@ -158,11 +159,11 @@
  <Reference Include="System.Data">
  <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Plugins/System.Data.dll</HintPath>
  </Reference>
- <Reference Include="Newtonsoft.Json">
- <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Libraries/Newtonsoft.Json/Newtonsoft.Json.dll</HintPath>
- </Reference>
  <Reference Include="ICSharpCode.SharpZipLib">
  <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Libraries/SimpleJSON/ICSharpCode.SharpZipLib.dll</HintPath>
+ </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Libraries/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="DOTweenPro">
  <HintPath>/Users/liuyang/Documents/workspace/LiveDemo/Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
